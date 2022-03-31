@@ -1,0 +1,111 @@
+.fullCardPage {
+    width: 1272px;
+    margin: 40px auto;
+}
+
+.gradientLine {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #7d7c7c 0%, #44403F 50%);
+}
+
+.turnBack {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.turnBack p {
+    margin: 0 10px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.backBtn {
+    width: 26px;
+    height: 26px;
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    line-height: 23px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.fullCardBlock {
+    display: flex;
+    height: 399px;
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fullCardImg {
+    width: 50%;
+}
+
+.fullCardImg img {
+    height: 100%;
+}
+
+.fullCardInfo {
+    margin: 38px 150px 150px 50px;
+}
+
+.fullCardInfo h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.fullCardInfo p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #CFCFCF;
+}
+
+.cartInfo {
+    margin-top:150px;
+    display: flex;
+    align-items: center;
+}
+
+.cartBtn {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    border-radius: 10px;
+    margin-right: 25px;
+}
+
+.cartBtn p {
+    padding: 0 20px;
+    border-right: 1px solid white;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.cartBtn img {
+    width: 18px;
+    height: 18px;
+    margin: 0 15px;
+}
+
+.cartPrice p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
