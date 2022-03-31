@@ -6,7 +6,7 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" />
+          <Route path="/"  />
         </Routes>
       </BrowserRouter>
     </div>
