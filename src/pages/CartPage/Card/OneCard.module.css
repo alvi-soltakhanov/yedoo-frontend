@@ -5,9 +5,9 @@
     width: 1096px;
     height: 126px;
     background-color: #4D4847;
-    border-radius: 10px;
     margin: auto; 
     display: flex;
+    border-bottom: 2px solid #6B6867;
 }
 
 /* Стили изображения карточки  */
