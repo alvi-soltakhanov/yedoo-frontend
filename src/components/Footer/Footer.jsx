@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css'
-import Arrow from '../../assets/Arrow.png'
+import Arrow from '../../assets/Footer/Arrow.png'
 
 const Footer = () => {
     return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import style from "./header.module.css"
-import logo from '../../assets/Calling.png'
-import CartLine from '../../assets/CartLine.png'
-import location from "../../assets/Location.png"
-import search from "../../assets/Search.png"
+import logo from '../../assets/Header/Calling.png'
+import CartLine from '../../assets/Header/CartLine.png'
+import location from "../../assets/Header/Location.png"
+import search from "../../assets/Header/Search.png"
 
 const Header = () => {
     return (
