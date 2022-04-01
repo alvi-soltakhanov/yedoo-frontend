@@ -1,0 +1,116 @@
+
+/* Основные стили */
+
+.Card {
+    width: 1096px;
+    height: 126px;
+    background-color: #4D4847;
+    border-radius: 10px;
+    margin: auto; 
+    display: flex;
+}
+
+/* Стили изображения карточки  */
+
+.image {
+    width: 17%;
+    height: 100%;
+    text-align: left;
+    padding: 20px;
+}
+
+.image img {
+    width: 117px;
+    border-radius: 10px;
+}
+
+/* Стили для описание карточки */
+
+
+
+.description {
+    width: 30%;
+    height: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+
+}
+
+.description .title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.description .composition {
+    font-size: 12px;
+    color: #A6A7AB;
+    font-style: normal;
+    font-weight: 400;
+    text-align: justify;
+}
+
+
+/* Стили для кнопок увелечения и уменьшения количество товара */
+
+.Numbers {
+    width: 15%;
+    margin: auto;
+    display: flex;
+}
+
+.Numbers div {
+    width: 40px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.decriment {
+    width: 38.14px;
+    height: 38.14px;
+    border-radius: 50%;
+    border: none;
+    background-color: #72A479;
+    color: white;
+    font-size: 20px;
+}
+
+.incriment {
+    width: 38.14px;
+    height: 38.14px;
+    border-radius: 50%;
+    border: none;
+    background-color: #72A479;
+    color: white;
+    font-size: 20px;
+}
+
+/* Стили для цены */
+
+.price {
+    width: 13%;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Кнопка удаления  */
+
+.deleteCard {
+    width: 8%;
+    display: flex;
+    align-items: center;
+}
+
+.deleteCard button {
+    width: 38.14px;
+    height: 38.14px;
+    border-radius: 50%;
+    border: none;
+    background-color: #72A479;
+    color: white;
+    font-size: 20px;
+}

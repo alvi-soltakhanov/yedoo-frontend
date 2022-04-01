@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+
+.header{
+    background-color: #403c3b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content {
+  width: 1272px;
+  height: 99px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #403c3b;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  /* line-height: 40px; */
+}
+.contact {
+  display: flex;
+}
+
+.number{
+    color: white;
+}
+
+.name {
+  /* margin-left: 98px; */
+  font-size: 23px;  
+  color: white;
+  letter-spacing: 0.15em;
+}
+
+.iph {
+  color: #cfcfcf;
+  text-align: left;
+  align-items: center;
+}
+
+.inp{
+    position: relative;
+}
+
+.inp img{
+    width: 24px;
+}
+
+.location{
+    position: absolute;
+    left: 14px;
+    top: 14px;
+}
+
+.search{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+.inp input {
+  width: 555px;
+  height: 52px;
+  padding: 0 0 0 50px;
+  color: #CFCFCF;
+  border-radius: 10px;
+  outline: none;
+  background-color: #504b4a;
+  border: none;
+}
+
+.phone {
+  margin: 0;
+}
+
+.iph {
+  align-items: center;
+}
+
+.call {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin: auto;
+  margin-right: 10px;
+  background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+  border-radius: 50%;
+}
+
+.call img {
+margin-top: 12px;
+width: 18px;
+}
+
+.cartBut {
+    color: white;
+    position: relative;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    /* margin-right: 50px; */
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    border-radius: 10px;
+  }
+
+  .cartBut img {
+      width: 0.7px; 
+      position: absolute;
+      right: 35px;
+  }
+
+  .cartBut div {
+      margin-left: -35px;
+  }
+
+  .CartCount {
+      position: absolute;
+      color: black;
+      top: 8px;
+      right: 5px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      text-align: center;
+  }
+
+
+  .CartCount span {
+      font-size: 14px;
+      position: absolute;
+      top: 4.3px;
+      left: 8.4px;
+  }
