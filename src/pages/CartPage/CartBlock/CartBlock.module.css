@@ -9,12 +9,12 @@
 .CartBlockHeader {
     width: 950px;
     margin: auto;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
 }
 
  /* Стили хедера страницы корзины */
 
-.CartBlockHeader div {
+.Title {
     margin: 20px 0;
 }
 
