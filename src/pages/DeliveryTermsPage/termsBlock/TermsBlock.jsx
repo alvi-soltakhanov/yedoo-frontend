@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './TermsBlock.module.css';
 import LineHeight from '../../../assets/heigthLine.png'
 import ListTerms from '../ListBlocks/ListTerms';
+import InfoBlock from '../InfoBlcok/InfoBlock';
 
 const TermsBlock = () => {
     return (
@@ -11,10 +12,11 @@ const TermsBlock = () => {
                     <div className={styles.TermsHeader}>
                     <div className={styles.Title}><img src={LineHeight} alt="" />Условия доставки</div>
                     </div>
+                    <ListTerms />
+                    <InfoBlock />
                 </div>
-            </div>
 
-            <ListTerms />
+            </div>
         </>
         
     );

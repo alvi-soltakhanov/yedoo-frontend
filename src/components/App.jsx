@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartPage from "../pages/CartPage/CartPage";
 import MainPage from "../pages/MainPage/MainPage";
-import FullCardPage from "../pages/FullCardPage/FullCard";
+import FullCardPage from "../pages/FullCardPage/FullCardPage";
+import OrderRegistPage from '../pages/OrderRegistPage/OrderRegistPage'
 import "./App.css";
 import TermsPage from "../pages/DeliveryTermsPage/Terms";
 
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<MainPage />}  />
           <Route path="/FullCard" element={<FullCardPage />}  />
           <Route path="/TermsPage" element={<TermsPage />}  />
+          <Route path="/TermsPage" element={<OrderRegistPage />}  />
         </Routes>
       </BrowserRouter>
     </div>
