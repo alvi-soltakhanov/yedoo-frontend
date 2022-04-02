@@ -1,0 +1,36 @@
+
+/* Стили основных блоков */
+
+.TermsBlock {
+    width: 100%;
+    background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+}
+
+.Content {
+    height: 1069px;
+    width: 1272px;
+    margin: auto;
+    padding: 50px 70px;
+}
+
+/* Стили хедера страницы */
+
+.TermsHeader {
+    height: 131px;
+}
+
+.Title {
+    font-size: 32px;
+    font-weight: 700;
+    padding-left: 30px;
+    position: relative;
+}
+
+.Title img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+/* Стили блока условия доставки */
+

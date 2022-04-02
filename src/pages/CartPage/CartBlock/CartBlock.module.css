@@ -2,7 +2,7 @@
  /* Стили основных блоков */
 .CartBlock {
     color: white;
-    padding: 30px;
+    padding: 50px;
     min-height: 400px;
 }
 
@@ -35,4 +35,14 @@
     position: absolute;
     top: 0px;
     left: 0px;
+}
+
+.returnBlock {
+    color: white;
+    text-decoration: none;
+}
+
+.returnBlock:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }

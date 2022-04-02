@@ -3,10 +3,12 @@ const initialState = {
     error: null,
 }
 
-export const application = (state = initialState, action) =>{
+const application = (state = initialState, action) =>{
     switch (action.type) {
         default:
     return state
     }    
 }
 
+
+export default application;
