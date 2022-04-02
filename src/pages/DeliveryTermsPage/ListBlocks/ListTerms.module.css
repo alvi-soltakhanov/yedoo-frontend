@@ -1,0 +1,31 @@
+
+
+.Terms {
+    width: 618px;
+    color: color;
+}
+
+.accordionItem {
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    border: none;
+    margin: 10px;
+    border-radius: 10px;
+    
+}
+
+.accordionButton {
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    color: white;
+    border-radius: 10px;
+}
+
+.accordionButton:not(.collapsed) {
+    color: #ffffff;
+    background-color: #e7f1ff;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.accordionBody {
+    border-radius: 10px;
+    padding: 10px 20px; 
+}
