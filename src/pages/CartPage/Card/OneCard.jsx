@@ -3,7 +3,8 @@ import styles from './OneCard.module.css'
 
 const Cart = ({image, title, composition, count, price}) => {
 
-    console.log(image)
+    
+
     return (
         <div className={styles.Card}>
                 <div className={styles.image}><img src={image} alt="" /></div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.css'
 import Arrow from '../../assets/Footer/Arrow.png'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -15,7 +16,7 @@ const Footer = () => {
                 </div>
                 <div className={styles.FooterMenu}>
                     <button>О ресторане</button>
-                    <button>Условаия доставки</button>
+                    <Link to={'/TermsPage'}><button>Условаия доставки</button></Link> 
                     <button>Возврат товара</button>
                     <button>Акции</button>
                 </div>
