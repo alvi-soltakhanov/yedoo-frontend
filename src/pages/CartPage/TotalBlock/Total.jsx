@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styles from './Total.module.css'
 
 const Total = () => {
@@ -11,7 +12,7 @@ const Total = () => {
         <div className={styles.Total}>
             <div className={styles.Content}>
                 <div className={styles.Order}>Итого: <div className={styles.OrderCount}>{total} ₽</div></div>
-                <button className={styles.ChecoutOrderButton}>Оформить заказ</button>
+                <Link to={'/OrderRegistPage'}><button className={styles.ChecoutOrderButton}>Оформить заказ</button></Link>
             </div>
         </div>       
     );
