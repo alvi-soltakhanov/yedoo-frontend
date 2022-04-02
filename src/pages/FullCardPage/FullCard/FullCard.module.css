@@ -12,7 +12,8 @@
 .turnBack {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    width: 1210px;
+    margin: 25px auto;
 }
 
 .turnBack p {
@@ -31,12 +32,14 @@
     color: white;
     font-weight: bold;
     line-height: 23px;
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
 }
 
 .fullCardBlock {
     display: flex;
+    width: 1210px;
+    margin: auto;
     height: 399px;
     background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
     border-radius: 10px;

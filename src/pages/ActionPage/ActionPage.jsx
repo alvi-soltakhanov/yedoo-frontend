@@ -1,18 +1,16 @@
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
-import FullCard from './FullCard/FullCard';
-import SameCategory from './SameCategory/SameCategory';
+import Actions from './Actions/Actions';
 
-const FullCardPage = () => {
+const ActionPage = () => {
     return (
         <div style={{background: 'linear-gradient(360deg, #211F20 0%, #44403F 100%)'}}>
             <Header />
-            <FullCard />
-            <SameCategory />
+            <Actions />
             <Footer />
         </div>
     );
 };
 
-export default FullCardPage;
+export default ActionPage;
