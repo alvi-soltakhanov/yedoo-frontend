@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./card.module.css"
 import food from "../../assets/food.png"
-import cart from "../../assets/Buy.png"
+import cart from "../../assets/OneCard/Buy.png"
 
 const Card = () => {
     return (

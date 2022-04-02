@@ -1,0 +1,83 @@
+.orderRegistTitle {
+    margin: 50px 90px;
+    border-left: 5px solid #618967;
+    padding-left: 20px;
+}
+
+.orderRegistTitle p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.gradientLine {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #7d7c7c 0%, #44403F 50%);
+}
+
+.actionsPage {
+    width: 100%;
+    margin: auto;
+    padding: 0 40px 50px 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------- */
+
+.actionsItem {
+    width: 440px;
+    height: 350px;
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 50px;
+    margin-right: 20px;
+}
+
+.actionImg {
+    height: 50%;
+    overflow: hidden;
+}
+
+.actionImg img {
+    width: 100%;
+    position: relative;
+    top: -20%;
+}
+
+.actionInfo {
+    padding: 15px 25px;
+}
+
+.actionInfo h3 {
+    margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+
+.actionInfo p {
+    margin: 5px 0 20px 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #A6A7AB;
+}
+
+.actionInfo span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #6FA076;
+}

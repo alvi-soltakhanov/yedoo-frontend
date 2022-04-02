@@ -10,8 +10,7 @@ import FullCardPage from "./pages/FullCardPage/FullCardPage";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <App /> */}
-      <FullCardPage />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
