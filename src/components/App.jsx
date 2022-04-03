@@ -11,8 +11,8 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/cart" element={<CartPage />}  />
           <Route path="/" element={<MainPage />}  />
+          <Route path="/cart" element={<CartPage />}  />
           <Route path="/FullCard" element={<FullCardPage />}  />
           <Route path="/TermsPage" element={<TermsPage />}  />
           <Route path="/OrderRegistPage" element={<OrderRegistPage />} />

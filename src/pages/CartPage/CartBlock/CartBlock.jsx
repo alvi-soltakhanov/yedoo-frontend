@@ -22,7 +22,7 @@ const CartBlock = () => {
             <div className={styles.CartBlock}>
                 <div className={styles.CartBlockHeader}>
                     <Link to={'/'} className={styles.returnBlock}> - к выбору блюда</Link>
-                    <div className={styles.Title}><img src={LineHeight} alt="" />КОРЗИНА <span>(в корзине 3 товара)</span></div>
+                    <div className={styles.Title}><img src={LineHeight} alt="" />КОРЗИНА <span>(в корзине {products.length} товара)</span></div>
                 </div>
 
             {/* Map карточек корзины  */}

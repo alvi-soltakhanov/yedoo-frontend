@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <div className={style.header}>
         <div className={style.content}>
-            <div className={style.name}>YEDOO</div>
+            <Link to={'/'}><div className={style.name}>YEDOO</div></Link>
             <div className={style.inp}>
                 <img src={location} className={style.location} alt="" />
                 <input type="text" name="" id="" placeholder='Введите адрес доставки' />
