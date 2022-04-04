@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './FullCard.module.css'
-import cart from '../../assets/Cart.png'
+import cart from '../../../assets/FullCardPage/Cart.png'
 
 const FullCard = () => {
     return (

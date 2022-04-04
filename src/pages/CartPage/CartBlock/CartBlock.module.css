@@ -2,19 +2,19 @@
  /* Стили основных блоков */
 .CartBlock {
     color: white;
-    padding: 30px;
+    padding: 50px;
     min-height: 400px;
 }
 
 .CartBlockHeader {
     width: 950px;
     margin: auto;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
 }
 
  /* Стили хедера страницы корзины */
 
-.CartBlockHeader div {
+.Title {
     margin: 20px 0;
 }
 
@@ -35,4 +35,14 @@
     position: absolute;
     top: 0px;
     left: 0px;
+}
+
+.returnBlock {
+    color: white;
+    text-decoration: none;
+}
+
+.returnBlock:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
