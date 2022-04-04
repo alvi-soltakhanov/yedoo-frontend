@@ -1,0 +1,331 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+}
+
+.orderRegistPage {
+    width: 800px;
+    margin: 50px auto;
+}
+
+.orderRegistPage input::placeholder{
+    color: #FFFFFF;
+}
+
+.turnBack {
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+.turnBack p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.orderRegistTitle {
+    border-left: 5px solid #618967;
+    padding-left: 20px;
+}
+
+.orderRegistTitle p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.contactInfo {
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.contactInfo>p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.contactInputs {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contactInputs input {
+    padding: 20px 0 20px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    width: 49%;
+}
+
+.delieveryBlock {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.delieveryBtn {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #72A479;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 360px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.delieveryItem {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px 55px;
+    width: 100%;
+}
+
+.activeBtn {
+    background-color: #72A479;
+}
+
+.verticalLine {
+    width: 1px;
+    background-color: #72A479;
+}
+
+.delieveryTime {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.delieveryAdress {
+    margin-top: 20px;
+    padding: 0 170px 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.delieveryAdress input {
+    padding: 20px 0 20px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.payBtn {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #72A479;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 550px;
+    overflow: hidden;
+    margin: 30px 0 15px 0;
+    font-style: normal;
+}
+
+.payItem {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.payAdress input {
+    padding: 20px 0 20px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.payTimeBlock {
+    display: flex;
+    align-items: center;
+    margin: 30px 0 15px 0;
+
+}
+
+.payTimeBtn {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #72A479;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 360px;
+    overflow: hidden;
+    font-style: normal;
+    margin-right: 15px;
+}
+
+.payTime input {
+    padding: 20px 0 20px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.counterBlock {
+    margin-bottom: 20px;
+}
+
+.counter {
+    padding: 20px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    /* --------------------------------- */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 260px;
+}
+
+.counter div {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.counterText {
+    font-size: 16px;
+}
+
+.counterBtn {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.radioBlock {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+.radioLine {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.radioLine div {
+    display: flex;
+    align-items: center;
+}
+
+.radioLine p {
+    margin: 0
+}
+
+.radioBtn {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #E7EEF1;
+    border-radius: 50%;
+}
+
+.radioActive {
+    background: #72A479;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.contractLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkBox {
+    display: flex;
+    align-items: center;
+}
+
+.checkBox input {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+}
+
+.checkBox p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.checkBox span {
+    color: #72A479;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.orderBtn {
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    border-radius: 10px;
+    padding: 17px 50px;
+
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}

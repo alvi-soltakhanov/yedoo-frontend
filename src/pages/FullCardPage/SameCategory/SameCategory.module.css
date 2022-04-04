@@ -1,0 +1,26 @@
+.sameCategoryBlock {
+    width: 1372px;
+    margin: auto;
+}
+
+.sameCategoryTitle {
+    border-left: 5px solid #618967;
+    padding-left: 20px;
+    margin: 50px 0 50px 10px;
+}
+
+.sameCategoryTitle p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.sameCategoryItem {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: 50px;
+}

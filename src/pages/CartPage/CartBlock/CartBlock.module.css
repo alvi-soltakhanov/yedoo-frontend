@@ -1,0 +1,48 @@
+
+ /* Стили основных блоков */
+.CartBlock {
+    color: white;
+    padding: 50px;
+    min-height: 400px;
+}
+
+.CartBlockHeader {
+    width: 950px;
+    margin: auto;
+    padding: 0 10px 10px 10px;
+}
+
+ /* Стили хедера страницы корзины */
+
+.Title {
+    margin: 20px 0;
+}
+
+.Title {
+    font-size: 32px;
+    font-weight: 700;
+    padding-left: 30px;
+    position: relative;
+}
+
+.Title span {
+    font-weight: 500;
+    font-size: 15px;
+    color: #72A479;
+}
+
+.Title img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.returnBlock {
+    color: white;
+    text-decoration: none;
+}
+
+.returnBlock:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
