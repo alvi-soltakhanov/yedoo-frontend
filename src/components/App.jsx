@@ -11,6 +11,7 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<MainPage />}  />
           <Route path="/cart" element={<CartPage />}  />
@@ -22,6 +23,6 @@ const App = () => {
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
