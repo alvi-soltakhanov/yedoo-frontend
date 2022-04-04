@@ -82,6 +82,7 @@ export const fetchFood = () => {
         try {
             const res = await fetch("http://localhost:4000/food");
             const json = await res.json();
+            console.log(json)
             if (json.error) {
                 dispatch({ type: "food/fetch/rejected", error: json.error });
             } else {
@@ -93,14 +94,14 @@ export const fetchFood = () => {
     };
 };
 
-export const addFood = (food, composition, category, price, image) => {
+export const addFood = (food, composition, price, image) => {
     return async (dispatch) => {
         dispatch({ type: "addFood/fetch/pending" });
         const formData = new FormData();
-        formData.append("image", image[0]);
-        formData.append("food", food);
-        formData.append("composition", composition);
-        formData.append("category", category);
+        formData.append("image", image);
+        formData.append("name", food);
+        formData.append("info", composition);
+        // formData.append("category", category);
         formData.append("price", price);
         try {
             const res = await fetch("http://localhost:4000/food", {

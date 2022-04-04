@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./ModalAddCard.module.css";
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import { addFood } from "../../../redux/features/food";
 
 const ModalAddCard = ({ active, setActive }) => {
     const [food, setFoodName] = useState("");
@@ -8,10 +9,18 @@ const ModalAddCard = ({ active, setActive }) => {
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState(null);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
+    const [errorMessage, setErrorMessage] = useState("");
+    const loading = useSelector(state => state.food.loading);
+    const error = useSelector(state => state.food.error);
+    console.log(`loading: ${loading}`);
+    console.log(`error: ${error}`);
+
 
     const handleChangeName = (e) => {
         setFoodName(e.target.value);
+        setErrorMessage("")
     }
 
     const handleChangeComposition = (e) => {
@@ -20,6 +29,7 @@ const ModalAddCard = ({ active, setActive }) => {
 
     const handleChangePrice = (e) => {
         setPrice(e.target.value);
+        setErrorMessage("");
     }
 
     const handleChangeCategory = (e) => {
@@ -30,9 +40,14 @@ const ModalAddCard = ({ active, setActive }) => {
         setImage(e.target.files[0]);
     }
 
-    const handleAddFood = (food, composition, category, price, image) => {
-        // dispatch(addFood());
-        console.log(food, composition, category, price, image)
+    const handleAddFood = (food, composition, price, image) => {
+        if (!food || !price) {
+            setErrorMessage("Не заполнены обязательные поля")
+        } else {
+        dispatch(addFood(food, composition,  price, image));
+        console.log(food, composition, price, image);
+
+        }
     }
 
     return (
@@ -105,7 +120,10 @@ const ModalAddCard = ({ active, setActive }) => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.btnAddNew}><button onClick={() => handleAddFood(food, composition, category, price, image)}>Добавить новое блюдо</button></div>
+                    <div className={styles.errorMessage}>{errorMessage}</div>
+                    <div className={styles.loading}>{loading && "Идет добавление карточки"}</div>
+                    <div className={styles.errorMessage}>{error && "Ошибка при добавлении"}</div>
+                    <div className={styles.btnAddNew}><button onClick={() => handleAddFood(food, composition, price, image)}>Добавить новое блюдо</button></div>
                 </div>
             </div>
         </div>
