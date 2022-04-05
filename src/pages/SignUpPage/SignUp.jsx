@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createClient } from "../../redux/features/application";
+import {
+  createCafe,
+  createClient,
+  createCourier
+} from "../../redux/features/application";
 import styles from "./SignUp.module.css";
 
 const SignUp = () => {
@@ -10,138 +14,355 @@ const SignUp = () => {
   const done = useSelector((state) => state.application.done);
 
   const [select, setSelect] = useState("client");
-  const [clearInput, setClearInput] = useState({ name: false, phone: false });
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [city, setCity] = useState("");
+  const [passRepeat, setPassRepeat] = useState("");
+
+  const [nameErr, setNameErr] = useState(false);
+  const [phoneErr, setPhoneErr] = useState(false);
+  const [addressErr, setAddressErr] = useState(false);
+  const [mailErr, setMailErr] = useState(false);
+  const [passwordErr, setPasswordErr] = useState(false);
+  const [cityErr, setCityErr] = useState(false);
+  const [generalErr, setGeneralErr] = useState(true);
 
   const handleClick = (info) => {
+    setAllClear();
     setSelect(info);
   };
 
-  // console.log(clearInput);
-  // const handleBlur = (key) => {
-  //   if (name) {
-  //     setClearInput({ name: true });
-  //   } else {
-  //     setClearInput({ name: false });
-  //   }
-  // };
-
   const handleInput = (e, key) => {
-    if (key === "name") setName(e.target.value);
-    if (key === "phone") setPhone(e.target.value);
-    if (key === "city") setCity(e.target.value);
-    if (key === "address") setAddress(e.target.value);
-    if (key === "mail") setMail(e.target.value);
-    if (key === "password") setPassword(e.target.value);
-
-    // setClearInput(false);
-    // if (!e.target.value) {
-    //   setClearInput(true);
-    // }
+    if (key === "name") {
+      setName(e.target.value);
+      e.target.value ? setNameErr(false) : setNameErr(true);
+    }
+    if (key === "phone") {
+      const reg = /^\d[\d\(\)\ -]{4,14}\d$/;
+      setPhone(e.target.value);
+      e.target.value ? setPhoneErr(false) : setPhoneErr(true);
+      if (!reg.test(e.target.value)) {
+        setPhoneErr(true);
+      }
+    }
+    if (key === "city") {
+      setCity(e.target.value);
+      e.target.value ? setCityErr(false) : setCityErr(true);
+    }
+    if (key === "address") {
+      setAddress(e.target.value);
+      e.target.value ? setAddressErr(false) : setAddressErr(true);
+    }
+    if (key === "mail") {
+      const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+      setMail(e.target.value);
+      e.target.value ? setMailErr(false) : setMailErr(true);
+      if (!reg.test(e.target.value)) {
+        setMailErr(true);
+      }
+    }
+    if (key === "password") {
+      setPassword(e.target.value);
+      e.target.value ? setPasswordErr(false) : setPasswordErr(true);
+    }
+    if (key === "passwordRepeat") {
+      setPassRepeat(e.target.value);
+      e.target.value ? setPasswordErr(false) : setPasswordErr(true);
+    }
+  };
+  const setAllClear = () => {
+    setName("");
+    setPhone("");
+    setAddress("");
+    setMail("");
+    setPassword("");
+    setCity("");
+    setNameErr("");
+    setPhoneErr("");
+    setAddressErr("");
+    setMailErr("");
+    setPasswordErr("");
+    setCityErr("");
+    setGeneralErr("");
   };
 
   const signUpClient = () => {
-    dispatch(createClient(name, phone, city, address, mail, password));
+    if (
+      !nameErr &&
+      !phoneErr &&
+      !cityErr &&
+      !addressErr &&
+      !mailErr &&
+      !passwordErr
+    ) {
+      dispatch(createClient(name, phone, city, address, mail, password));
+      setAllClear();
+    } else {
+      console.log("eroro4ka");
+    }
+  };
+  const signUpCafe = () => {
+    if (
+      !nameErr &&
+      !phoneErr &&
+      !cityErr &&
+      !addressErr &&
+      !mailErr &&
+      !passwordErr
+    ) {
+      dispatch(createCafe(name, phone, city, address, mail, password));
+    } else {
+      console.log("eroro4ka");
+    }
+  };
+  const signUpCourier = () => {
+    if (!nameErr && !phoneErr && !cityErr && !mailErr && !passwordErr) {
+      dispatch(createCourier(name, phone, city, mail, password));
+    } else {
+      console.log("eroro4ka");
+    }
   };
 
   return (
     <div className={styles.signUpContainer}>
-      {error && <div>signup error</div>}
-      <div>
-        <button onClick={() => handleClick("client")}>Cтать клиентом</button>
-        <button onClick={() => handleClick("courier")}>Стать курьером</button>
-        <button onClick={() => handleClick("cafe")}>Для ресторана</button>
+      <div className={styles.btnsConainer}>
+        <button
+          className={
+            select === "client" ? styles.selectClient : styles.clientBtn
+          }
+          onClick={() => handleClick("client")}
+        >
+          Cтать клиентом
+        </button>
+        <button
+          className={
+            select === "courier" ? styles.selectCourier : styles.courierBtn
+          }
+          onClick={() => handleClick("courier")}
+        >
+          Стать курьером
+        </button>
+        <button
+          className={select === "cafe" ? styles.selectCafe : styles.cafeBtn}
+          onClick={() => handleClick("cafe")}
+        >
+          Для ресторана
+        </button>
       </div>
       {select === "client" && (
         <div className={styles.form}>
           <h2>Зарегистрироваться</h2>
+
           <p>Имя</p>
           <input
-            className={clearInput.name ? styles.nameError : styles.name}
-            // onBlur={() => handleBlur("name")}
+            className={nameErr ? styles.error : styles.notErr}
             type="text"
             value={name}
             onChange={(e) => handleInput(e, "name")}
           />
+
           <p>Номер телефона</p>
           <input
-            className={clearInput.phone ? styles.phoneError : styles.phone}
-            // onBlur={(e) => handleBlur("phone")}
-            type="text"
+            className={phoneErr ? styles.error : styles.notErr}
+            type="tel"
             value={phone}
             onChange={(e) => handleInput(e, "phone")}
           />
+
           <p>Город</p>
           <input
-            className={clearInput.city ? styles.cityError : styles.city}
-            // onBlur={(e) => handleBlur("city")}
+            className={cityErr ? styles.error : styles.notErr}
             type="text"
             value={city}
             onChange={(e) => handleInput(e, "city")}
           />
+
           <p>Адрес</p>
           <input
-            // className={clearInput ? styles.inputAddrError : styles.inputAddr}
-            // onBlur={(e) => handleBlur(e)}
+            className={addressErr ? styles.error : styles.notErr}
             type="text"
             value={address}
             onChange={(e) => handleInput(e, "address")}
           />
-          <p>email</p>
+
+          <p>Электронная почта</p>
           <input
-            // className={clearInput ? styles.mailError : styles.mail}
-            // onBlur={(e) => handleBlur(e)}
+            className={mailErr ? styles.error : styles.notErr}
             type="text"
             value={mail}
             onChange={(e) => handleInput(e, "mail")}
           />
-          <p>password</p>
+
+          <p>Пароль</p>
           <input
-            // className={clearInput ? styles.inputPassError : styles.inputPass}
-            // onBlur={(e) => handleBlur(e)}
-            type="text"
+            className={passwordErr ? styles.error : styles.notErr}
+            type="password"
             value={password}
             onChange={(e) => handleInput(e, "password")}
           />
-          <button onClick={() => signUpClient()}>Регистрация</button>
+
+          <p>Повторите пароль</p>
+          <input
+            className={passwordErr ? styles.error : styles.notErr}
+            type="password"
+            value={passRepeat}
+            onChange={(e) => handleInput(e, "passwordRepeat")}
+          />
+
+          <div>
+            <button
+              disabled={generalErr}
+              className={
+                generalErr ? styles.signUpBtnDisabled : styles.signUpBtn
+              }
+              onClick={() => signUpClient()}
+            >
+              Регистрация
+            </button>
+          </div>
+
+          {error && <div>{error}</div>}
         </div>
       )}
       {select === "cafe" && (
-        <div>
+        <div className={styles.form}>
           <h2>Стать партнером</h2>
-          <p>name</p>
-          <input type="text" />
-          <p>phone</p>
-          <input type="text" />
-          <p>address</p>
-          <input type="text" />
-          <p>email</p>
-          <input type="text" />
-          <p>password</p>
-          <input type="text" />
-          <button>Отправить</button>
+          <p>Название ресторана</p>
+          <input
+            className={nameErr ? styles.error : styles.notErr}
+            type="text"
+            value={name}
+            onChange={(e) => handleInput(e, "name")}
+          />
+
+          <p>Номер телефона</p>
+          <input
+            className={phoneErr ? styles.error : styles.notErr}
+            type="tel"
+            value={phone}
+            onChange={(e) => handleInput(e, "phone")}
+          />
+
+          <p>Город</p>
+          <input
+            className={cityErr ? styles.error : styles.notErr}
+            type="text"
+            value={city}
+            onChange={(e) => handleInput(e, "city")}
+          />
+
+          <p>Адрес</p>
+          <input
+            className={addressErr ? styles.error : styles.notErr}
+            type="text"
+            value={address}
+            onChange={(e) => handleInput(e, "address")}
+          />
+
+          <p>Электронная почта</p>
+          <input
+            className={mailErr ? styles.error : styles.notErr}
+            type="text"
+            value={mail}
+            onChange={(e) => handleInput(e, "mail")}
+          />
+
+          <p>Пароль</p>
+          <input
+            className={passwordErr ? styles.error : styles.notErr}
+            type="password"
+            value={password}
+            onChange={(e) => handleInput(e, "password")}
+          />
+
+          <p>Повторите пароль</p>
+          <input
+            className={passwordErr ? styles.error : styles.notErr}
+            type="password"
+            value={passRepeat}
+            onChange={(e) => handleInput(e, "passwordRepeat")}
+          />
+
+          <div>
+            <button
+              disabled={generalErr}
+              className={
+                generalErr ? styles.signUpBtnDisabled : styles.signUpBtn
+              }
+              onClick={() => signUpCafe()}
+            >
+              Отправить заявку
+            </button>
+          </div>
         </div>
       )}
       {select === "courier" && (
-        <div>
-          {" "}
+        <div className={styles.form}>
           <h2>Начать работу курьером</h2>
-          <p>name</p>
-          <input type="text" />
-          <p>phone</p>
-          <input type="text" />
-          <p>city</p>
-          <input type="text" />
-          <p>email</p>
-          <input type="text" />
-          <p>password</p>
-          <input type="text" />
-          <button>Отправить</button>
+          <p>Имя</p>
+          <input
+            className={nameErr ? styles.error : styles.notErr}
+            type="text"
+            value={name}
+            onChange={(e) => handleInput(e, "name")}
+          />
+
+          <p>Номер телефона</p>
+          <input
+            className={phoneErr ? styles.error : styles.notErr}
+            type="tel"
+            value={phone}
+            onChange={(e) => handleInput(e, "phone")}
+          />
+
+          <p>Город</p>
+          <input
+            className={cityErr ? styles.error : styles.notErr}
+            type="text"
+            value={city}
+            onChange={(e) => handleInput(e, "city")}
+          />
+
+          <p>Электронная почта</p>
+          <input
+            className={mailErr ? styles.error : styles.notErr}
+            type="text"
+            value={mail}
+            onChange={(e) => handleInput(e, "mail")}
+          />
+
+          <p>Пароль</p>
+          <input
+            className={passwordErr ? styles.error : styles.notErr}
+            type="password"
+            value={password}
+            onChange={(e) => handleInput(e, "password")}
+          />
+
+          <p>Повторите пароль</p>
+          <input
+            className={passwordErr ? styles.error : styles.notErr}
+            type="password"
+            value={passRepeat}
+            onChange={(e) => handleInput(e, "passwordRepeat")}
+          />
+
+          <div>
+            <button
+              disabled={generalErr}
+              className={
+                generalErr ? styles.signUpBtnDisabled : styles.signUpBtn
+              }
+              onClick={() => signUpCourier()}
+            >
+              Отправить
+            </button>
+          </div>
+
+          {error && <div>{error}</div>}
         </div>
       )}
     </div>
