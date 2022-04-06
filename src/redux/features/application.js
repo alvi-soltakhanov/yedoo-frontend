@@ -3,7 +3,8 @@ const initialState = {
   singingIn: false,
   error: null,
   done: false,
-  token: localStorage.getItem("token")
+  token: localStorage.getItem("token"),
+  Id: localStorage.getItem('Id')
 };
 
 export const application = (state = initialState, action) => {
@@ -103,7 +104,9 @@ export const application = (state = initialState, action) => {
         singingIn: false,
         error: null,
         done: true,
-        token: action.payload
+        token: action.payload.token,
+        Id: action.payload.id
+        
       };
 
     default:
@@ -205,9 +208,10 @@ export const signin = (mail, password) => {
     } else {
       dispatch({
         type: "application/signin/fulfilled",
-        payload: json.token
+        payload: json
       });
       localStorage.setItem("token", json.token);
+      localStorage.setItem('Id', json.id)
     }
   };
 };
