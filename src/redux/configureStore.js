@@ -1,11 +1,11 @@
 import { applyMiddleware, createStore, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { application } from "./features/application";
+import application from "./features/application";
 import food from "./features/food";
 import cafe from "./features/cafe";
 import cart from './features/cart'
-
+import categories from "./features/categories";
 
 
 export const store = createStore(
@@ -14,6 +14,7 @@ export const store = createStore(
         food,
         cafe,
         cart,
+        categories
     }),
     composeWithDevTools(applyMiddleware(thunk))
 )

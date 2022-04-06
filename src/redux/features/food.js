@@ -1,7 +1,7 @@
 const initialState = {
     loading: false,
     error: null,
-    food: [],
+    food: null,
 };
 
 export default function food(state = initialState, action) {
@@ -11,6 +11,7 @@ export default function food(state = initialState, action) {
                 ...state,
                 loading: true,
                 error: false,
+                food: null
             };
         case "food/fetch/rejected":
             return {
@@ -23,54 +24,54 @@ export default function food(state = initialState, action) {
                 ...state,
                 loading: false,
                 error: false,
-                food: action.payload,
+                food: action.payload
             };
-            case "addFood/fetch/pending":
-                return {
-                    ...state,
-                    loading: true,
-                    error: false,
-                };
-            case "addFood/fetch/rejected":
-                return {
-                    ...state,
-                    loading: false,
-                    error: action.error,
-                };
-            case "addFood/fetch/fulfilled":
-                return {
-                    ...state,
-                    loading: false,
-                    error: false,
-                    food: [...state.food, action.payload],
-                };
-                case "changeFood/fetch/pending":
-                    return {
-                        ...state,
-                        loading: true,
-                        error: false,
-                    };
-                case "changeFood/fetch/rejected":
-                    return {
-                        ...state,
-                        loading: false,
-                        error: action.error,
-                    };
-                case "changeFood/fetch/fulfilled":
-                    return {
-                        ...state,
-                        loading: false,
-                        error: false,
-                        food: state.food.map(food => {
-                            if (action.payload.id === food._id) {
-                                food.name = action.payload.name;
-                                food.image = action.payload.image;
-                                food.price = action.payload.price;
-                                food.category = action.payload.category
-                            }
-                            return food;
-                        })
-                    };
+        case "addFood/fetch/pending":
+            return {
+                ...state,
+                loading: true,
+                error: false,
+            };
+        case "addFood/fetch/rejected":
+            return {
+                ...state,
+                loading: false,
+                error: action.error,
+            };
+        case "addFood/fetch/fulfilled":
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                food: [...state.food, action.payload],
+            };
+        case "changeFood/fetch/pending":
+            return {
+                ...state,
+                loading: true,
+                error: false,
+            };
+        case "changeFood/fetch/rejected":
+            return {
+                ...state,
+                loading: false,
+                error: action.error,
+            };
+        case "changeFood/fetch/fulfilled":
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                food: state.food.map(food => {
+                    if (action.payload.id === food._id) {
+                        food.name = action.payload.name;
+                        food.image = action.payload.image;
+                        food.price = action.payload.price;
+                        food.category = action.payload.category
+                    }
+                    return food;
+                })
+            };
         default:
             return state;
     }
@@ -152,4 +153,17 @@ export const changeFood = (id, food, composition, category, price, image) => {
             dispatch({ type: "changeFood/fetch/rejected", error: e.toString() });
         }
     };
+}
+
+export const getFoodByCategory = (categoryId) => {
+    return async (dispatch) => {
+        dispatch({ type: "food/fetch/pending" });
+        const res = await fetch(`http://localhost:4000/food/category/${categoryId}`)
+        const json = await res.json()
+        if (json.error) {
+            dispatch({ type: "food/fetch/rejected", error: json.error });
+        } else {
+            dispatch({ type: "food/fetch/fulfilled", payload: json});
+        }
+    }
 }

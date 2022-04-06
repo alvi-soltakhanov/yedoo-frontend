@@ -10,6 +10,16 @@
     border-radius: 10px;
     color: white;
     background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    overflow: hidden;
+}
+
+.cardImg{
+    height: 50%;
+    overflow: hidden;
+}
+
+.cardImg img {
+    width: 100%;
 }
 
 /* .card p {
@@ -18,7 +28,7 @@
 } */
 
 .description{
-    padding: 17px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

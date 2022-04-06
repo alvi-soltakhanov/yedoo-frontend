@@ -1,8 +1,22 @@
 import React from 'react';
 import styles from './FullCard.module.css'
 import cart from '../../../assets/FullCardPage/Cart.png'
+import {useParams} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 const FullCard = () => {
+    const { id } = useParams()
+    
+    const food = useSelector(state=> state.food.food)
+
+    let currentFood = food.find(item => {
+        if (item._id === id) {
+            return item
+        }
+    })
+
+    console.log(currentFood)
+
     return (
         <>
             <div className={styles.fullCardPage}>
@@ -14,13 +28,12 @@ const FullCard = () => {
                 </div>
                 <div className={styles.fullCardBlock}>
                     <div className={styles.fullCardImg}>
-                        <img src="https://incrussia.ru/wp-content/uploads/2018/10/iStock-694189032.jpg" alt="Еда" />
+                        <img src={currentFood.image} alt="Еда" />
                     </div>
                     <div className={styles.fullCardInfo}>
                         <div>
-                            <h3>Ягненок</h3>
-                            <p>помидор, сыр фета, масло подсолнечное, капуста пекинская,
-                                перец сладкийы красный, огурцы, оливки без косточек</p>
+                            <h3>{currentFood.name}</h3>
+                            <p>{currentFood.info}</p>
                         </div>
                         <div className={styles.cartInfo}>
                             <div className={styles.cartBtn}>
@@ -28,7 +41,7 @@ const FullCard = () => {
                                 <img src={cart} alt="Cart" />
                             </div>
                             <div className={styles.cartPrice}>
-                                <p>259₽</p>
+                                <p>{currentFood.price}</p>
                             </div>
                         </div>
                     </div>
