@@ -24,3 +24,20 @@
     margin: auto;
     margin-bottom: 50px;
 }
+
+.foodByCategory {
+    display: flex;
+}
+
+.CardItem {
+    margin-right:20px;
+}
+.hideFood {
+    transform: translate(100%, 0);
+    transition: 1.5s;
+}
+
+.showFood {
+    transform: translate(0, 0);
+    transition: 1.5s;
+}

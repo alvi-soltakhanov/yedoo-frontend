@@ -10,7 +10,7 @@ import SignUpPage from "../pages/SignUpPage/SignUp";
 import Messanger from "../pages/Messenger/Messenger";
 import "./App.css";
 import CafeProfile from "./CafeProfile/CafeProfile";
-import { useSelector } from "react-redux";
+
 
 const App = () => {
     const token = localStorage.getItem("token");
@@ -22,7 +22,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<MainPage />}  />
                         <Route path="/cart" element={<CartPage />}  />
-                        <Route path="/FullCard" element={<FullCardPage />}  />
+                        <Route path="/FullCard/:id" element={<FullCardPage />}  />
                         <Route path="/TermsPage" element={<TermsPage />}  />
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
@@ -38,7 +38,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<MainPage />}  />
                         <Route path="/cart" element={<CartPage />}  />
-                        <Route path="/FullCard" element={<FullCardPage />}  />
+                        <Route path="/FullCard/:id" element={<FullCardPage />}  />
                         <Route path="/TermsPage" element={<TermsPage />}  />
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />

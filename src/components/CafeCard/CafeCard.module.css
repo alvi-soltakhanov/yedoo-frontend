@@ -1,0 +1,117 @@
+.border {
+    width: 325px;
+    background: white;
+    border: 1px solid #555555;
+    margin: 0 10px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.wrap {
+    height: 100%;
+    position: relative;
+}
+
+.productWrap {
+    position: relative;
+}
+
+.productWrap:after {
+    content: '';
+    background: rgba(86, 87, 85, 0.5);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0;
+    transform: scale(.3);
+    transition: .3s ease-in-out;
+}
+
+.border:hover .productWrap:after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.productWrap a {
+    display: block;
+    text-decoration: none;
+}
+
+.productWrap img {
+    display: block;
+    width: 100%;
+}
+
+.loopAction {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: .3s ease-in-out;
+}
+
+.border:hover .loopAction {
+    opacity: 1;
+}
+
+.loopAction a {
+    text-decoration: none;
+    display: block;
+    border: 1px solid white;
+    white-space: nowrap;
+    text-transform: uppercase;
+    padding: .5em 1em;
+    font-size: 14px;
+    line-height: 1.6;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    min-width: 160px;
+    margin: 5px auto;
+    transition: .3s ease-in-out;
+}
+
+.loopAction a:after {
+    content: '';
+    position: absolute;
+    left: -220%;
+    top: -500%;
+    width: 140%;
+    height: 1000%;
+    transform: rotate(45deg);
+    background: white;
+    z-index: -1;
+    transition: .3s ease-in-out;
+}
+
+.loopAction a:hover {
+    color: black;
+}
+
+.loopAction a:hover:after {
+    left: 0%;
+}
+
+.border:hover {
+    border-color: #4966A2;
+}
+
+.productInfo {
+    padding-top: 15px;
+}
+
+.stars {
+    font-size: 14px;
+    font-family: FontAwesome;
+}
+
+.stars:before {
+    content: "\⭐\⭐\⭐\⭐\⭐";
+    color: #F2453E;
+}

@@ -5,11 +5,11 @@ import OrderRegist from './OrderRegist/OrderRegist';
 
 const OrderRegistPage = () => {
     return (
-        <>
+        <div style={{background: 'linear-gradient(360deg, #211F20 0%, #44403F 100%)'}}>
             <Header />
             <OrderRegist />
             <Footer />
-        </>
+        </div>
     );
 };
 
