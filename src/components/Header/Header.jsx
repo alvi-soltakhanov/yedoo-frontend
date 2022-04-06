@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import style from "./header.module.css"
 import logo from '../../assets/Header/Calling.png'
 import CartLine from '../../assets/Header/CartLine.png'
@@ -7,6 +7,7 @@ import search from "../../assets/Header/Search.png"
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+    const token = localStorage.getItem('token');
     return (
         <div className={style.header}>
         <div className={style.content}>
@@ -28,6 +29,7 @@ const Header = () => {
                <img src={CartLine} alt="" />
                <div className={style.CartCount}><span>5</span></div>
             </div></Link>
+            {token ? <div className={style.profile}><Link to="/CafeProfile"><button>Личный кабинет</button></Link></div> :<div> <Link to="/signin"><div>Вход</div></Link> <Link to="/signup"><div>Регистрация</div></Link></div>}
         </div>
         </div>
     );
