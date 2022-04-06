@@ -5,6 +5,9 @@ import FullCardPage from "../pages/FullCardPage/FullCardPage";
 import OrderRegistPage from "../pages/OrderRegistPage/OrderRegistPage";
 import TermsPage from "../pages/DeliveryTermsPage/Terms";
 import ActionPage from "../pages/ActionPage/ActionPage";
+import SignIn from "../pages/SignIn/SignIn";
+import SignUpPage from "../pages/SignUpPage/SignUp";
+import Messanger from "../pages/Messenger/Messenger";
 import "./App.css";
 import CafeProfile from "./CafeProfile/CafeProfile";
 import { useSelector } from "react-redux";
@@ -45,6 +48,7 @@ const App = () => {
             </div>
         );
     }
+
 };
 
 export default App;

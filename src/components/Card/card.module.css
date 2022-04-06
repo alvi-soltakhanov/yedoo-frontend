@@ -1,9 +1,9 @@
-*{
+/* *{
     box-sizing: border-box;
-}
+} */
 
 .card{
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     width: 325px;
     height: 385px;
     margin: auto;

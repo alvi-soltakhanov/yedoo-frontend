@@ -36,7 +36,7 @@
     width: 68%;
     height: 100%;
     color: white;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     padding: 27px;
     display: flex;
     align-items: center;
