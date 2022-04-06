@@ -139,3 +139,15 @@ width: 18px;
       top: 4.3px;
       left: 8.4px;
   }
+
+  .profile button {
+    background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%);
+    color: white;
+    width: 160px;
+    /* padding: 15px 15px; */
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
