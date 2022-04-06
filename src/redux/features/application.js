@@ -136,12 +136,12 @@ export const createClient = (name, phone, city, address, mail, password) => {
   };
 };
 
-export const createCafe = (name, phone, address, mail, password) => {
+export const createCafe = (name, phone, city, address, mail, password) => {
   return async (dispatch) => {
     dispatch({ type: "application/signupCafe/pending" });
     const res = await fetch("http://localhost:4000/cafe/signup", {
       method: "POST",
-      body: JSON.stringify({ name, phone, address, mail, password }),
+      body: JSON.stringify({ name, phone, city, address, mail, password }),
       headers: {
         "Content-type": "application/json"
       }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signin } from "../../redux/features/application";
+import styles from "./SignIn.module.css";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const SignIn = () => {
   };
 
   return (
-    <div>
+    <div className={styles.signinContainer}>
       <p>email</p>
       <input type="text" value={mail} onChange={(e) => handleMail(e)} />
       <p>password</p>
