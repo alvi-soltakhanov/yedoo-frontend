@@ -46,7 +46,9 @@ const ModalAddCard = ({ active, setActive }) => {
         } else {
         dispatch(addFood(food, composition,  price, image));
         console.log(food, composition, price, image);
-
+        setCategory("");
+        setFoodName("");
+        setImage("");
         }
     }
 
@@ -121,7 +123,7 @@ const ModalAddCard = ({ active, setActive }) => {
                         </div>
                     </div>
                     <div className={styles.errorMessage}>{errorMessage}</div>
-                    <div className={styles.loading}>{loading && "Идет добавление карточки"}</div>
+                    <div className={styles.loading}>{loading && "Идет добавление карточки..."}</div>
                     <div className={styles.errorMessage}>{error && "Ошибка при добавлении"}</div>
                     <div className={styles.btnAddNew}><button onClick={() => handleAddFood(food, composition, price, image)}>Добавить новое блюдо</button></div>
                 </div>

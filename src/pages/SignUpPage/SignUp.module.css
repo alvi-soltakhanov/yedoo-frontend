@@ -1,0 +1,134 @@
+.signUpContainer :active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+.signUpContainer h2 {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  text-transform: uppercase;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+.signUpContainer p {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+  padding-bottom: 5px;
+}
+.signUpContainer {
+  width: 800px;
+  background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+  border-radius: 10px;
+  margin: auto;
+  padding: 30px;
+  margin-top: 30px;
+}
+.form {
+  width: 90%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.signUpContainer input {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background-color: #494544;
+  color: #fff;
+  font-size: 18px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+}
+.error {
+  border: 1px solid red;
+  box-shadow: 0px 0px 5px 0px red;
+}
+.list {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+}
+.btnsConainer {
+  min-width: 800px;
+  display: flex;
+  justify-content: center;
+}
+.btnsConainer button:hover {
+  background-color: #72a479;
+}
+
+.clientBtn {
+  width: 180px;
+  height: 60px;
+  border-radius: 10px 0px 0px 10px;
+  cursor: pointer;
+  background-color: inherit;
+  border: 1px solid #72a479;
+}
+.courierBtn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background-color: inherit;
+  border-top: 1px solid #72a479;
+  border-bottom: 1px solid #72a479;
+  border-left: none;
+  border-right: none;
+}
+.cafeBtn {
+  width: 180px;
+  height: 60px;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+  background-color: inherit;
+  border: 1px solid #72a479;
+}
+.selectClient {
+  width: 180px;
+  height: 60px;
+  border-radius: 10px 0px 0px 10px;
+  cursor: pointer;
+  background-color: #72a479;
+  border: 1px solid #72a479;
+}
+.selectCourier {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background-color: #72a479;
+  border-top: 1px solid #72a479;
+  border-bottom: 1px solid #72a479;
+  border-left: none;
+  border-right: none;
+}
+.selectCafe {
+  width: 180px;
+  height: 60px;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+  background-color: #72a479;
+  border: 1px solid #72a479;
+}
+.signUpBtn {
+  width: 210px;
+  height: 50px;
+  background-color: #27a338;
+  border-radius: 10px;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+}
+.signUpBtnDisabled {
+  width: 210px;
+  height: 50px;
+  background-color: #81bb89;
+  border-radius: 10px;
+  border: none;
+  margin-top: 30px;
+  cursor: not-allowed;
+}

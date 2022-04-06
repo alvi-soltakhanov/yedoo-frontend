@@ -5,7 +5,6 @@ import "./index.css";
 import App from "./components/App";
 import { store } from "./redux/configureStore";
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -14,4 +13,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-

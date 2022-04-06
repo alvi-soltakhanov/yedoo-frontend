@@ -24,7 +24,7 @@
     font-size: 24px;
     background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
     width: 55vw;
-    transform: scale(0.5);
+    transform: scale(0.7);
     transition: 0.4s;
 }
 
@@ -35,6 +35,7 @@
 .title {
     text-align: center;
     position: relative;
+    margin-top: 5px;
 }
 
 .title span {
@@ -88,7 +89,7 @@
 }
 
 .fieldContainer select {
-    width: 372px;
+    width: 350px;
     height: 50px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
