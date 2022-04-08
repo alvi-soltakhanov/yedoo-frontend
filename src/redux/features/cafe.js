@@ -25,6 +25,7 @@ export default function cafe(state = initialState, action) {
                 loading: false,
                 error: null,
                 cafe: action.payload,
+
             };
         case "cafeById/fetch/pending":
             return {
@@ -97,7 +98,7 @@ export const fetchCafe = () => {
     return async (dispatch) => {
         dispatch({ type: "cafe/fetch/pending" });
         try {
-            const res = await fetch(`http://localhost:4000/cafe`);
+            const res = await fetch("http://localhost:4000/cafe");
             const json = await res.json();
             if (json.error) {
                 dispatch({
@@ -118,7 +119,7 @@ export const fetchCafeById = (cafeId) => {
     return async (dispatch) => {
         dispatch({ type: "cafeById/fetch/pending" });
         try {
-            const res = await fetch(`http://localhost:4000/cafe/${cafeId}`);
+        const res = await fetch(`http://localhost:4000/cafe/${cafeId}`);
             const json = await res.json();
             if (json.error) {
                 dispatch({
