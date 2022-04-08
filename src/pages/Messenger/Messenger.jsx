@@ -138,7 +138,7 @@ const Messenger = () => {
         <div className="chatBox">
           <div className="chatBoxWrapper">
             {currentChat ? (
-              <>
+              <div className='EmptyWrapper'>
                 <div className="chatBoxTop">
                     {messages.map(message => {
                         return <Message message={message} own={message.sender === user} />
@@ -154,7 +154,7 @@ const Messenger = () => {
                   ></textarea>
                   <button className="chatSubmitButton" onClick={handleSubmit}>Отправить</button>
                 </div>
-              </>
+              </div>
             ) : (
               <span className="noConversationText">Open a conversation</span>
             )}

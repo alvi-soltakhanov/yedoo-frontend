@@ -16,7 +16,7 @@ const ClientPersonalPage = ({ chatWindow, setChatWindow }) => {
             <div className={ chatWindow ? styles.drawer : styles.drawerOpen}>
                      <div className={ chatWindow ? styles.currentChatHeader : styles.currentChatOpen}>
                          <div className={styles.nameOfChat}>ЗАКАЗ: 5155138153</div>
-                         <button className={styles.closeChatButton} onClick={handleCloseChatWindow}>C Œ</button>
+                         <button className={styles.closeChatButton} onClick={handleCloseChatWindow}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Œ</button>
                      </div>
                 <Messanger />
             </div> 

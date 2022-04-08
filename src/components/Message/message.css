@@ -2,10 +2,13 @@
     display: flex;
     flex-direction: column;
     margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 .messageTop {
     display: flex;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 .messageImg {
@@ -21,13 +24,17 @@
     border-radius: 20px;
     background-color: rgb(106, 161, 114);
     color: white;
-    max-width: 300px;
+    max-width: 200px;
+    text-align: justify;
+    margin: 0;
 }
 
 .messageBottom {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 43px;
     font-size: 12px;
+    text-align: left;
+    color: rgb(141, 141, 141);
 }
 
 .message.own {

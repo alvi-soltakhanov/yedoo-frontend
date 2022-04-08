@@ -10,7 +10,7 @@ import Signin from "../pages/SignIn/SignIn"
 import SignUp from '../pages/SignUpPage/SignUp'
 import CafeProfile from "./CafeProfile/CafeProfile";
 import "./App.css";
-import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
+import ClientPersonalPage from "../pages/ClientPersonalPage/ClientPersonalPage";
 import { useState } from "react";
 
 const App = () => {
