@@ -1,7 +1,7 @@
 .message {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .messageTop {
@@ -19,14 +19,15 @@
 .messageText {
     padding: 10px;
     border-radius: 20px;
-    background-color: rgb(57, 197, 111);
+    background-color: rgb(106, 161, 114);
     color: white;
     max-width: 300px;
 }
 
 .messageBottom {
+    margin: 0;
+    padding: 0;
     font-size: 12px;
-    margin-top: 10px;
 }
 
 .message.own {

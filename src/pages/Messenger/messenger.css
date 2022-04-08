@@ -1,23 +1,26 @@
 
 .messenger {
     background-color: white;
-    width: 1200px;
+    width: 500px;
     margin: auto;
     height: 700px;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    padding: 30px;
     border-radius: 20px;
+    text-align: center;
+    font-size: 12px;
 }
 
 .chatMenu {
-    flex: 2;
+    flex: 1;
     border-right: 1px solid rgba(128, 128, 128, 0.411);
+    
 }
 
 .chatBox {
+    padding: 15px 15px;
     flex: 3.5;
+    
 }
 
 .chatBoxWrapper {
@@ -44,11 +47,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: rgb(57, 197, 111);
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
     color: white;
 }
 .chatMenuWrapper, .chatBoxWrapper {
-    padding: 10px;
     color: black;
     height: 100px;
 }
