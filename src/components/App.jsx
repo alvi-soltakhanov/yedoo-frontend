@@ -9,6 +9,7 @@ import Messanger from "../pages/Messenger/Messenger";
 import Signin from "../pages/SignIn/SignIn"
 import SignUp from '../pages/SignUpPage/SignUp'
 import CafeProfile from "./CafeProfile/CafeProfile";
+import HomePage from "../pages/HomePage/HomePage";
 import "./App.css";
 import ClientPersonalPage from "../pages/ClientPersonalPage/ClientPersonalPage";
 import { useState } from "react";
@@ -26,14 +27,13 @@ const App = () => {
             <div className="App">
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<MainPage />}  />
                         <Route path="/cart" element={<CartPage />}  />
                         <Route path="/FullCard/:id" element={<FullCardPage />}  />
                         <Route path="/TermsPage" element={<TermsPage />}  />
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
                         <Route path="/CafeProfile" element={<CafeProfile />} />
-                        <Route path="/Messanger" element={<Messanger chatWindow={chatWindow} setChatWindow={setChatWindow} />} />
+                        <Route path="/home" element={<HomePage />} />
                         <Route path="/ClientProfile" element={<ClientPersonalPage chatWindow={chatWindow} setChatWindow={setChatWindow} />} />
                     </Routes>
                 </BrowserRouter>
