@@ -7,11 +7,9 @@ import styles from './FoodByCategory.module.css'
 const FoodByCategory = ({categoryId}) => {
     const dispatch = useDispatch()
     const food = useSelector(state => state.food.food)
-    console.log(food)
+    // console.log(food)
 
-    useEffect(() => {
-        dispatch(fetchFood())
-    }, [dispatch])
+
 
     return (
         <div className={`${styles.foodByCategory} ${food ? styles.showFood : styles.hideFood}`}>

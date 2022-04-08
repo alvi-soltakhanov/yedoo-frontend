@@ -7,7 +7,7 @@ const initialState = {
   Id: localStorage.getItem('Id')
 };
 
-export const application = (state = initialState, action) => {
+export default function application (state = initialState, action) {
   switch (action.type) {
     case "application/signupClient/pending":
       return {

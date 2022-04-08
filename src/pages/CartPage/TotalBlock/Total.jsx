@@ -6,12 +6,12 @@ import styles from './Total.module.css'
 const Total = () => {
 
     const products = useSelector(state => state.cart.products)
-    const total = getTotalOfProducts()
+    // const total = getTotalOfProducts()
 
     return (
         <div className={styles.Total}>
             <div className={styles.Content}>
-                <div className={styles.Order}>Итого: <div className={styles.OrderCount}>{total} ₽</div></div>
+                <div className={styles.Order}>Итого: <div className={styles.OrderCount}>100 ₽</div></div>
                 <Link to={'/OrderRegistPage'}><button className={styles.ChecoutOrderButton}>Оформить заказ</button></Link>
             </div>
         </div>       
@@ -19,15 +19,15 @@ const Total = () => {
     
     // Функция для получения итого всех продуктов
 
-    function getTotalOfProducts () {
-        let total = 0;
-        products.map((item) => {
-            return (
-                total += item.price
-            )
-        })
-        return total;
-    }
+    // function getTotalOfProducts () {
+    //     let total = 0;
+    //     products.map((item) => {
+    //         return (
+    //             total += item.price
+    //         )
+    //     })
+    //     return total;
+    // }
     
 };
 

@@ -10,6 +10,7 @@ import SignUpPage from "../pages/SignUpPage/SignUp";
 import Messanger from "../pages/Messenger/Messenger";
 import "./App.css";
 import CafeProfile from "./CafeProfile/CafeProfile";
+import HomePage from "../pages/HomePage/HomePage";
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
                         <Route path="/CafeProfile" element={<CafeProfile />} />
+                        <Route path="/home" element={<HomePage />} />
                     </Routes>
                 </BrowserRouter>
             </div>

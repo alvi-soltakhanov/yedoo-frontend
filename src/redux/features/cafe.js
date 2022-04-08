@@ -106,7 +106,7 @@ export const fetchCafe = () => {
                     error: json.error,
                 });
             } else {
-                console.log(json);
+                // console.log(json);
                 dispatch({ type: "cafe/fetch/fulfilled", payload: json });
             }
         } catch (e) {

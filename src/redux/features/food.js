@@ -83,7 +83,7 @@ export const fetchFood = () => {
         try {
             const res = await fetch("http://localhost:4000/food");
             const json = await res.json();
-            console.log(json)
+            // console.log(json)
             if (json.error) {
                 dispatch({ type: "food/fetch/rejected", error: json.error });
             } else {
@@ -143,7 +143,7 @@ export const changeFood = (id, food, composition, category, price, image) => {
                 body: formData
             });
             const json = await res.json();
-            console.log(json);
+            // console.log(json);
             if (json.error) {
                 dispatch({ type: "changeFood/fetch/rejected", error: json.error });
             } else {
