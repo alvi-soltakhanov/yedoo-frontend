@@ -22,11 +22,6 @@ const Conversation = ({conversation, currentUser}) => {
 
   return (
     <div className="conversation">
-      <img
-        className="conversationImg"
-        src="https://s0.rbk.ru/v6_top_pics/media/img/4/74/756256715374744.jpg"
-        alt=""
-      />
       <span className="conversationName">{user?.name}</span>
     </div>
   );
