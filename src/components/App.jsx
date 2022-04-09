@@ -10,11 +10,17 @@ import SignUpPage from "../pages/SignUpPage/SignUp";
 import Messanger from "../pages/Messenger/Messenger";
 import "./App.css";
 import CafeProfile from "./CafeProfile/CafeProfile";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import { useSelector } from "react-redux";
+import CafeMenu from "./CafeProfile/CafeMenu";
+import CafeOrders from "../pages/ProfilePage/Cafe/Orders/CafeOrders";
+import Promotions from "../pages/ProfilePage/Cafe/Promotions/Promotions";
 
 
 const App = () => {
-    const token = localStorage.getItem("token");
-    // const token1 = useSelector(state => state.application.token);
+
+    // const token = localStorage.getItem("token");
+    const token = useSelector(state => state.application.token);
     if (token) {
         return (
             <div className="App">
@@ -26,7 +32,16 @@ const App = () => {
                         <Route path="/TermsPage" element={<TermsPage />}  />
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-                        <Route path="/CafeProfile" element={<CafeProfile />} />
+                        <Route path="/cafeprofile" element={<CafeProfile />} />
+                        <Route path="/cafeprofile2/" element={<ProfilePage />}>
+                          {/* <Route index element={<ProfilePage />} /> */}
+                          <Route path="menu" element={<CafeMenu />} />
+                          <Route path="order" element={<CafeOrders />} />
+                          <Route path="promotions" element={<Promotions />} />
+                        </Route>
+
+                        <Route path="/signup" element={<SignUpPage />} />
+                        <Route path="/signin" element={<SignIn />} />
                     </Routes>
                 </BrowserRouter>
             </div>
@@ -42,7 +57,11 @@ const App = () => {
                         <Route path="/TermsPage" element={<TermsPage />}  />
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-                        <Route path="/CafeProfile" element={<Navigate to="/" replace />} />
+                        <Route path="/cafeprofile" element={<Navigate to="/" replace />} />
+                        <Route path="/cafeprofile2" element={<Navigate to="/" replace />} />
+                        <Route path="/cafeprofile2/*" element={<Navigate to="/" replace />} />
+                        <Route path="/signup" element={<SignUpPage />} />
+                        <Route path="/signin" element={<SignIn />} />
                     </Routes>
                 </BrowserRouter>
             </div>

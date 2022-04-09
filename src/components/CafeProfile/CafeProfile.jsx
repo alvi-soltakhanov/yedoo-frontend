@@ -1,5 +1,5 @@
 import styles from "./CafeProfile.module.css";
-import avatar from "../../assets/avatar.jpg";
+import avatar from "../../assets/Profile/avatar.jpg";
 import CafeMenu from "./CafeMenu";
 import CafeInfo from "./CafeInfo";
 import { Route, Routes } from "react-router-dom";
@@ -23,10 +23,6 @@ const CafeProfile = () => {
             <div className={styles.profileContainer}>
                
                 <div className={styles.mainContent}>
-                    {/* <Routes>
-                    <Route path="menu" element={<CafeMenu />} />
-                    <Route path="info" element={<CafeInfo />} />
-                </Routes> */}
                     <CafeMenu />
                     <CafeInfo />
                 </div>

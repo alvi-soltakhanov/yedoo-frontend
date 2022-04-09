@@ -6,7 +6,8 @@ import food from "./features/food";
 import cafe from "./features/cafe";
 import cart from './features/cart'
 import categories from "./features/categories";
-
+import client from "./features/client";
+import courier from "./features/courier"
 
 export const store = createStore(
     combineReducers({
@@ -14,7 +15,9 @@ export const store = createStore(
         food,
         cafe,
         cart,
-        categories
+        categories,
+        client,
+        courier
     }),
     composeWithDevTools(applyMiddleware(thunk))
 )

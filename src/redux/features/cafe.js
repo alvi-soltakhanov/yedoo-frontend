@@ -138,7 +138,7 @@ export const fetchCafeById = (cafeId) => {
 export const fetchCafeByToken = () => {
     return async (dispatch) => {
         dispatch({ type: "cafeByToken/fetch/pending" });
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token');
         try {
             const res = await fetch(`http://localhost:4000/cafe/profile/user`, {
                 headers: {

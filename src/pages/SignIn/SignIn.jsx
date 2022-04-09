@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signin } from "../../redux/features/application";
 import styles from "./SignIn.module.css";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(state => state.application.token)
 
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +22,12 @@ const SignIn = () => {
   const submit = () => {
     dispatch(signin(mail, password));
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/")
+    }
+  }, [token, navigate])
 
   return (
     <div className={styles.signinContainer}>
