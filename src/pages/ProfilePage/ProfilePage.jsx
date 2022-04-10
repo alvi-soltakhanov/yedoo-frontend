@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
-import CafeMenu from "../../components/CafeProfile/CafeMenu";
+import { Navigate, Outlet, useOutletContext } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { fetchCafeByToken } from "../../redux/features/cafe";
 import { fetchClientByToken } from "../../redux/features/client";
@@ -18,28 +17,21 @@ const ProfilePage = () => {
         dispatch(fetchCourierByToken());
     }, [dispatch]);
 
-    const role = useSelector((state) => state.application.role);
-    let currentUser;
+    const role = useSelector(state => state.application.role);
     const cafe = useSelector((state) => state.cafe.cafeById);
     const client = useSelector((state) => state.client.client);
     const courier = useSelector((state) => state.courier.courier);
-
-    if (cafe) {
-        currentUser = cafe;
-    } else if (client) {
-        currentUser = client
-    } else if (courier) {
-        currentUser = courier
-    }
-
-    console.log(role);
+   
+    // const obj = useOutletContext();
+    // console.log( useOutletContext());
+    // console.log(!!obj.allowedRoles.includes(obj.role));
     return (
         <div className={styles.profilePage}>
             <Header />
             <div className={styles.profileContent}>
                 {/* {role==='cafe' && <CafeMenu />} */}
                 <Outlet />
-                <Sidebar role={role} currentUser={currentUser} />
+                <Sidebar role={role} candidates={[cafe, client, courier]} />
             </div>
         </div>
     );

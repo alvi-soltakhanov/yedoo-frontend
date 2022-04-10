@@ -9,18 +9,25 @@ import SignIn from "../pages/SignIn/SignIn";
 import SignUpPage from "../pages/SignUpPage/SignUp";
 import Messanger from "../pages/Messenger/Messenger";
 import "./App.css";
-import CafeProfile from "./CafeProfile/CafeProfile";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import { useSelector } from "react-redux";
-import CafeMenu from "./CafeProfile/CafeMenu";
+import CafeMenu from "../pages/ProfilePage/Cafe/Menu/CafeMenu";
 import CafeOrders from "../pages/ProfilePage/Cafe/Orders/CafeOrders";
 import Promotions from "../pages/ProfilePage/Cafe/Promotions/Promotions";
+import CafeInfo from "../pages/ProfilePage/Cafe/CafeInfo/CafeInfo";
+import ProtectedRoute from "../pages/ProfilePage/ProtectedRoute";
+import CourierOrders from "../pages/ProfilePage/Courier/Orders/CourierOrders";
+import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/CompleteOrders";
+import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
+import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
 
 
 const App = () => {
 
     // const token = localStorage.getItem("token");
     const token = useSelector(state => state.application.token);
+    const role = useSelector(state => state.application.role);
+
     if (token) {
         return (
             <div className="App">
@@ -32,12 +39,31 @@ const App = () => {
                         <Route path="/TermsPage" element={<TermsPage />}  />
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-                        <Route path="/cafeprofile" element={<CafeProfile />} />
-                        <Route path="/cafeprofile2/" element={<ProfilePage />}>
-                          {/* <Route index element={<ProfilePage />} /> */}
-                          <Route path="menu" element={<CafeMenu />} />
-                          <Route path="order" element={<CafeOrders />} />
-                          <Route path="promotions" element={<Promotions />} />
+                        {/* <Route path="/cafeprofile" element={<CafeProfile />} /> */}
+
+                        <Route element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> }>
+                            <Route path="/profile/cafe/" element={<ProfilePage />}>
+                                <Route path="menu" element={<CafeMenu />} />
+                                <Route path="orders" element={<CafeOrders />} />
+                                <Route path="promotions" element={<Promotions />} />
+                                <Route path="info" element={<CafeInfo />} />
+                            </Route>
+                        </Route>
+
+                        <Route element={<ProtectedRoute token={token} allowedRoles={["courier"]} role={role} /> }>
+                            <Route path="/profile/courier/" element={<ProfilePage />}>
+                                <Route path="orders" element={<CourierOrders />} />
+                                <Route path="completed" element={<CompleteOrders />} />
+                                <Route path="info" element={<CourierInfo />} />
+                                <Route path="addresses" element={<Addresses />} />
+                            </Route>
+                        </Route>
+
+                        <Route element={<ProtectedRoute token={token} allowedRoles={["client"]} role={role} /> }>
+                            <Route path="/profile/client/" element={<ProfilePage />}>
+                                <Route path="orders" element={<CafeOrders />} />
+                                
+                            </Route> 
                         </Route>
 
                         <Route path="/signup" element={<SignUpPage />} />
@@ -58,8 +84,8 @@ const App = () => {
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
                         <Route path="/cafeprofile" element={<Navigate to="/" replace />} />
-                        <Route path="/cafeprofile2" element={<Navigate to="/" replace />} />
-                        <Route path="/cafeprofile2/*" element={<Navigate to="/" replace />} />
+                        <Route path="/profile" element={<Navigate to="/" replace />} />
+                        <Route path="/profile/*" element={<Navigate to="/" replace />} />
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
                     </Routes>

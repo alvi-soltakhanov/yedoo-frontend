@@ -1,6 +1,6 @@
-import styles from "./Order.module.css";
+import styles from "./OrderItemCafe.module.css";
 
-const Order = () => {
+const OrderItemCafe = () => {
     return (
         <div className={styles.orderCard}>
             <div className={styles.card}>
@@ -23,4 +23,4 @@ const Order = () => {
     );
 };
 
-export default Order;
+export default OrderItemCafe;

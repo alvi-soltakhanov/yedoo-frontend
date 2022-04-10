@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./ModalAddCard.module.css";
 import {useDispatch, useSelector} from "react-redux"
-import { addFood } from "../../../redux/features/food";
+import { addFood } from "../../../../../redux/features/food";
 
 const ModalAddCard = ({ active, setActive }) => {
     const [food, setFoodName] = useState("");

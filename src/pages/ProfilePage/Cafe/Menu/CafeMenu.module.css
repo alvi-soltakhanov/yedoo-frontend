@@ -1,5 +1,6 @@
 .menuContainer {
     margin-top: 20px;
+    width: 1100px;
 }
 
 .cardsContainer {
@@ -29,7 +30,7 @@
     /* border: 1px solid #e5e5e5; */
     border-radius: 10px;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     margin: 10px;
     /* box-shadow: 2px 2px 2px 2px #e5e5e5; */
     background: linear-gradient(90deg, #494544 0%, #504b4a 100%);

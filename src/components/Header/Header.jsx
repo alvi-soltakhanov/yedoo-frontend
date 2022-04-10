@@ -10,11 +10,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
     const token = useSelector(state => state.application.token);
+    const role = useSelector(state => state.application.role);
     const dispatch = useDispatch();
 
     const handleExit = () => {
         dispatch({type: "logout"});
         localStorage.clear();
+
+    }
+
+    let pathToProfile;
+    if (role === "cafe") {
+        pathToProfile = "cafe/orders"
+    } else if (role === "courier") {
+        pathToProfile = "courier/orders"
+    } else if (role === "client") {
+        pathToProfile = "client/orders"
     }
 
     return (
@@ -54,7 +65,7 @@ const Header = () => {
                 </Link>
                 {token ? (<div className={style.profileContainer}>
                     <div className={style.profile}>
-                        <Link to="/CafeProfile2/order">
+                        <Link to={`/profile/${pathToProfile}`}>
                             <button>Личный кабинет</button>
                         </Link>
                     </div >

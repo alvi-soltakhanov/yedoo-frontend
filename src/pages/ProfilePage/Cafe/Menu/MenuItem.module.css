@@ -1,0 +1,32 @@
+
+
+.card {
+    /* border: 1px solid #e5e5e5; */
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    /* box-shadow: 2px 2px 2px 2px #e5e5e5; */
+    background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+}
+
+.card img {
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card button {
+    background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%);
+    height: 44px;
+    width: 150px;
+    left: 172px;
+    top: 323px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}

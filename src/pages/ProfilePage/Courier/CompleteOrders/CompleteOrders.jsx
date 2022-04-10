@@ -1,10 +1,11 @@
-import styles from "./CafeOrders.module.css";
+import styles from "./CompleteOrders.module.css";
 import noFood from "../../../../assets/Profile/noFood.png";
 import stick from "../../../../assets/heigthLine.png";
-import OrderItemCafe from "./OrderItemCafe";
+import CompleteOrderItem from "./CompleteOrderItem";
 
-const CafeOrders = () => {
-    const orders = 1;
+
+const CompleteOrders = () => {
+    const orders = 1
     return (
         <div className={styles.ordersContainer}>
             {orders ? (
@@ -12,25 +13,24 @@ const CafeOrders = () => {
                     <div className={styles.ordersHeader}>
                         <div className={styles.title}>
                             <img src={stick} alt="" />
-                            Список заказов <span>(активно 3 заказа)</span>
+                            Выполненные заказы <span>(3 заказа)</span>
                         </div>
                     </div>
                     <div className={styles.ordersList}>
-                        <OrderItemCafe />
-                        <OrderItemCafe />
-                        <OrderItemCafe />
+                       <CompleteOrderItem />
+                      
                     </div>
                 </div>
             ) : (
                 <div className={styles.wrapper}>
                     <div className={styles.noOrdersContainer}></div>
                     <div className={styles.noOrder}>
-                        У вас нет заказов <img src={noFood} alt="no-food" />
+                        Нет выполненных заказов <img src={noFood} alt="no-food" />
                     </div>
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default CafeOrders;
+export default CompleteOrders
