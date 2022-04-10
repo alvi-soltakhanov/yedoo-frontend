@@ -7,19 +7,20 @@ const CafeInfo = () => {
     const dispatch = useDispatch();
 
     const cafe = useSelector(state => state.cafe.cafeById);
+    const error = useSelector(state => state.cafe.error);
 
-    const [cafeName, setCafeName] = useState(cafe?.name);
-    const [cafeLogo, setCafeLogo] = useState(null);
-    const [phone, setPhone] = useState(cafe?.phone);
-    const [mail, setMail] = useState(cafe?.mail);
-    const [address, setAddress] = useState(cafe?.address);
+    const [cafeName, setCafeName] = useState("");
+    const [cafeLogo, setCafeLogo] = useState("");
+    const [phone, setPhone] = useState("");
+    const [mail, setMail] = useState("");
+    const [address, setAddress] = useState("");
     const [info, setInfo] = useState("");
 
     useEffect(() => {
-        setCafeName(cafe?.name);
-        setPhone(cafe?.phone);
-        setMail(cafe?.mail);
-        setAddress(cafe?.address);
+        if (cafe?.name) {setCafeName(cafe?.name)};
+        if (cafe?.phone) {setPhone(cafe?.phone)};
+        if (cafe?.mail) setMail(cafe?.mail);
+        if (cafe?.address) setAddress(cafe?.address);
 
     }, [cafe])
 
@@ -80,6 +81,7 @@ const CafeInfo = () => {
                     <label>6. Доп. информация</label>
                     <input placeholder="" value={info} onChange={(e) => handleChangeInfo(e)} />
                 </div>
+                {error && <div className={error}>Не удалось сохранить</div>}
                 <div className={styles.btnSave}><button onClick={() => handleSave(cafeName, cafeLogo, phone, mail, address, info)}>Сохранить изменения</button></div>
             </div>
         </div>

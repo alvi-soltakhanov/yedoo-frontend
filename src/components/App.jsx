@@ -27,6 +27,7 @@ const App = () => {
     // const token = localStorage.getItem("token");
     const token = useSelector(state => state.application.token);
     const role = useSelector(state => state.application.role);
+    
 
     if (token) {
         return (

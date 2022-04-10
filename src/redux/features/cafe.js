@@ -160,9 +160,10 @@ export const fetchCafeByToken = () => {
     };
 };
 
-export const editCafe = (cafeId, cafeName, cafeLogo, phone, mail, address, info) => {
+export const editCafe = (cafeName, cafeLogo, phone, mail, address, info) => {
     return async (dispatch) => {
         dispatch({ type: "cafe/edit/pending" });
+        const token = localStorage.getItem('token');
         const formData = new FormData();
         cafeName && formData.append('name', cafeName);
         phone && formData.append('phone', phone);
@@ -171,8 +172,11 @@ export const editCafe = (cafeId, cafeName, cafeLogo, phone, mail, address, info)
         address && formData.append('address', address);
         
         try {
-            const res = await fetch(`http://localhost:4000/cafe`, {
+            const res = await fetch(`http://localhost:4000/cafe/edit`, {
                 method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
                 body: formData
             });
             const json = await res.json();

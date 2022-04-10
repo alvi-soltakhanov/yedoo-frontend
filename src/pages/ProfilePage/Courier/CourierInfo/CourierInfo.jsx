@@ -7,11 +7,11 @@ const CourierInfo = () => {
 
     const courier = useSelector((state) => state.courier.courier);
     console.log((courier));
-    const [courierName, setCourierName] = useState(courier?.name);
+    const [courierName, setCourierName] = useState("");
     const [courierLastname, setcourierLastname] = useState("");
-    const [phone, setPhone] = useState(courier?.phone);
-    const [mail, setMail] = useState(courier?.mail);
-    const [city, setCity] = useState(courier?.city);
+    const [phone, setPhone] = useState("");
+    const [mail, setMail] = useState("");
+    const [city, setCity] = useState("");
     const [info, setInfo] = useState("");
 
     useEffect(() => {

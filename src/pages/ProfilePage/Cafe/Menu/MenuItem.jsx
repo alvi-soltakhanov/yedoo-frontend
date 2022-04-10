@@ -3,15 +3,15 @@ import gamburger from "../../../../assets/burger.jpg";
 import { useState } from "react";
 import ModalChangeCard from "./Modals/ModalChangeCard";
 
-const MenuItem = () => {
+const MenuItem = ({food}) => {
     const [modalChangeActive, setModalChangeActive] = useState(false);
     return (
         <div className={styles.cardContainer}>
             <div className={styles.card}>
-                        <img src={gamburger} alt="food" />
-                        <h3>Гамбургер</h3>
-                        <div>Томат, лук, соленые огурцы, говядина</div>
-                        <div>Цена: 90 руб</div>
+                        <img src={`http://localhost:4000/${food.image}`} alt="food" />
+                        <h3>{food.name}</h3>
+                        <div>{food.info}</div>
+                        <div>Цена: {food.price} руб</div>
                         <div className={styles.btnContainer}>
                         <button onClick={() => setModalChangeActive(true)}>Редактировать</button>
                         </div>

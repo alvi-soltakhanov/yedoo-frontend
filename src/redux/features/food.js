@@ -1,7 +1,8 @@
 const initialState = {
     loading: false,
     error: null,
-    food: null,
+    food: [],
+    foodByCafe: []
 };
 
 export default function food(state = initialState, action) {
@@ -26,6 +27,26 @@ export default function food(state = initialState, action) {
                 error: false,
                 food: action.payload
             };
+            case "foodByCafe/fetch/pending":
+                return {
+                    ...state,
+                    loading: true,
+                    error: false,
+                    foodByCafe: null
+                };
+            case "foodByCafe/fetch/rejected":
+                return {
+                    ...state,
+                    loading: false,
+                    error: action.error,
+                };
+            case "foodByCafe/fetch/fulfilled":
+                return {
+                    ...state,
+                    loading: false,
+                    error: false,
+                    foodByCafe: action.payload
+                };
         case "addFood/fetch/pending":
             return {
                 ...state,
@@ -95,14 +116,14 @@ export const fetchFood = () => {
     };
 };
 
-export const addFood = (food, composition, price, image) => {
+export const addFood = (food, composition, price, image, category) => {
     return async (dispatch) => {
         dispatch({ type: "addFood/fetch/pending" });
         const formData = new FormData();
         formData.append("image", image);
         formData.append("name", food);
         formData.append("info", composition);
-        // formData.append("category", category);
+        formData.append("categoryId", category);
         formData.append("price", price);
         try {
             const res = await fetch("http://localhost:4000/food", {
@@ -164,6 +185,23 @@ export const getFoodByCategory = (categoryId) => {
             dispatch({ type: "food/fetch/rejected", error: json.error });
         } else {
             dispatch({ type: "food/fetch/fulfilled", payload: json});
+        }
+    }
+}
+
+export const getFoodByCafeToken = () => {
+    return async (dispatch) => {
+        dispatch({ type: "foodByCafe/fetch/pending" });
+        const res = await fetch(`http://localhost:4000/food/cafe/`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        const json = await res.json()
+        if (json.error) {
+            dispatch({ type: "foodByCafe/fetch/rejected", error: json.error });
+        } else {
+            dispatch({ type: "foodByCafe/fetch/fulfilled", payload: json});
         }
     }
 }

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ModalAddCard.module.css";
 import {useDispatch, useSelector} from "react-redux"
 import { addFood } from "../../../../../redux/features/food";
+import { fetchCategories } from "../../../../../redux/features/categories";
 
 const ModalAddCard = ({ active, setActive }) => {
     const [food, setFoodName] = useState("");
@@ -17,6 +18,11 @@ const ModalAddCard = ({ active, setActive }) => {
     console.log(`loading: ${loading}`);
     console.log(`error: ${error}`);
 
+    useEffect(() => {
+        dispatch(fetchCategories());
+    }, [dispatch]);
+
+    const categories = useSelector(state => state.categories.categories);
 
     const handleChangeName = (e) => {
         setFoodName(e.target.value);
@@ -40,11 +46,11 @@ const ModalAddCard = ({ active, setActive }) => {
         setImage(e.target.files[0]);
     }
 
-    const handleAddFood = (food, composition, price, image) => {
+    const handleAddFood = (food, composition, price, image, category) => {
         if (!food || !price) {
             setErrorMessage("Не заполнены обязательные поля")
         } else {
-        dispatch(addFood(food, composition,  price, image));
+        dispatch(addFood(food, composition,  price, image, category));
         console.log(food, composition, price, image);
         setCategory("");
         setFoodName("");
@@ -113,10 +119,9 @@ const ModalAddCard = ({ active, setActive }) => {
                             </div>
                             <div className={styles.inputFile}>
                                 <select value={category} onChange={(e) => handleChangeCategory(e)}>
-                                    <option>Пиццы</option>
-                                    <option>Бургеры</option>
-                                    <option>Европейская кухня</option>
-                                    <option>Национальные блюда</option>
+                                    {categories.map(category => {
+                                        return <option value={category._id} key={category._id}>{category.name}</option>
+                                    })}
 
                                 </select>
                             </div>
@@ -125,7 +130,7 @@ const ModalAddCard = ({ active, setActive }) => {
                     <div className={styles.errorMessage}>{errorMessage}</div>
                     <div className={styles.loading}>{loading && "Идет добавление карточки..."}</div>
                     <div className={styles.errorMessage}>{error && "Ошибка при добавлении"}</div>
-                    <div className={styles.btnAddNew}><button onClick={() => handleAddFood(food, composition, price, image)}>Добавить новое блюдо</button></div>
+                    <div className={styles.btnAddNew}><button onClick={() => handleAddFood(food, composition, price, image, category)}>Добавить новое блюдо</button></div>
                 </div>
             </div>
         </div>

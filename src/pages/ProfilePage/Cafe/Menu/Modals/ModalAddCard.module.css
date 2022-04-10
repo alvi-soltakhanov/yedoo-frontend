@@ -104,6 +104,10 @@
     text-align: left;
 }
 
+.btnAddNew {
+    text-align: center;
+}
+
 .btnAddNew button {
     background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%);
     color: white;
@@ -119,4 +123,5 @@
 .errorMessage {
     color: red;
     margin-top: 10px;
+    text-align: center;
 }
