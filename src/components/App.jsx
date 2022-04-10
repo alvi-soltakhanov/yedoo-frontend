@@ -11,7 +11,7 @@ import SignUp from '../pages/SignUpPage/SignUp'
 import CafeProfile from "./CafeProfile/CafeProfile";
 import HomePage from "../pages/HomePage/HomePage";
 import "./App.css";
-import ClientPersonalPage from "../pages/ClientPersonalPage/ClientPersonalPage";
+import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
 import { useState } from "react";
 
 const App = () => {
@@ -54,6 +54,7 @@ const App = () => {
                         <Route path="/Signin" element={<Signin />} />
                         <Route path="/SignUp" element={<SignUp />} />
                         <Route path="/ClientProfile" element={<ClientPersonalPage />} />
+                        <Route path="/SearchPage" element={<}
                     </Routes>
                 </BrowserRouter>
             </div>
