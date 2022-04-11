@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import HomePage from "../pages/HomePage/HomePage";
 import CartPage from "../pages/CartPage/CartPage";
 import FullCardPage from "../pages/FullCardPage/FullCardPage";
 import OrderRegistPage from "../pages/OrderRegistPage/OrderRegistPage";
 import TermsPage from "../pages/DeliveryTermsPage/Terms";
 import ActionPage from "../pages/ActionPage/ActionPage";
-import Messanger from "../pages/Messenger/Messenger";
+import SignIn from "../pages/SignIn/SignIn";
+import SignUpPage from "../pages/SignUpPage/SignUp";
 import "./App.css";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import { useSelector } from "react-redux";
@@ -17,10 +19,8 @@ import CourierOrders from "../pages/ProfilePage/Courier/Orders/CourierOrders";
 import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/CompleteOrders";
 import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
-import Signin from "../pages/SignIn/SignIn"
-import SignUp from '../pages/SignUpPage/SignUp'
 import CafeProfile from "./CafeProfile/CafeProfile";
-import HomePage from "../pages/HomePage/HomePage";
+import YMap from "../pages/YandexMap/YMap";
 
 const App = () => {
   
@@ -35,6 +35,7 @@ const App = () => {
             <div className="App">
                 <BrowserRouter>
                     <Routes>
+                        <Route path="/map" element={<YMap />} />
                         <Route path="/cart" element={<CartPage />}  />
                         <Route path="/FullCard/:id" element={<FullCardPage />}  />
                         <Route path="/TermsPage" element={<TermsPage />}  />
