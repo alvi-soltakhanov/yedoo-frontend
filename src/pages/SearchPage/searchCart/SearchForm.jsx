@@ -1,15 +1,15 @@
 import React from 'react';
-import styles from "./cafeCard.module.css"
+import styles from "./cardCafe.module.css"
 
-const SearchForm = ({name, menu}) => {
+const SearchForm = ({cafe}) => {
     return (
         <div className={styles.cafe_card}>
-            <div className={styles.info}>
-            <img src="" alt="" />
-            <div className={styles.name}>
-               <h1>{name}</h1>
-               <h6>{menu}</h6> 
+            <div className={styles.image}>
+                <img src={cafe.image} alt="" />
             </div>
+            <div className={styles.name}>
+               <h4>{cafe.name}</h4>
+               <h5>Описание</h5>
             </div>
         </div>
     );

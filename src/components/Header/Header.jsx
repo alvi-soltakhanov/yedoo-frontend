@@ -9,25 +9,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchFood } from "../../redux/features/food";
 import { getCurrentCart } from "../../redux/features/cart";
 
-const Header = () => {
+const Header = ({ inputText, setInputText }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchFood());
     {
-      localStorage.getItem("cartId")
-        ? dispatch(getCurrentCart(localStorage.getItem("cartId")))
-        : console.log("Нет id корзины");
+      localStorage.getItem("cartId") &&
+        dispatch(getCurrentCart(localStorage.getItem("cartId")));
     }
   }, [dispatch]);
 
   const [inputHref, setInputHref] = useState("");
 
-  const handleHref = (e) => {
-    setInputHref(e.target.value);
-  };
+  // const handleHref = (e) => {
+  //   setInputHref(e.target.value);
+  // };
   const clearInput = () => {
     setInputHref("");
+  };
+
+  const handleInput = (e) => {
+    setInputText(e.target.value);
   };
 
   const foodsCount = useSelector((state) => state.cart.foods);
@@ -41,10 +44,10 @@ const Header = () => {
         <div className={style.inp}>
           <img src={location} className={style.location} alt="" />
           <input
-            type="search"
-            placeholder="  Введите текст.."
-            value={inputHref}
-            onChange={(e) => handleHref(e)}
+            type="text"
+            placeholder="  Поиск ресторана.."
+            value={inputText}
+            onChange={(e) => handleInput(e)}
           />
           <Link to={`/search?${inputHref}`}>
             <img
@@ -57,7 +60,6 @@ const Header = () => {
         </div>
         <div className={style.contact}>
           <div className={style.call}>
-            {" "}
             <img src={logo} alt="" />
           </div>
           <div className={style.iph}>
