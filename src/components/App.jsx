@@ -1,12 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import CartPage from "../pages/CartPage/CartPage";
-import MainPage from "../pages/MainPage/MainPage";
 import FullCardPage from "../pages/FullCardPage/FullCardPage";
 import OrderRegistPage from "../pages/OrderRegistPage/OrderRegistPage";
 import TermsPage from "../pages/DeliveryTermsPage/Terms";
 import ActionPage from "../pages/ActionPage/ActionPage";
-import SignIn from "../pages/SignIn/SignIn";
-import SignUpPage from "../pages/SignUpPage/SignUp";
 import Messanger from "../pages/Messenger/Messenger";
 import "./App.css";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
@@ -20,28 +17,29 @@ import CourierOrders from "../pages/ProfilePage/Courier/Orders/CourierOrders";
 import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/CompleteOrders";
 import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
-
+import Signin from "../pages/SignIn/SignIn"
+import SignUp from '../pages/SignUpPage/SignUp'
+import CafeProfile from "./CafeProfile/CafeProfile";
+import HomePage from "../pages/HomePage/HomePage";
 
 const App = () => {
-
-    // const token = localStorage.getItem("token");
+  
+  // const token = localStorage.getItem("token");
     const token = useSelector(state => state.application.token);
     const role = useSelector(state => state.application.role);
-    
+
+    // const token1 = useSelector(state => state.application.token);
 
     if (token) {
         return (
             <div className="App">
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<MainPage />}  />
                         <Route path="/cart" element={<CartPage />}  />
                         <Route path="/FullCard/:id" element={<FullCardPage />}  />
                         <Route path="/TermsPage" element={<TermsPage />}  />
                         <Route path="/ActionPage" element={<ActionPage />}  />
                         <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-                        {/* <Route path="/cafeprofile" element={<CafeProfile />} /> */}
-
                         <Route element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> }>
                             <Route path="/profile/cafe/" element={<ProfilePage />}>
                                 <Route path="menu" element={<CafeMenu />} />
@@ -66,9 +64,11 @@ const App = () => {
                                 
                             </Route> 
                         </Route>
-
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
+                        <Route path="/CafeProfile" element={<CafeProfile />} />
+                        <Route path="/home" element={<HomePage />} />
+                        <Route path="/ClientProfile" element={<ClientPersonalPage chatWindow={chatWindow} setChatWindow={setChatWindow} />} />
                     </Routes>
                 </BrowserRouter>
             </div>
