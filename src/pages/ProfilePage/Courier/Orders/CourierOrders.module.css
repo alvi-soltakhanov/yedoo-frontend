@@ -1,0 +1,62 @@
+.noOrdersContainer {
+    background: url("../../../../assets/Profile/bgFoodNoOrder2-1.jpg") no-repeat;
+    background-size: 100%;
+    width: 900px;
+    height: 500px;
+    border-radius: 15px;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.noOrder {
+    font-size: 48px;
+    text-align: center;
+    line-height: 500px;
+    color: #fff;
+    z-index: 2;
+    width: 900px;
+    height: 500px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.noOrder img {
+    border-radius: 15px;
+}
+
+.wrapper {
+    position: relative;
+}
+
+.ordersMain {
+    width: 900px;
+    color: #fff;
+    padding: 50px;
+    min-height: 400px;
+}
+
+.ordersHeader {
+    width: 750px;
+    margin: auto;
+    padding: 0 10px 10px 10px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    padding-left: 30px;
+    position: relative;
+}
+
+.title span {
+    font-weight: 500;
+    font-size: 15px;
+    color: #72A479;
+}
+
+.title img {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}

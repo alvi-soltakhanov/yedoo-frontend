@@ -1,0 +1,31 @@
+.sidebar {
+    width: 360px;
+    text-align: center;
+    margin: 20px 0 0 35px;
+}
+
+.avatar img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.name {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.menuContainer {
+    font-size: 22px;
+    width: 300px;
+    margin: auto;
+}
+
+.menuElement {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.active .menuElement {
+    background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%); 
+}
