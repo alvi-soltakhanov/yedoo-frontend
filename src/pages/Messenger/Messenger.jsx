@@ -54,7 +54,6 @@ const Messenger = () => {
   useEffect(() => {
     socket.current.emit('addUser', user);
     socket.current.on('getUsers', users => {
-      console.log(users);
     });
   }, [user])
 
@@ -119,15 +118,15 @@ const Messenger = () => {
     }
   }
 
-
+ 
 
   return (
-    <>
-      <Header />
+    <>  
       <div className="messenger">
-        <div className="chatMenu">
+
+      <div className="chatMenu">
           <div className="chatMenuWrapper">
-            <div className="Chat">Чаты</div>
+            <div className="Chat">Заказы</div>
             {conversations.map((c) => (
               <div onClick={() => setCurrentChat(c)}>
                 <Conversation conversation={c} currentUser={user} key={user} />
@@ -135,10 +134,11 @@ const Messenger = () => {
             ))}
           </div>
         </div>
+                
         <div className="chatBox">
           <div className="chatBoxWrapper">
             {currentChat ? (
-              <>
+              <div className='EmptyWrapper'>
                 <div className="chatBoxTop">
                     {messages.map(message => {
                         return <Message message={message} own={message.sender === user} />
@@ -154,7 +154,7 @@ const Messenger = () => {
                   ></textarea>
                   <button className="chatSubmitButton" onClick={handleSubmit}>Отправить</button>
                 </div>
-              </>
+              </div>
             ) : (
               <span className="noConversationText">Open a conversation</span>
             )}

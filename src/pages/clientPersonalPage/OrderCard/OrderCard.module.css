@@ -1,0 +1,16 @@
+
+
+.OrderCard {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.OrderCard button {
+    border: none;
+    background-color: #72A479;
+    color: white;
+    width: 150px;
+    border-radius: 5px;
+}

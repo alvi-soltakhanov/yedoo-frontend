@@ -28,7 +28,7 @@ const SignUp = () => {
   const [mailErr, setMailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
   const [cityErr, setCityErr] = useState(false);
-  const [generalErr, setGeneralErr] = useState(true);
+  const [generalErr, setGeneralErr] = useState(false);
 
   const handleClick = (info) => {
     setAllClear();
@@ -86,7 +86,7 @@ const SignUp = () => {
     setMailErr("");
     setPasswordErr("");
     setCityErr("");
-    setGeneralErr("");
+    setGeneralErr(false);
   };
 
   const signUpClient = () => {

@@ -1,7 +1,8 @@
 const initialState = {
     loading: false,
     error: null,
-    food: null,
+    food: [],
+    foodByCafe: [],
 };
 
 export default function food(state = initialState, action) {
@@ -11,7 +12,7 @@ export default function food(state = initialState, action) {
                 ...state,
                 loading: true,
                 error: false,
-                food: null
+                food: null,
             };
         case "food/fetch/rejected":
             return {
@@ -24,7 +25,27 @@ export default function food(state = initialState, action) {
                 ...state,
                 loading: false,
                 error: false,
-                food: action.payload
+                food: action.payload,
+            };
+        case "foodByCafe/fetch/pending":
+            return {
+                ...state,
+                loading: true,
+                error: false,
+                foodByCafe: null,
+            };
+        case "foodByCafe/fetch/rejected":
+            return {
+                ...state,
+                loading: false,
+                error: action.error,
+            };
+        case "foodByCafe/fetch/fulfilled":
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                foodByCafe: action.payload,
             };
         case "addFood/fetch/pending":
             return {
@@ -45,32 +66,32 @@ export default function food(state = initialState, action) {
                 error: false,
                 food: [...state.food, action.payload],
             };
-        case "changeFood/fetch/pending":
+        case "editFood/fetch/pending":
             return {
                 ...state,
                 loading: true,
                 error: false,
             };
-        case "changeFood/fetch/rejected":
+        case "editFood/fetch/rejected":
             return {
                 ...state,
                 loading: false,
                 error: action.error,
             };
-        case "changeFood/fetch/fulfilled":
+        case "editFood/fetch/fulfilled":
             return {
                 ...state,
                 loading: false,
                 error: false,
-                food: state.food.map(food => {
+                food: state.food.map((food) => {
                     if (action.payload.id === food._id) {
                         food.name = action.payload.name;
                         food.image = action.payload.image;
                         food.price = action.payload.price;
-                        food.category = action.payload.category
+                        food.category = action.payload.category;
                     }
                     return food;
-                })
+                }),
             };
         default:
             return state;
@@ -83,7 +104,6 @@ export const fetchFood = () => {
         try {
             const res = await fetch("http://localhost:4000/food");
             const json = await res.json();
-            console.log(json)
             if (json.error) {
                 dispatch({ type: "food/fetch/rejected", error: json.error });
             } else {
@@ -95,22 +115,22 @@ export const fetchFood = () => {
     };
 };
 
-export const addFood = (food, composition, price, image) => {
+export const addFood = (food, composition, price, image, category) => {
     return async (dispatch) => {
         dispatch({ type: "addFood/fetch/pending" });
         const formData = new FormData();
         formData.append("image", image);
         formData.append("name", food);
         formData.append("info", composition);
-        // formData.append("category", category);
+        formData.append("categoryId", category);
         formData.append("price", price);
         try {
             const res = await fetch("http://localhost:4000/food", {
                 method: "POST",
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
-                body: formData
+                body: formData,
             });
             const json = await res.json();
             console.log(json);
@@ -123,47 +143,82 @@ export const addFood = (food, composition, price, image) => {
             dispatch({ type: "addFood/fetch/rejected", error: e.toString() });
         }
     };
-}
+};
 
-export const changeFood = (id, food, composition, category, price, image) => {
+export const editFood = (food, composition, category, price, image) => {
     return async (dispatch) => {
-        dispatch({ type: "changeFood/fetch/pending" });
+        dispatch({ type: "editFood/fetch/pending" });
         const formData = new FormData();
-        formData.append("image", image[0]);
-        formData.append("food", food);
-        formData.append("composition", composition);
-        formData.append("category", category);
-        formData.append("price", price);
+        if (image) {
+            formData.append("image", image[0]);
+        }
+        if (food) {
+            formData.append("food", food);
+        }
+        if (composition) {
+            formData.append("info", composition);
+        }
+        if (category) {
+            formData.append("categoryId", category);
+        }
+        if (image) {
+            formData.append("price", price);
+        }
         try {
-            const res = await fetch(`http://localhost:4000/food/${id}`, {
+            const res = await fetch(`http://localhost:4000/food/edit}`, {
                 method: "PATCH",
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
-                body: formData
+                body: formData,
             });
             const json = await res.json();
-            console.log(json);
+            // console.log(json);
             if (json.error) {
-                dispatch({ type: "changeFood/fetch/rejected", error: json.error });
+                dispatch({
+                    type: "editFood/fetch/rejected",
+                    error: json.error,
+                });
             } else {
-                dispatch({ type: "changeFood/fetch/fulfilled", payload: json });
+                dispatch({ type: "editFood/fetch/fulfilled", payload: json });
             }
         } catch (e) {
-            dispatch({ type: "changeFood/fetch/rejected", error: e.toString() });
+            dispatch({
+                type: "editFood/fetch/rejected",
+                error: e.toString(),
+            });
         }
     };
-}
+};
 
 export const getFoodByCategory = (categoryId) => {
     return async (dispatch) => {
         dispatch({ type: "food/fetch/pending" });
-        const res = await fetch(`http://localhost:4000/food/category/${categoryId}`)
-        const json = await res.json()
+        const res = await fetch(
+            `http://localhost:4000/food/category/${categoryId}`
+        );
+        const json = await res.json();
         if (json.error) {
             dispatch({ type: "food/fetch/rejected", error: json.error });
         } else {
-            dispatch({ type: "food/fetch/fulfilled", payload: json});
+            dispatch({ type: "food/fetch/fulfilled", payload: json });
         }
-    }
-}
+    };
+};
+
+export const getFoodByCafeToken = () => {
+    return async (dispatch) => {
+        dispatch({ type: "foodByCafe/fetch/pending" });
+        const res = await fetch(`http://localhost:4000/food/cafe/`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+        const json = await res.json();
+        if (json.error) {
+            dispatch({ type: "foodByCafe/fetch/rejected", error: json.error });
+        } else {
+            dispatch({ type: "foodByCafe/fetch/fulfilled", payload: json });
+        }
+    };
+};

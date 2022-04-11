@@ -6,12 +6,14 @@ import CategoryCards from './CategoryCards/CategoryCards';
 import { fetchCategories } from '../../redux/features/categories';
 import { useDispatch } from 'react-redux';
 import { fetchCafe } from '../../redux/features/cafe';
+import { getCurrentCart } from '../../redux/features/cart';
 
 
 const HomePage = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        // {localStorage.getItem('cartId') ? dispatch(getCurrentCart(localStorage.getItem('cartId'))) : console.log('Нет id корзины')}
         dispatch(fetchCafe())
         dispatch(fetchCategories())
     }, [dispatch])

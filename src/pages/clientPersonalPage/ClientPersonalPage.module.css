@@ -1,0 +1,102 @@
+
+
+
+.clientPersonalPage {
+    width: 100%;
+}
+
+.wrapper {
+    width: 1272px;
+    height: 100%;
+    margin: auto;
+}
+
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    transition: 2s;
+}
+
+.overlayOpen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    transition: 2s;
+}
+
+
+
+.drawer {
+    position: absolute;
+    left: -500px;
+    width: 500px;
+    height: 100%;
+    background-color: #3E3A39;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    transition: 2s;
+}
+
+.drawerOpen {
+    position: absolute;
+    width: 500px;
+    height: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    transition: 2s;
+}
+
+
+/* Стили хедера чата */
+
+.currentChatHeader {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    color: white;
+    transition: 2s;
+    position: relative;
+    /* background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%); */
+}
+
+.currentChatOpen {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    color: white;
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    transition: 2s;
+    position: relative;
+}
+
+.nameOfChat {
+    margin-left: 35%;
+    width: 300px;
+}
+
+.closeChatButton {
+    position: absolute;
+    top: 5px;
+    right: -52px;
+    width: 80px;
+    height: 30px;
+    border: none;
+    background-color: white;
+    margin: 10px;
+    margin-left: 0%;
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    color: white;
+    border-radius: 5px;
+}

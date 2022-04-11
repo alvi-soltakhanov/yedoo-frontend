@@ -1,0 +1,33 @@
+
+/* Основные стили */
+
+.content {
+    width: 75%;
+    height: 100%;
+    color: white;
+}
+
+
+/* Стили хедера  */
+
+.HeaderBlock {
+    width: 100%;
+    padding: 50px 0;
+}
+
+.Title {
+    font-size: 32px;
+    font-weight: 700;
+    padding-left: 40px;
+    position: relative;
+    margin: 20px 0;
+}
+
+.LineHeight {
+    position: absolute;
+    top: 9px;
+    left: 0;
+}
+
+/* Стили карточек  */
+

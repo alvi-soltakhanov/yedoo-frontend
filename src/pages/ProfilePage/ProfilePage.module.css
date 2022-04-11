@@ -1,4 +1,18 @@
-.profileContainer {
+.profilePage {
+    width: 100%;
+    background: linear-gradient(360deg, #211f20 0%, #44403f 100%);
+    color: white;
+}
+
+.profileContent {
+    width: 1272px;
+    display: flex;
+    margin: auto; 
+}
+
+/* На всякий случай стили со старого личного кабинета */
+
+/* .profileContainer {
     display: flex;
     justify-content: space-between;
     background: linear-gradient(360deg, #211f20 0%, #44403f 100%);
@@ -21,20 +35,13 @@
 }
 
 .sidebar {
-    /* background-color: red; */
     width: 500px;
     
 }
 
 .sidebar ul {
     list-style-type: none;
-    font-size: 24px;
-    margin: 15px 0 0 95px;
-}
-
-.sidebar span {
-    margin-left: 42px;
-    margin-bottom: 50px;
+    font-size: 30px;
 }
 
 .sidebar li {
@@ -60,8 +67,4 @@
 .avatarContainer {
     margin-top: 70px;
     text-align: center;
-}
-
-
-
-
+} */
