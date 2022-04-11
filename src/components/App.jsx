@@ -19,8 +19,8 @@ import CourierOrders from "../pages/ProfilePage/Courier/Orders/CourierOrders";
 import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/CompleteOrders";
 import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
-import CafeProfile from "./CafeProfile/CafeProfile";
 import YMap from "../pages/YandexMap/YMap";
+import SearchPage from "../pages/SearchPage/SearchPage";
 
 const App = () => {
   
@@ -90,12 +90,13 @@ const App = () => {
                         <Route path="/profile/*" element={<Navigate to="/" replace />} />
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
+                        <Route path="/search" element={<SearchPage />} />  
+                        
                     </Routes>
                 </BrowserRouter>
             </div>
         );
     }
-
-};
+}
 
 export default App;

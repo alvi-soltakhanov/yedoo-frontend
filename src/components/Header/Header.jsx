@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import CartLine from "../../assets/Header/CartLine.png";
 import exit from "../../assets/Profile/logout.png"
@@ -12,10 +13,12 @@ import { Link } from 'react-router-dom';
 import { fetchFood } from '../../redux/features/food';
 import { getCurrentCart } from '../../redux/features/cart';
 
-const Header = () => {
+const Header = ({ inputText, setInputText }) => {
     const token = useSelector(state => state.application.token);
     const role = useSelector(state => state.application.role);
     const dispatch = useDispatch();
+  
+   const [inputHref, setInputHref] = useState("");
   
     useEffect(() => {
         dispatch(fetchFood())
@@ -26,6 +29,14 @@ const Header = () => {
         dispatch({type: "logout"});
         localStorage.clear();
     }
+    
+     const clearInput = () => {
+    setInputHref("");
+  };
+
+  const handleInput = (e) => {
+    setInputText(e.target.value);
+  };
 
     let pathToProfile;
     if (role === "cafe") {
@@ -47,13 +58,20 @@ const Header = () => {
                 </Link>
                 <div className={style.inp}>
                     <img src={location} className={style.location} alt="" />
-                    <input
-                        type="text"
-                        name=""
-                        id=""
-                        placeholder="Введите адрес доставки"
-                    />
-                    <img src={search} className={style.search} alt="" />
+                  <input
+            type="text"
+            placeholder="  Поиск ресторана.."
+            value={inputText}
+            onChange={(e) => handleInput(e)}
+          />
+          <Link to={`/search?${inputHref}`}>
+            <img
+              src={search}
+              onClick={clearInput}
+              className={style.search}
+              alt=""
+            />
+          </Link>
                 </div>
                 <div className={style.contact}>
                     <div className={style.call}>
@@ -100,9 +118,46 @@ const Header = () => {
                <div className={style.CartCount}><span>{foodsCount ? foodsCount.length : '...'}</span></div>
             </div></Link>
             {token ? <div className={style.profile}><Link to="/CafeProfile"><button>Личный кабинет</button></Link></div> :<div> <Link to="/signin"><div>Вход</div></Link> <Link to="/signup"><div>Регистрация</div></Link></div>}
+
         </div>
+        <div className={style.contact}>
+          <div className={style.call}>
+            <img src={logo} alt="" />
+          </div>
+          <div className={style.iph}>
+            <h5 className={style.phone}>Контакты: </h5>
+            <span className={style.number}>+7(910)510-57-59</span>
+          </div>
         </div>
-    );
+        <Link to={"/cart"}>
+          <div className={style.cartBut}>
+            <div>Корзина</div>
+            <img src={CartLine} alt="" />
+            <div className={style.CartCount}>
+              <span>{foodsCount ? foodsCount.length : "..."}</span>
+            </div>
+          </div>
+        </Link>
+        {token ? (
+          <div className={style.profile}>
+            <Link to="/CafeProfile">
+              <button>Личный кабинет</button>
+            </Link>
+          </div>
+        ) : (
+          <div>
+            {" "}
+            <Link to="/signin">
+              <div>Вход</div>
+            </Link>{" "}
+            <Link to="/signup">
+              <div>Регистрация</div>
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Header;
