@@ -1,43 +1,44 @@
 import React, { useEffect, useRef } from "react";
 import CartLine from "../../assets/Header/CartLine.png";
-import exit from "../../assets/Profile/logout.png"
+import exit from "../../assets/Profile/logout.png";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useRef } from 'react';
-import style from "./header.module.css"
-import logo from '../../assets/Header/Calling.png'
-import CartLine from '../../assets/Header/CartLine.png'
-import location from "../../assets/Header/Location.png"
-import search from "../../assets/Header/Search.png"
-import { Link } from 'react-router-dom';
-import { fetchFood } from '../../redux/features/food';
-import { getCurrentCart } from '../../redux/features/cart';
+import style from "./header.module.css";
+import logo from "../../assets/Header/Calling.png";
+import location from "../../assets/Header/Location.png";
+import search from "../../assets/Header/Search.png";
+import { Link } from "react-router-dom";
+import food, { fetchFood } from "../../redux/features/food";
+import { getCurrentCart } from "../../redux/features/cart";
 
 const Header = () => {
-    const token = useSelector(state => state.application.token);
-    const role = useSelector(state => state.application.role);
+    const token = useSelector((state) => state.application.token);
+    const role = useSelector((state) => state.application.role);
     const dispatch = useDispatch();
-  
+
     useEffect(() => {
-        dispatch(fetchFood())
-        {localStorage.getItem('cartId') ? dispatch(getCurrentCart(localStorage.getItem('cartId'))) : console.log('Нет id корзины')}
-    }, [dispatch])
+        dispatch(fetchFood());
+        {
+            localStorage.getItem("cartId")
+                ? dispatch(getCurrentCart(localStorage.getItem("cartId")))
+                : console.log("Нет id корзины");
+        }
+    }, [dispatch]);
 
     const handleExit = () => {
-        dispatch({type: "logout"});
+        dispatch({ type: "logout" });
         localStorage.clear();
-    }
+    };
 
     let pathToProfile;
     if (role === "cafe") {
-        pathToProfile = "cafe/orders"
+        pathToProfile = "cafe/orders";
     } else if (role === "courier") {
-        pathToProfile = "courier/orders"
+        pathToProfile = "courier/orders";
     } else if (role === "client") {
-        pathToProfile = "client/orders"
+        pathToProfile = "client/orders";
     }
-  
-    const foodsCount = useSelector(state=>state.cart.foods)
-    const token = localStorage.getItem('token');
+
+    const foodsCount = useSelector((state) => state.cart.foods);
 
     return (
         <div className={style.header}>
@@ -70,17 +71,23 @@ const Header = () => {
                         <div>Корзина</div>
                         <img src={CartLine} alt="" />
                         <div className={style.CartCount}>
-                            <span>5</span>
+                            <span>{foodsCount?.length}</span>
                         </div>
                     </div>
                 </Link>
-                {token ? (<div className={style.profileContainer}>
-                    <div className={style.profile}>
-                        <Link to={`/profile/${pathToProfile}`}>
-                            <button>Личный кабинет</button>
-                        </Link>
-                    </div >
-                    <div className={style.exit} onClick={() => handleExit()}><img src={exit} alt="exit" /></div>
+                {token ? (
+                    <div className={style.profileContainer}>
+                        <div className={style.profile}>
+                            <Link to={`/profile/${pathToProfile}`}>
+                                <button>Личный кабинет</button>
+                            </Link>
+                        </div>
+                        <div
+                            className={style.exit}
+                            onClick={() => handleExit()}
+                        >
+                            <img src={exit} alt="exit" />
+                        </div>
                     </div>
                 ) : (
                     <div>
@@ -94,13 +101,7 @@ const Header = () => {
                     </div>
                 )}
             </div>
-            <Link to={'/cart'}><div className={style.cartBut}>
-                <div>Корзина</div>
-               <img src={CartLine} alt="" />
-               <div className={style.CartCount}><span>{foodsCount ? foodsCount.length : '...'}</span></div>
-            </div></Link>
-            {token ? <div className={style.profile}><Link to="/CafeProfile"><button>Личный кабинет</button></Link></div> :<div> <Link to="/signin"><div>Вход</div></Link> <Link to="/signup"><div>Регистрация</div></Link></div>}
-        </div>
+            
         </div>
     );
 };

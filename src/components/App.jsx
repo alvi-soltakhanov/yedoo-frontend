@@ -17,14 +17,13 @@ import CourierOrders from "../pages/ProfilePage/Courier/Orders/CourierOrders";
 import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/CompleteOrders";
 import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
-import Signin from "../pages/SignIn/SignIn"
-import SignUp from '../pages/SignUpPage/SignUp'
-import CafeProfile from "./CafeProfile/CafeProfile";
+import SignIn from "../pages/SignIn/SignIn"
+import SignUpPage from '../pages/SignUpPage/SignUp'
 import HomePage from "../pages/HomePage/HomePage";
+import MainPage from "../pages/MainPage/MainPage";
 
 const App = () => {
   
-  // const token = localStorage.getItem("token");
     const token = useSelector(state => state.application.token);
     const role = useSelector(state => state.application.role);
 
@@ -35,6 +34,7 @@ const App = () => {
             <div className="App">
                 <BrowserRouter>
                     <Routes>
+                        <Route path="/" element={<MainPage />}  />
                         <Route path="/cart" element={<CartPage />}  />
                         <Route path="/FullCard/:id" element={<FullCardPage />}  />
                         <Route path="/TermsPage" element={<TermsPage />}  />
@@ -66,9 +66,7 @@ const App = () => {
                         </Route>
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
-                        <Route path="/CafeProfile" element={<CafeProfile />} />
                         <Route path="/home" element={<HomePage />} />
-                        <Route path="/ClientProfile" element={<ClientPersonalPage chatWindow={chatWindow} setChatWindow={setChatWindow} />} />
                     </Routes>
                 </BrowserRouter>
             </div>

@@ -60,6 +60,7 @@ export default function food(state = initialState, action) {
                 error: action.error,
             };
         case "addFood/fetch/fulfilled":
+            console.log(state.food);
             return {
                 ...state,
                 loading: false,
@@ -145,15 +146,18 @@ export const addFood = (food, composition, price, image, category) => {
     };
 };
 
-export const editFood = (food, composition, category, price, image) => {
+export const editFood = (foodId, food, composition, category, price, image) => {
     return async (dispatch) => {
         dispatch({ type: "editFood/fetch/pending" });
         const formData = new FormData();
         if (image) {
-            formData.append("image", image[0]);
+            formData.append("image", image);
         }
         if (food) {
-            formData.append("food", food);
+            formData.append("name", food);
+        }
+        if (foodId) {
+            formData.append("foodId", foodId);
         }
         if (composition) {
             formData.append("info", composition);
@@ -161,11 +165,11 @@ export const editFood = (food, composition, category, price, image) => {
         if (category) {
             formData.append("categoryId", category);
         }
-        if (image) {
+        if (price) {
             formData.append("price", price);
         }
         try {
-            const res = await fetch(`http://localhost:4000/food/edit}`, {
+            const res = await fetch(`http://localhost:4000/food/edit`, {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -173,7 +177,6 @@ export const editFood = (food, composition, category, price, image) => {
                 body: formData,
             });
             const json = await res.json();
-            // console.log(json);
             if (json.error) {
                 dispatch({
                     type: "editFood/fetch/rejected",
