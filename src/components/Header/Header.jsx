@@ -1,9 +1,6 @@
-
-import React, { useEffect, useRef } from "react";
-import CartLine from "../../assets/Header/CartLine.png";
 import exit from "../../assets/Profile/logout.png"
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import style from "./header.module.css"
 import logo from '../../assets/Header/Calling.png'
 import CartLine from '../../assets/Header/CartLine.png'
@@ -48,9 +45,9 @@ const Header = ({ inputText, setInputText }) => {
     }
   
     const foodsCount = useSelector(state=>state.cart.foods)
-    const token = localStorage.getItem('token');
 
     return (
+      <div>
         <div className={style.header}>
             <div className={style.content}>
                 <Link to={"/"}>
@@ -75,7 +72,6 @@ const Header = ({ inputText, setInputText }) => {
                 </div>
                 <div className={style.contact}>
                     <div className={style.call}>
-                        {" "}
                         <img src={logo} alt="" />
                     </div>
                     <div className={style.iph}>
@@ -112,51 +108,13 @@ const Header = ({ inputText, setInputText }) => {
                     </div>
                 )}
             </div>
-            <Link to={'/cart'}><div className={style.cartBut}>
-                <div>Корзина</div>
-               <img src={CartLine} alt="" />
-               <div className={style.CartCount}><span>{foodsCount ? foodsCount.length : '...'}</span></div>
-            </div></Link>
-            {token ? <div className={style.profile}><Link to="/CafeProfile"><button>Личный кабинет</button></Link></div> :<div> <Link to="/signin"><div>Вход</div></Link> <Link to="/signup"><div>Регистрация</div></Link></div>}
+           
 
         </div>
-        <div className={style.contact}>
-          <div className={style.call}>
-            <img src={logo} alt="" />
-          </div>
-          <div className={style.iph}>
-            <h5 className={style.phone}>Контакты: </h5>
-            <span className={style.number}>+7(910)510-57-59</span>
-          </div>
-        </div>
-        <Link to={"/cart"}>
-          <div className={style.cartBut}>
-            <div>Корзина</div>
-            <img src={CartLine} alt="" />
-            <div className={style.CartCount}>
-              <span>{foodsCount ? foodsCount.length : "..."}</span>
-            </div>
-          </div>
-        </Link>
-        {token ? (
-          <div className={style.profile}>
-            <Link to="/CafeProfile">
-              <button>Личный кабинет</button>
-            </Link>
-          </div>
-        ) : (
-          <div>
-            {" "}
-            <Link to="/signin">
-              <div>Вход</div>
-            </Link>{" "}
-            <Link to="/signup">
-              <div>Регистрация</div>
-            </Link>
-          </div>
-        )}
+     
+       
+       
       </div>
-    </div>
   );
 };
 

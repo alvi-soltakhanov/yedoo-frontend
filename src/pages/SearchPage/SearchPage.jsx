@@ -16,7 +16,8 @@ const SearchPage = () => {
   }, [dispatch]);
   // const food = useSelector((state) => state.food.food);
   const cafe = useSelector((state) => state.cafe.cafe);
-  console.log(cafe);
+  const food = useSelector((state) => state.food.food);
+  console.log(food);
 
   const textFromMainInput = window.location.href.split("?");
   const textHref = decodeURI(textFromMainInput[textFromMainInput.length - 1]);
@@ -34,8 +35,8 @@ const SearchPage = () => {
   const filteredCafe = cafe?.filter((cafe) => {
     if (
       cafe.name.toLowerCase().includes(inputText.toLowerCase()) ||
-      !inputText
-      // (food.categoryId === categoryId || !categoryId)
+      !inputText &&
+      (food.cafeId === cafe._id || !cafe._id)
     ) {
       return true;
     }
@@ -49,9 +50,9 @@ const SearchPage = () => {
         <div className={style.inp_name}>{inputText}</div>
           <div className={style.content}>
             {filteredCafe?.map((cafe) => {
-              return <SearchForm cafe={cafe} key={cafe._id} />;
+              return <SearchForm cafe={cafe} key={cafe._id} food={food} />;
             })}
-            {!filteredCafe.length && <div className={style.error}>Ничего не найдено</div>}
+            {!filteredCafe?.length && <div className={style.error}>Ничего не найдено</div>}
           </div>
       </div>
       
