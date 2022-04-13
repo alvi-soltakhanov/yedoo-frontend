@@ -21,6 +21,7 @@ import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
 import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
+import MainPage from "../pages/MainPage/MainPage";
 
 const App = () => {
 
@@ -39,27 +40,28 @@ const App = () => {
             <Route path="/TermsPage" element={<TermsPage />} />
             <Route path="/ActionPage" element={<ActionPage />} />
             <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-            <Route
-              element={
-                <ProtectedRoute
-                  token={token}
-                  allowedRoles={["cafe"]}
-                  role={role}
-                />
-              }
-            >
-              <Route path="/profile/cafe/" element={<ProfilePage />}>
-                <Route path="menu" element={<CafeMenu />} />
-                <Route path="orders" element={<CafeOrders />} />
-                <Route path="promotions" element={<Promotions />} />
-                <Route path="info" element={<CafeInfo />} />
-              </Route>
-            </Route>
+            <Route element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> }>
+                            <Route path="/profile/cafe/" element={<ProfilePage />}>
+                                <Route path="menu" element={<CafeMenu />} />
+                                <Route path="orders" element={<CafeOrders />} />
+                                <Route path="promotions" element={<Promotions />} />
+                                <Route path="info" element={<CafeInfo />} />
+                            </Route>
+                        </Route>
+
+                        <Route element={<ProtectedRoute token={token} allowedRoles={["courier"]} role={role} /> }>
+                            <Route path="/profile/courier/" element={<ProfilePage />}>
+                                <Route path="orders" element={<CourierOrders />} />
+                                <Route path="completed" element={<CompleteOrders />} />
+                                <Route path="info" element={<CourierInfo />} />
+                                <Route path="addresses" element={<Addresses />} />
+                            </Route>
+                        </Route>
 
                         <Route element={<ProtectedRoute token={token} allowedRoles={["client"]} role={role} /> }>
                             <Route path="/profile/client/" element={<ProfilePage />}>
                                 <Route path="orders" element={<CafeOrders />} />
-                                
+
                             </Route> 
                         </Route>
                         <Route path="/signup" element={<SignUpPage />} />
