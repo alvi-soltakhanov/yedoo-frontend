@@ -8,26 +8,29 @@
   font-family: "Gilroy";
   font-style: normal;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 39px;
+  font-size: 28px;
+  line-height: 35px;
   text-transform: uppercase;
   padding-top: 30px;
   padding-bottom: 15px;
 }
 .signUpContainer p {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
   margin: 0;
   padding-bottom: 5px;
 }
 .signUpContainer {
-  width: 800px;
+  width: 600px;
   background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
   border-radius: 10px;
   margin: auto;
   padding: 30px;
   margin-top: 30px;
-  color: #fff;
+  color: white;
+}
+.signUpContainer button {
+  color: white;
 }
 .form {
   width: 90%;
@@ -55,9 +58,14 @@
   max-width: 400px;
 }
 .btnsConainer {
-  min-width: 800px;
+  min-width: 400px;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+}
+
+.btnsConainer button {
+  color: white;
 }
 .btnsConainer button:hover {
   background-color: #72a479;
@@ -132,4 +140,25 @@
   border: none;
   margin-top: 30px;
   cursor: not-allowed;
+}
+.link {
+  color: rgba(255, 255, 255, 0.377);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link span {
+  font-weight: 400;
+  font-size: 14px;
+}
+.link p {
+  padding: 0;
+  padding-left: 15px;
+}
+.link p:hover {
+  color: #72a479;
+}
+.signUpContainer .errorInfo {
+  color: rgb(255, 0, 0);
+  font-size: 14px;
 }

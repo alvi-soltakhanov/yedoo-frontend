@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import CartLine from "../../assets/Header/CartLine.png";
 import exit from "../../assets/Profile/logout.png";
@@ -16,15 +17,6 @@ const Header = () => {
     const role = useSelector((state) => state.application.role);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchFood());
-        {
-            localStorage.getItem("cartId")
-                ? dispatch(getCurrentCart(localStorage.getItem("cartId")))
-                : console.log("Нет id корзины");
-        }
-    }, [dispatch]);
-
     const handleExit = () => {
         dispatch({ type: "logout" });
         localStorage.clear();
@@ -41,6 +33,25 @@ const Header = () => {
 
     const foodsCount = useSelector((state) => state.cart.foods);
 
+  useEffect(() => {
+    dispatch(fetchFood());
+    {
+      localStorage.getItem("cartId")
+        ? dispatch(getCurrentCart(localStorage.getItem("cartId")))
+        : console.log("Нет id корзины");
+    }
+  }, [dispatch]);
+    
+     const clearInput = () => {
+    setInputHref("");
+  };
+
+  const handleInput = (e) => {
+    setInputText(e.target.value);
+  };
+
+
+
     return (
         <div className={style.header}>
             <div className={style.content}>
@@ -49,13 +60,20 @@ const Header = () => {
                 </Link>
                 <div className={style.inp}>
                     <img src={location} className={style.location} alt="" />
-                    <input
-                        type="text"
-                        name=""
-                        id=""
-                        placeholder="Введите адрес доставки"
-                    />
-                    <img src={search} className={style.search} alt="" />
+                  <input
+            type="text"
+            placeholder="  Поиск ресторана.."
+            value={inputText}
+            onChange={(e) => handleInput(e)}
+          />
+          <Link to={`/search?${inputHref}`}>
+            <img
+              src={search}
+              onClick={clearInput}
+              className={style.search}
+              alt=""
+            />
+          </Link>
                 </div>
                 <div className={style.contact}>
                     <div className={style.call}>
@@ -102,10 +120,12 @@ const Header = () => {
                     </div>
                 )}
             </div>
+
             
         </div>
     );
     // рабочий Header от Сайд-Мохьмада (конец)
+
 };
 
 export default Header;
