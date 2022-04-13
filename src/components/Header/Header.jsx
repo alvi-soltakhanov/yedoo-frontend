@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import CartLine from "../../assets/Header/CartLine.png";
 import exit from "../../assets/Profile/logout.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,11 +10,12 @@ import { Link } from "react-router-dom";
 import food, { fetchFood } from "../../redux/features/food";
 import { getCurrentCart } from "../../redux/features/cart";
 
-const Header = () => {
+const Header = ({ inputText, setInputText }) => {
     // рабочий Header от Сайд-Мохьмада (начало)
     const token = useSelector((state) => state.application.token);
     const role = useSelector((state) => state.application.role);
     const dispatch = useDispatch();
+    const [inputHref, setInputHref] = useState("");
 
     const handleExit = () => {
         dispatch({ type: "logout" });
