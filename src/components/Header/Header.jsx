@@ -11,6 +11,7 @@ import food, { fetchFood } from "../../redux/features/food";
 import { getCurrentCart } from "../../redux/features/cart";
 
 const Header = () => {
+    // рабочий Header от Сайд-Мохьмада (начало)
     const token = useSelector((state) => state.application.token);
     const role = useSelector((state) => state.application.role);
     const dispatch = useDispatch();
@@ -104,6 +105,7 @@ const Header = () => {
             
         </div>
     );
+    // рабочий Header от Сайд-Мохьмада (конец)
 };
 
 export default Header;

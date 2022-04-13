@@ -4,7 +4,7 @@ import stick from "../../../../assets/heigthLine.png";
 import OrderItemCafe from "./OrderItemCafe";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import order, { fetchOrders } from "../../../../redux/features/order";
+import { fetchOrders } from "../../../../redux/features/order";
 
 const CafeOrders = () => {
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const CafeOrders = () => {
                     <div className={styles.ordersHeader}>
                         <div className={styles.title}>
                             <img src={stick} alt="" />
-                            Список заказов <span>(активно {orders ? orders?.length : 0} заказа)</span>
+                            Список заказов <span>(активно {orders ? orders?.length : 0} заказов)</span>
                         </div>
                     </div>
                     <div className={styles.ordersList}>

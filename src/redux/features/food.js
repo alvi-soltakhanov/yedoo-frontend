@@ -85,12 +85,15 @@ export default function food(state = initialState, action) {
                 loading: false,
                 error: false,
                 food: state.food.map((food) => {
-                    if (action.payload.id === food._id) {
+                    if (action.payload._id === food._id) {
+                        console.log(`изменяемый фуд:${food}`)
                         food.name = action.payload.name;
                         food.image = action.payload.image;
                         food.price = action.payload.price;
-                        food.category = action.payload.category;
+                        food.categoryId = action.payload.categorId;
+                        food.info = action.payload.info
                     }
+                    console.log(`${food}`)
                     return food;
                 }),
             };
