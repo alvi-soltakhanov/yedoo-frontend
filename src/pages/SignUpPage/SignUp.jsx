@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createCafe,
@@ -6,12 +6,15 @@ import {
   createCourier
 } from "../../redux/features/application";
 import styles from "./SignUp.module.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const signingUp = useSelector((state) => state.application.signingUp);
+  const navigate = useNavigate();
+  // const signingUp = useSelector((state) => state.application.signingUp);
   const error = useSelector((state) => state.application.error);
-  const done = useSelector((state) => state.application.done);
+  // (error);
+  // const done = useSelector((state) => state.application.done);
 
   const [select, setSelect] = useState("client");
   const [name, setName] = useState("");
@@ -20,7 +23,7 @@ const SignUp = () => {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [city, setCity] = useState("");
-  const [passRepeat, setPassRepeat] = useState("");
+  // const [passRepeat, setPassRepeat] = useState("");
 
   const [nameErr, setNameErr] = useState(false);
   const [phoneErr, setPhoneErr] = useState(false);
@@ -28,7 +31,7 @@ const SignUp = () => {
   const [mailErr, setMailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
   const [cityErr, setCityErr] = useState(false);
-  const [generalErr, setGeneralErr] = useState(false);
+  const [generalErr, setGeneralErr] = useState(true);
 
   const handleClick = (info) => {
     setAllClear();
@@ -68,10 +71,22 @@ const SignUp = () => {
       setPassword(e.target.value);
       e.target.value ? setPasswordErr(false) : setPasswordErr(true);
     }
-    if (key === "passwordRepeat") {
-      setPassRepeat(e.target.value);
-      e.target.value ? setPasswordErr(false) : setPasswordErr(true);
+    if (name && phone && address && mail && password) {
+      setGeneralErr(false);
+    } else {
+      setGeneralErr(true);
     }
+    // if (key === "passwordRepeat") {
+    //   setPassRepeat(e.target.value);
+    //   e.target.value ? setPasswordErr(false) : setPasswordErr(true);
+    // }
+    // if (password !== passRepeat) {
+    //   (password);
+    //   (passRepeat);
+    //   setPasswordErr(true);
+    // } else {
+    //   setPasswordErr(false);
+    // }
   };
   const setAllClear = () => {
     setName("");
@@ -86,7 +101,12 @@ const SignUp = () => {
     setMailErr("");
     setPasswordErr("");
     setCityErr("");
-    setGeneralErr(false);
+    setGeneralErr(true);
+  };
+  const checkError = () => {
+    if (!error) {
+      navigate("/signin");
+    }
   };
 
   const signUpClient = () => {
@@ -99,11 +119,15 @@ const SignUp = () => {
       !passwordErr
     ) {
       dispatch(createClient(name, phone, city, address, mail, password));
+      checkError();
       setAllClear();
     } else {
-      console.log("eroro4ka");
+      console.log("Не удалось зарегистрироваться как клиент");
     }
   };
+
+  setTimeout(error, 3000);
+
   const signUpCafe = () => {
     if (
       !nameErr &&
@@ -115,14 +139,14 @@ const SignUp = () => {
     ) {
       dispatch(createCafe(name, phone, city, address, mail, password));
     } else {
-      console.log("eroro4ka");
+      console.log("Не удалось зарегистрироваться как партнер");
     }
   };
   const signUpCourier = () => {
     if (!nameErr && !phoneErr && !cityErr && !mailErr && !passwordErr) {
       dispatch(createCourier(name, phone, city, mail, password));
     } else {
-      console.log("eroro4ka");
+      console.log("Не удалось зарегистрироваться как курьер");
     }
   };
 
@@ -151,6 +175,12 @@ const SignUp = () => {
         >
           Для ресторана
         </button>
+      </div>
+      <div className={styles.link}>
+        <span>Уже есть аккаунт?</span>
+        <Link to={"/signin"}>
+          <p>Войти</p>{" "}
+        </Link>
       </div>
       {select === "client" && (
         <div className={styles.form}>
@@ -204,13 +234,13 @@ const SignUp = () => {
             onChange={(e) => handleInput(e, "password")}
           />
 
-          <p>Повторите пароль</p>
+          {/* <p>Повторите пароль</p>
           <input
             className={passwordErr ? styles.error : styles.notErr}
             type="password"
             value={passRepeat}
             onChange={(e) => handleInput(e, "passwordRepeat")}
-          />
+          /> */}
 
           <div>
             <button
@@ -224,7 +254,9 @@ const SignUp = () => {
             </button>
           </div>
 
-          {error && <div>{error}</div>}
+          {error && (
+            <div className={styles.errorInfo}>Поля заполнены некорректно</div>
+          )}
         </div>
       )}
       {select === "cafe" && (
@@ -278,13 +310,13 @@ const SignUp = () => {
             onChange={(e) => handleInput(e, "password")}
           />
 
-          <p>Повторите пароль</p>
+          {/* <p>Повторите пароль</p>
           <input
             className={passwordErr ? styles.error : styles.notErr}
             type="password"
             value={passRepeat}
             onChange={(e) => handleInput(e, "passwordRepeat")}
-          />
+          /> */}
 
           <div>
             <button
@@ -296,6 +328,9 @@ const SignUp = () => {
             >
               Отправить заявку
             </button>
+            {error && (
+              <div className={styles.errorInfo}>Поля заполнены некорректно</div>
+            )}
           </div>
         </div>
       )}
@@ -342,13 +377,13 @@ const SignUp = () => {
             onChange={(e) => handleInput(e, "password")}
           />
 
-          <p>Повторите пароль</p>
+          {/* <p>Повторите пароль</p>
           <input
             className={passwordErr ? styles.error : styles.notErr}
             type="password"
             value={passRepeat}
             onChange={(e) => handleInput(e, "passwordRepeat")}
-          />
+          /> */}
 
           <div>
             <button
@@ -362,7 +397,9 @@ const SignUp = () => {
             </button>
           </div>
 
-          {error && <div>{error}</div>}
+          {error && (
+            <div className={styles.errorInfo}>Поля заполнены некорректно</div>
+          )}
         </div>
       )}
     </div>

@@ -1,17 +1,16 @@
 
 import React, { useEffect, useRef } from "react";
 import CartLine from "../../assets/Header/CartLine.png";
-import exit from "../../assets/Profile/logout.png"
+import exit from "../../assets/Profile/logout.png";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useRef } from 'react';
-import style from "./header.module.css"
-import logo from '../../assets/Header/Calling.png'
-import CartLine from '../../assets/Header/CartLine.png'
-import location from "../../assets/Header/Location.png"
-import search from "../../assets/Header/Search.png"
-import { Link } from 'react-router-dom';
-import { fetchFood } from '../../redux/features/food';
-import { getCurrentCart } from '../../redux/features/cart';
+import style from "./header.module.css";
+import logo from "../../assets/Header/Calling.png";
+import location from "../../assets/Header/Location.png";
+import search from "../../assets/Header/Search.png";
+import { Link } from "react-router-dom";
+import { fetchFood } from "../../redux/features/food";
+import { getCurrentCart } from "../../redux/features/cart";
+
 
 const Header = ({ inputText, setInputText }) => {
     const token = useSelector(state => state.application.token);
@@ -25,10 +24,14 @@ const Header = ({ inputText, setInputText }) => {
         {localStorage.getItem('cartId') ? dispatch(getCurrentCart(localStorage.getItem('cartId'))) : console.log('Нет id корзины')}
     }, [dispatch])
 
-    const handleExit = () => {
-        dispatch({type: "logout"});
-        localStorage.clear();
+  useEffect(() => {
+    dispatch(fetchFood());
+    {
+      localStorage.getItem("cartId")
+        ? dispatch(getCurrentCart(localStorage.getItem("cartId")))
+        : console.log("Нет id корзины");
     }
+  }, [dispatch]);
     
      const clearInput = () => {
     setInputHref("");
@@ -38,17 +41,10 @@ const Header = ({ inputText, setInputText }) => {
     setInputText(e.target.value);
   };
 
-    let pathToProfile;
-    if (role === "cafe") {
-        pathToProfile = "cafe/orders"
-    } else if (role === "courier") {
-        pathToProfile = "courier/orders"
-    } else if (role === "client") {
-        pathToProfile = "client/orders"
-    }
-  
-    const foodsCount = useSelector(state=>state.cart.foods)
-    const token = localStorage.getItem('token');
+  const handleExit = () => {
+    dispatch({ type: "logout" });
+    localStorage.clear();
+  };
 
     return (
         <div className={style.header}>

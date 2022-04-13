@@ -23,41 +23,40 @@ import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
 
 const App = () => {
-  
   // const token = localStorage.getItem("token");
-    const token = useSelector(state => state.application.token);
-    const role = useSelector(state => state.application.role);
+  const token = useSelector((state) => state.application.token);
+  const role = useSelector((state) => state.application.role);
 
-    // const token1 = useSelector(state => state.application.token);
+  // const token1 = useSelector(state => state.application.token);
 
-    if (token) {
-        return (
-            <div className="App">
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/map" element={<YMap />} />
-                        <Route path="/cart" element={<CartPage />}  />
-                        <Route path="/FullCard/:id" element={<FullCardPage />}  />
-                        <Route path="/TermsPage" element={<TermsPage />}  />
-                        <Route path="/ActionPage" element={<ActionPage />}  />
-                        <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-                        <Route element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> }>
-                            <Route path="/profile/cafe/" element={<ProfilePage />}>
-                                <Route path="menu" element={<CafeMenu />} />
-                                <Route path="orders" element={<CafeOrders />} />
-                                <Route path="promotions" element={<Promotions />} />
-                                <Route path="info" element={<CafeInfo />} />
-                            </Route>
-                        </Route>
-
-                        <Route element={<ProtectedRoute token={token} allowedRoles={["courier"]} role={role} /> }>
-                            <Route path="/profile/courier/" element={<ProfilePage />}>
-                                <Route path="orders" element={<CourierOrders />} />
-                                <Route path="completed" element={<CompleteOrders />} />
-                                <Route path="info" element={<CourierInfo />} />
-                                <Route path="addresses" element={<Addresses />} />
-                            </Route>
-                        </Route>
+  if (token) {
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/map" element={<YMap />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/FullCard/:id" element={<FullCardPage />} />
+            <Route path="/TermsPage" element={<TermsPage />} />
+            <Route path="/ActionPage" element={<ActionPage />} />
+            <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
+            <Route
+              element={
+                <ProtectedRoute
+                  token={token}
+                  allowedRoles={["cafe"]}
+                  role={role}
+                />
+              }
+            >
+              <Route path="/profile/cafe/" element={<ProfilePage />}>
+                <Route path="menu" element={<CafeMenu />} />
+                <Route path="orders" element={<CafeOrders />} />
+                <Route path="promotions" element={<Promotions />} />
+                <Route path="info" element={<CafeInfo />} />
+              </Route>
+            </Route>
 
                         <Route element={<ProtectedRoute token={token} allowedRoles={["client"]} role={role} /> }>
                             <Route path="/profile/client/" element={<ProfilePage />}>
