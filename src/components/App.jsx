@@ -23,11 +23,9 @@ import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
 
 const App = () => {
-  // const token = localStorage.getItem("token");
+
   const token = useSelector((state) => state.application.token);
   const role = useSelector((state) => state.application.role);
-
-  // const token1 = useSelector(state => state.application.token);
 
   if (token) {
     return (
@@ -66,9 +64,7 @@ const App = () => {
                         </Route>
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
-                        <Route path="/CafeProfile" element={<CafeProfile />} />
                         <Route path="/home" element={<HomePage />} />
-                        <Route path="/ClientProfile" element={<ClientPersonalPage chatWindow={chatWindow} setChatWindow={setChatWindow} />} />
                     </Routes>
                 </BrowserRouter>
             </div>

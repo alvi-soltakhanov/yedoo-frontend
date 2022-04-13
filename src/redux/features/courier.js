@@ -49,7 +49,6 @@ export const fetchCourierByToken = () => {
                     error: json.error,
                 });
             } else {
-                console.log(json);
                 dispatch({ type: "courierByToken/fetch/fulfilled", payload: json });
             }
         } catch (e) {

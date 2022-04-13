@@ -81,7 +81,7 @@ const CafeInfo = () => {
                     <label>6. Доп. информация</label>
                     <input placeholder="" value={info} onChange={(e) => handleChangeInfo(e)} />
                 </div>
-                {error && <div className={error}>Не удалось сохранить</div>}
+                {error && <div className={styles.error}>Не удалось сохранить</div>}
                 <div className={styles.btnSave}><button onClick={() => handleSave(cafeName, cafeLogo, phone, mail, address, info)}>Сохранить изменения</button></div>
             </div>
         </div>

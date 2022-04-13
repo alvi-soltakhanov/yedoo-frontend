@@ -45,10 +45,17 @@
 
 
 
-.status span {
+.status .accepted {
     font-weight: 500;
     color: #72A479;
 }
+
+.status .waiting {
+    font-weight: 500;
+    color: yellow;
+}
+
+
 /* Стили для цены */
 
 .price {
