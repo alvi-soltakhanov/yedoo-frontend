@@ -14,7 +14,7 @@
     justify-content: left;
     border-radius: 4px;
     background: linear-gradient(270.7deg, #44403F 0.4%, #353232 41.83%, #211F20 100%);
-    box-shadow: 0 4px 8px 0 rgb(142, 142, 142);
+    box-shadow: 0 4px 8px 0 rgb(132, 61, 61);
     color: white;
 }
 
@@ -35,4 +35,9 @@
 
 .name {
     margin-left: 15px;
+}
+h5{
+    font-size: 15px;
+    font-style: oblique;
+    font-weight: 300;
 }

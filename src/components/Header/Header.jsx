@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import CartLine from "../../assets/Header/CartLine.png";
-import exit from "../../assets/Profile/logout.png";
+import exit from "../../assets/Profile/logout.png"
 import { useDispatch, useSelector } from "react-redux";
-import style from "./header.module.css";
-import logo from "../../assets/Header/Calling.png";
-import location from "../../assets/Header/Location.png";
-import search from "../../assets/Header/Search.png";
-import { Link } from "react-router-dom";
-import food, { fetchFood } from "../../redux/features/food";
-import { getCurrentCart } from "../../redux/features/cart";
+import React, { useEffect, useRef, useState } from 'react';
+import style from "./header.module.css"
+import logo from '../../assets/Header/Calling.png'
+import CartLine from '../../assets/Header/CartLine.png'
+import location from "../../assets/Header/Location.png"
+import search from "../../assets/Header/Search.png"
+import { Link } from 'react-router-dom';
+import { fetchFood } from '../../redux/features/food';
+import { getCurrentCart } from '../../redux/features/cart';
 
 const Header = ({ inputText, setInputText }) => {
     // рабочий Header от Сайд-Мохьмада (начало)
@@ -50,9 +50,19 @@ const Header = ({ inputText, setInputText }) => {
     setInputText(e.target.value);
   };
 
-
+    let pathToProfile;
+    if (role === "cafe") {
+        pathToProfile = "cafe/orders"
+    } else if (role === "courier") {
+        pathToProfile = "courier/orders"
+    } else if (role === "client") {
+        pathToProfile = "client/orders"
+    }
+  
+    const foodsCount = useSelector(state=>state.cart.foods)
 
     return (
+      <div>
         <div className={style.header}>
             <div className={style.content}>
                 <Link to={"/"}>
@@ -77,7 +87,6 @@ const Header = ({ inputText, setInputText }) => {
                 </div>
                 <div className={style.contact}>
                     <div className={style.call}>
-                        {" "}
                         <img src={logo} alt="" />
                     </div>
                     <div className={style.iph}>
@@ -119,13 +128,16 @@ const Header = ({ inputText, setInputText }) => {
                         </Link>
                     </div>
                 )}
-            </div>
-
-            
+            </div>         
         </div>
+     
+       
+       
+      </div>
+  );
+
     );
     // рабочий Header от Сайд-Мохьмада (конец)
-
 };
 
 export default Header;
