@@ -50,16 +50,6 @@ const Header = ({ inputText, setInputText }) => {
     setInputText(e.target.value);
   };
 
-    let pathToProfile;
-    if (role === "cafe") {
-        pathToProfile = "cafe/orders"
-    } else if (role === "courier") {
-        pathToProfile = "courier/orders"
-    } else if (role === "client") {
-        pathToProfile = "client/orders"
-    }
-  
-    const foodsCount = useSelector(state=>state.cart.foods)
 
     return (
       <div>
@@ -135,8 +125,6 @@ const Header = ({ inputText, setInputText }) => {
        
       </div>
   );
-
-    );
     // рабочий Header от Сайд-Мохьмада (конец)
 };
 
