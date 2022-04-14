@@ -1,0 +1,12 @@
+.mapContainer [class*="copyrights-pane"] {
+  display: none !important;
+}
+.map {
+  height: 600px;
+  width: 400px;
+}
+
+/* .mapContainer [class="ymaps-2-1-79-route-panel__inputs"] {
+  height: 300px;
+  width: 300px;
+} */

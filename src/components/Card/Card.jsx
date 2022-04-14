@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFoodToCart, createCart } from '../../redux/features/cart';
 import { useState } from 'react';
 
-
 const Card = ({ id, name, description, price, image, cafeId }) => {
     const foods = useSelector(state => state.cart.foods)
 
@@ -32,7 +31,7 @@ const Card = ({ id, name, description, price, image, cafeId }) => {
                     <Link to={`/FullCard/${id}`}><p className={styles.name}>{name}</p></Link>
                     <p className={styles.weighth}>Вес: 225г</p>
                 </div>
-                <p className={styles.script}>{description}</p>
+                <p className={styles.script}>{info}</p>
                 <div className={styles.price_script}>
                     <p className={styles.price}>{price}₽</p>
                     <button onClick={() => handleCart(id)} className={styles.cart} disabled={add || (cafe && (cafe !== cafeId))}><img src={cart} alt="" />{add ? 'Уже в корзине' : 'В корзину'}</button>

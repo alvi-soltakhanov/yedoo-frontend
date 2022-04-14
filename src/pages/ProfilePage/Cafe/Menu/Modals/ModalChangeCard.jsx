@@ -4,11 +4,11 @@ import { fetchCategories } from "../../../../../redux/features/categories";
 import { editFood } from "../../../../../redux/features/food";
 import styles from "./ModalAddCard.module.css";
 
-const ModalChangeCard = ({ active, setActive }) => {
+const ModalChangeCard = ({ active, setActive, thisFood }) => {
     const [food, setFoodName] = useState("");
     const [composition, setComposition] = useState("");
     const [price, setPrice] = useState("");
-    const [category, setCategory] = useState("6245592ae4c6c33d7537e3b0");
+    const [categoryId, setCategory] = useState("");
     const [image, setImage] = useState(null);
 
     const dispatch = useDispatch();
@@ -17,6 +17,14 @@ const ModalChangeCard = ({ active, setActive }) => {
         dispatch(fetchCategories());
     }, [dispatch]);
 
+    useEffect(() => {
+        if (thisFood?.name) {setFoodName(thisFood?.name)};
+        if (thisFood?.info) {setComposition(thisFood?.info)};
+        if (thisFood?.categoryId) {setCategory(thisFood?.categoryId)};
+        if (thisFood?.price) {setPrice(thisFood?.price)};
+    }, [thisFood]);
+    console.log(thisFood)
+    
     const categories = useSelector((state) => state.categories.categories);
 
     const handleChangeName = (e) => {
@@ -33,16 +41,15 @@ const ModalChangeCard = ({ active, setActive }) => {
 
     const handleChangeCategory = (e) => {
         setCategory(e.target.value);
-        console.log(category)
     };
 
     const handleChangeImage = (e) => {
         setImage(e.target.files[0]);
     };
 
-    const handleChangeFood = (food, composition, category, price, image) => {
-        dispatch(editFood());
-        console.log(food, composition, category, price, image);
+    const handleChangeFood = (thisFoodId, food, composition, categoryId, price, image) => {
+        dispatch(editFood(thisFoodId, food, composition, categoryId, price, image));
+        console.log(thisFoodId, food, composition, categoryId, price, image);
     };
 
     return (
@@ -118,8 +125,8 @@ const ModalChangeCard = ({ active, setActive }) => {
                             </div>
                             <div className={styles.inputFile}>
                                 <select
-                                    value={category}
                                     onChange={(e) => handleChangeCategory(e)}
+                                    value={categoryId}
                                 >
                                     {categories.map((category) => {
                                         return (
@@ -139,9 +146,10 @@ const ModalChangeCard = ({ active, setActive }) => {
                         className={styles.btnAddNew}
                         onClick={() =>
                             handleChangeFood(
+                                thisFood._id,
                                 food,
                                 composition,
-                                category,
+                                categoryId,
                                 price,
                                 image
                             )

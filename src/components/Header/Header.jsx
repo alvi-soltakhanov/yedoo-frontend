@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import CartLine from "../../assets/Header/CartLine.png";
 import exit from "../../assets/Profile/logout.png"
 import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from 'react';
 import style from "./header.module.css"
 import logo from '../../assets/Header/Calling.png'
 import location from "../../assets/Header/Location.png"
@@ -9,20 +8,50 @@ import { Link } from 'react-router-dom';
 import { fetchFood } from '../../redux/features/food';
 import { getCurrentCart } from '../../redux/features/cart';
 
-const Header = () => {
-    const token = useSelector(state => state.application.token);
-    const role = useSelector(state => state.application.role);
+const Header = ({ inputText, setInputText }) => {
+    // рабочий Header от Сайд-Мохьмада (начало)
+    const token = useSelector((state) => state.application.token);
+    const role = useSelector((state) => state.application.role);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchFood())
         { localStorage.getItem('cartId') ? dispatch(getCurrentCart(localStorage.getItem('cartId'))) : console.log('Нет id корзины') }
     }, [dispatch])
+    const [inputHref, setInputHref] = useState("");
 
     const handleExit = () => {
         dispatch({ type: "logout" });
         localStorage.clear();
+    };
+
+    let pathToProfile;
+    if (role === "cafe") {
+        pathToProfile = "cafe/orders";
+    } else if (role === "courier") {
+        pathToProfile = "courier/orders";
+    } else if (role === "client") {
+        pathToProfile = "client/orders";
     }
+
+    const foodsCount = useSelector((state) => state.cart.foods);
+
+  useEffect(() => {
+    dispatch(fetchFood());
+    {
+      localStorage.getItem("cartId")
+        ? dispatch(getCurrentCart(localStorage.getItem("cartId")))
+        : console.log("Нет id корзины");
+    }
+  }, [dispatch]);
+    
+     const clearInput = () => {
+    setInputHref("");
+  };
+
+  const handleInput = (e) => {
+    setInputText(e.target.value);
+  };
 
     let pathToProfile;
     if (role === "cafe") {
@@ -32,9 +61,10 @@ const Header = () => {
     } else if (role === "client") {
         pathToProfile = "client/orders"
     }
-
+    const foodsCount = useSelector(state=>state.cart.foods)
     const foodsCount = useSelector(state => state.cart.foods)
     return (
+      <div>
         <div className={style.header}>
             <div className={style.content}>
                 <Link to={"/"}>
@@ -42,17 +72,23 @@ const Header = () => {
                 </Link>
                 <div className={style.inp}>
                     <img src={location} className={style.location} alt="" />
-                    <input
-                        type="text"
-                        name=""
-                        id=""
-                        placeholder="Введите адрес доставки"
-                    />
-                    <img src={""} className={style.search} alt="" />
+                  <input
+            type="text"
+            placeholder="  Поиск ресторана.."
+            value={inputText}
+            onChange={(e) => handleInput(e)}
+          />
+          <Link to={`/search?${inputHref}`}>
+            <img
+              src={search}
+              onClick={clearInput}
+              className={style.search}
+              alt=""
+            />
+          </Link>
                 </div>
                 <div className={style.contact}>
                     <div className={style.call}>
-                        {" "}
                         <img src={logo} alt="" />
                     </div>
                     <div className={style.iph}>
@@ -60,15 +96,29 @@ const Header = () => {
                         <span className={style.number}>+7(910)510-57-59</span>
                     </div>
                 </div>
-                <Link to={'/cart'}><div className={style.cartBut}>
-                    <div>Корзина</div>
-                    <img src={CartLine} alt="" />
-                    <div className={style.CartCount}><span>{foodsCount ? foodsCount.length : '...'}</span></div>
-                </div></Link>
-                {token ? (<div className={style.profileContainer}>
-                    <div className={style.profile}><Link to="/profile/cafe"><button>Личный кабинет</button></Link></div>
-                    <div className={style.exit} onClick={() => handleExit()}><img src={exit} alt="exit" /></div>
-                </div>
+                <Link to={"/cart"}>
+                    <div className={style.cartBut}>
+                        <div>Корзина</div>
+                        <img src={CartLine} alt="" />
+                        <div className={style.CartCount}>
+                            <span>{foodsCount?.length}</span>
+                        </div>
+                    </div>
+                </Link>
+                {token ? (
+                    <div className={style.profileContainer}>
+                        <div className={style.profile}>
+                            <Link to={`/profile/${pathToProfile}`}>
+                                <button>Личный кабинет</button>
+                            </Link>
+                        </div>
+                        <div
+                            className={style.exit}
+                            onClick={() => handleExit()}
+                        >
+                            <img src={exit} alt="exit" />
+                        </div>
+                    </div>
                 ) : (
                     <div>
                         {" "}
@@ -81,8 +131,12 @@ const Header = () => {
                     </div>
                 )}
             </div>
-        </div>
+       </div>         
+      </div>
+  );
+
     );
+    // рабочий Header от Сайд-Мохьмада (конец)
 };
 
 export default Header;

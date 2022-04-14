@@ -3,7 +3,7 @@
 /* Стили изображения карточки  */
 
 .image {
-    width: 100px;
+    width: 120px;
     height: 100%;
     text-align: left;
     padding: 20px;
@@ -35,22 +35,33 @@ table {
 
 td {
     font-size: 18px;
+    text-align: center;
 }
 
-table button {
-    width: 100px;
+
+th {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.time {
+    width: 85px
+}
+
+.orderNumber {
+    width: 120px;
+}
+
+.from {
+    width: 200px;
+}
+
+.btnAccept {
+    width: 90px;
+    font-size: 18px;
+    color: white;
     height: 38.14px;
     border-radius: 10px;
     border: none;
     background-color: #72A479;
-    color: white;
-    font-size: 18px;
-}
-
-th {
-    padding-top: 10px;
-}
-
-.time {
-    width: 90px
 }

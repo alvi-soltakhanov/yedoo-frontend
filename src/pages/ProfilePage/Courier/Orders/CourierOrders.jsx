@@ -2,9 +2,23 @@ import styles from "./CourierOrders.module.css";
 import noFood from "../../../../assets/Profile/noFood.png";
 import stick from "../../../../assets/heigthLine.png";
 import OrderItemCourier from "./OrderItemCourier";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchOrders } from "../../../../redux/features/order";
+import { fetchCafe } from "../../../../redux/features/cafe";
 
 const CourierOrders = () => {
-    const orders = 1
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchOrders());
+        dispatch(fetchCafe())
+    }, [dispatch]);
+
+    const orders = useSelector(state => state.order.orders);
+    const cafe = useSelector(state => state.cafe.cafe)
+    console.log(orders, cafe)
+
     return (
         <div className={styles.ordersContainer}>
             {orders ? (
@@ -12,13 +26,14 @@ const CourierOrders = () => {
                     <div className={styles.ordersHeader}>
                         <div className={styles.title}>
                             <img src={stick} alt="" />
-                            Список заказов <span>(доступно 3 заказа)</span>
+                            Список заказов <span>(доступно {orders?.length} заказа)</span>
                         </div>
                     </div>
                     <div className={styles.ordersList}>
-                       <OrderItemCourier />
-                       <OrderItemCourier />
-                       <OrderItemCourier />
+                        {orders?.map(order => {
+                            return <OrderItemCourier key={order._id} order={order} cafe={cafe} />
+                        })}
+                       
                     </div>
                 </div>
             ) : (
