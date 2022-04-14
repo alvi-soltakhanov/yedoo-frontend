@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-// import { useDispatch, useSelector } from "react-redux";
-import { Map, Placemark } from "react-yandex-maps";
-// import { fetchCafe } from "../../redux/features/cafe";
-// import styles from "./YMap.module.css";
-
-// const key = "2a670aaa-e106-4bf0-88e0-cb885604beab";
+import { Placemark } from "react-yandex-maps";
 
 const Placemarker = ({ coord, id, name }) => {
-  // const orders = useSelector(state=>state.
+  const orders = useSelector((state) => state.order.orders);
+  const ordersAtCafe = orders?.filter(
+    (order) => order.cafeId === id && order.status === "atCafe"
+  );
+  const ordersCount = ordersAtCafe.length;
 
-  const foo = () => {
-    return "нет ничего невозможного, Сайд-Мохьмад";
-  };
+  let result;
+  if (ordersAtCafe.length) {
+    result = ordersAtCafe?.reduce((acc, order) => {
+      return (
+        acc +
+        `<span>Номер заказа: #${order._id.slice(16)}</span><button id="${
+          order?._id
+        }" >Принять заказ</button><br>`
+      );
+    }, ``);
+  }
+
   return (
     <Placemark
       id={id}
@@ -22,9 +30,9 @@ const Placemarker = ({ coord, id, name }) => {
       }}
       modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
       properties={{
-        // iconContent: "3", //количество заказов
+        iconContent: `${ordersCount}`, //количество заказов
         hintContent: name,
-        balloonContent: `${foo()}`
+        balloonContent: result
       }}
     />
   );

@@ -1,4 +1,4 @@
-.mapContainer [class*="copyrights-pane"] {
+.routeMapContainer [class*="copyrights-pane"] {
   display: none !important;
 }
 .map {
