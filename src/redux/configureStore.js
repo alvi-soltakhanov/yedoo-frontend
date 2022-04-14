@@ -8,16 +8,19 @@ import cart from "./features/cart";
 import categories from "./features/categories";
 import client from "./features/client";
 import courier from "./features/courier";
+import order from "./features/order";
 
 export const store = createStore(
-  combineReducers({
-    application,
-    food,
-    cafe,
-    cart,
-    categories,
-    client,
-    courier,
-  }),
-  composeWithDevTools(applyMiddleware(thunk))
-);
+    combineReducers({
+        application,
+        food,
+        cafe,
+        cart,
+        categories,
+        client,
+        courier,
+        order
+    }),
+    composeWithDevTools(applyMiddleware(thunk))
+)
+

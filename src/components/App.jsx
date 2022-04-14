@@ -26,40 +26,30 @@ import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
 import CafePage from "../pages/CafePage/CafePage";
 
 const App = () => {
-  // const token = localStorage.getItem("token");
+
   const token = useSelector((state) => state.application.token);
   const role = useSelector((state) => state.application.role);
-
-  // const token1 = useSelector(state => state.application.token);
 
   if (token) {
     return (
       <div className="App">
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<MainPage />} />
             <Route path="/map" element={<YMap />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/FullCard/:id" element={<FullCardPage />} />
             <Route path="/TermsPage" element={<TermsPage />} />
             <Route path="/ActionPage" element={<ActionPage />} />
             <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-            <Route
-              element={
-                <ProtectedRoute
-                  token={token}
-                  allowedRoles={["cafe"]}
-                  role={role}
-                />
-              }
-            >
-              <Route path="/profile/cafe/" element={<ProfilePage />}>
-                <Route path="menu" element={<CafeMenu />} />
-                <Route path="orders" element={<CafeOrders />} />
-                <Route path="promotions" element={<Promotions />} />
-                <Route path="info" element={<CafeInfo />} />
-              </Route>
-            </Route>
-
+            <Route element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> }>
+                            <Route path="/profile/cafe/" element={<ProfilePage />}>
+                                <Route path="menu" element={<CafeMenu />} />
+                                <Route path="orders" element={<CafeOrders />} />
+                                <Route path="promotions" element={<Promotions />} />
+                                <Route path="info" element={<CafeInfo />} />
+                            </Route>
+                        </Route>
             <Route
               element={
                 <ProtectedRoute
@@ -76,51 +66,42 @@ const App = () => {
                 <Route path="addresses" element={<Addresses />} />
               </Route>
             </Route>
+                        <Route element={<ProtectedRoute token={token} allowedRoles={["client"]} role={role} /> }>
+                            <Route path="/profile/client/" element={<ProfilePage />}>
+                                <Route path="orders" element={<CafeOrders />} />
 
-            <Route
-              element={
-                <ProtectedRoute
-                  token={token}
-                  allowedRoles={["client"]}
-                  role={role}
-                />
-              }
-            >
-              <Route path="/profile/client/" element={<ProfilePage />}>
-                <Route path="orders" element={<CafeOrders />} />
-              </Route>
-            </Route>
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/clientProfile" element={<ClientPersonalPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/FullCard/:id" element={<FullCardPage />} />
-            <Route path="/TermsPage" element={<TermsPage />} />
-            <Route path="/ActionPage" element={<ActionPage />} />
-            <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
-            <Route path="/cafeprofile" element={<Navigate to="/" replace />} />
-            <Route path="/profile" element={<Navigate to="/" replace />} />
-            <Route path="/profile/*" element={<Navigate to="/" replace />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/cafe/:id" element={<CafePage/>}/>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    );
-  }
-};
+                            </Route> 
+                        </Route>
+                        <Route path="/signup" element={<SignUpPage />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/home" element={<HomePage />} />
+                    </Routes>
+                </BrowserRouter>
+            </div>
+        );
+    } else {
+        return (
+            <div className="App">
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<MainPage />}  />
+                        <Route path="/cart" element={<CartPage />}  />
+                        <Route path="/FullCard/:id" element={<FullCardPage />}  />
+                        <Route path="/TermsPage" element={<TermsPage />}  />
+                        <Route path="/ActionPage" element={<ActionPage />}  />
+                        <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
+                        <Route path="/cafeprofile" element={<Navigate to="/" replace />} />
+                        <Route path="/profile" element={<Navigate to="/" replace />} />
+                        <Route path="/profile/*" element={<Navigate to="/" replace />} />
+                        <Route path="/signup" element={<SignUpPage />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/search" element={<SearchPage />} />  
+                        
+                    </Routes>
+                </BrowserRouter>
+            </div>
+        );
+    }
+}
 
 export default App;

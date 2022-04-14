@@ -3,7 +3,7 @@
 /* Стили изображения карточки  */
 
 .image {
-    width: 100px;
+    width: 120px;
     height: 100%;
     text-align: left;
     padding: 20px;
@@ -35,6 +35,7 @@ table {
 
 td {
     font-size: 18px;
+    text-align: center;
 }
 
 table button {
@@ -49,8 +50,17 @@ table button {
 
 th {
     padding-top: 10px;
+    text-align: center;
 }
 
 .time {
     width: 90px
+}
+
+.orderNumber {
+    width: 120px;
+}
+
+.from {
+    width: 200px;
 }

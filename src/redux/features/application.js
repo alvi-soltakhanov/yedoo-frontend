@@ -5,10 +5,10 @@ const initialState = {
   done: false,
   token: localStorage.getItem("token"),
   Id: localStorage.getItem("Id"),
-  role: localStorage.getItem("role"),
+  role: localStorage.getItem("role")
 };
 
-export default function application(state = initialState, action) {
+export function application(state = initialState, action) {
   switch (action.type) {
     case "application/signupClient/pending":
       return {
@@ -16,7 +16,7 @@ export default function application(state = initialState, action) {
         signingUp: true,
         singingIn: false,
         error: null,
-        done: false,
+        done: false
       };
     case "application/signupClient/rejected":
       return {
@@ -24,7 +24,8 @@ export default function application(state = initialState, action) {
         signingUp: false,
         singingIn: false,
         error: action.error,
-        done: false,
+        done: false
+
       };
     case "application/signupClient/fulfilled":
       return {
@@ -32,7 +33,7 @@ export default function application(state = initialState, action) {
         signingUp: false,
         singingIn: false,
         error: null,
-        done: true,
+        done: true
       };
     case "application/signupCafe/pending":
       return {
@@ -40,7 +41,7 @@ export default function application(state = initialState, action) {
         signingUp: true,
         singingIn: false,
         error: null,
-        done: false,
+        done: false
       };
     case "application/signupCafe/rejected":
       return {
@@ -48,7 +49,7 @@ export default function application(state = initialState, action) {
         signingUp: false,
         singingIn: false,
         error: action.error,
-        done: false,
+        done: false
       };
     case "application/signupCafe/fulfilled":
       return {
@@ -56,7 +57,7 @@ export default function application(state = initialState, action) {
         signingUp: false,
         singingIn: false,
         error: null,
-        done: true,
+        done: true
       };
     case "application/signupCourier/pending":
       return {
@@ -64,7 +65,7 @@ export default function application(state = initialState, action) {
         signingUp: true,
         singingIn: false,
         error: null,
-        done: false,
+        done: false
       };
     case "application/signupCourier/rejected":
       return {
@@ -72,7 +73,7 @@ export default function application(state = initialState, action) {
         signingUp: false,
         singingIn: false,
         error: action.error,
-        done: false,
+        done: false
       };
     case "application/signupCourier/fulfilled":
       return {
@@ -80,7 +81,7 @@ export default function application(state = initialState, action) {
         signingUp: false,
         singingIn: false,
         error: null,
-        done: true,
+        done: true
       };
     case "application/signin/pending":
       return {
@@ -242,3 +243,4 @@ export const signin = (mail, password) => {
     }
   };
 };
+
