@@ -9,7 +9,6 @@ const OrderItemCourier = ({order, cafe}) => {
     useEffect(() => {
         setCurrentCafe(cafe?.find(cafe => cafe._id === order.cafeId))
     }, [cafe, order])
-    console.log(currentCafe);
     return (
         <div className={styles.orderCard}>
             <table>
@@ -36,7 +35,7 @@ const OrderItemCourier = ({order, cafe}) => {
                         <td className={styles.to}>{order?.to}</td>
                         <td>14:50</td>
                         <td>
-                            <button>Принять</button>
+                            <button className={styles.btnAccept}>Принять</button>
                         </td>
                     </tr>
                 </tbody>

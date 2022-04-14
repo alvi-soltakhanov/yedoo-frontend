@@ -19,10 +19,9 @@ const CourierOrders = () => {
     const cafe = useSelector(state => state.cafe.cafe)
     console.log(orders, cafe)
 
-    const orders1 = 1
     return (
         <div className={styles.ordersContainer}>
-            {orders1 ? (
+            {orders ? (
                 <div className={styles.ordersMain}>
                     <div className={styles.ordersHeader}>
                         <div className={styles.title}>

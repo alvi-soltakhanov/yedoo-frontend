@@ -14,7 +14,6 @@ const CafeOrders = () => {
     }, [dispatch]);
 
     const orders = useSelector(state => state.order.orders)
-    console.log(orders)
     const orders1 = 1;
     return (
         <div className={styles.ordersContainer}>
