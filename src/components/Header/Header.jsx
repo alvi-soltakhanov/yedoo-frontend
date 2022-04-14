@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useRef, useState } from 'react';
 import style from "./header.module.css"
 import logo from '../../assets/Header/Calling.png'
-import CartLine from '../../assets/Header/CartLine.png'
 import location from "../../assets/Header/Location.png"
-import search from "../../assets/Header/Search.png"
 import { Link } from 'react-router-dom';
 import { fetchFood } from '../../redux/features/food';
 import { getCurrentCart } from '../../redux/features/cart';
@@ -15,6 +13,11 @@ const Header = ({ inputText, setInputText }) => {
     const token = useSelector((state) => state.application.token);
     const role = useSelector((state) => state.application.role);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchFood())
+        { localStorage.getItem('cartId') ? dispatch(getCurrentCart(localStorage.getItem('cartId'))) : console.log('Нет id корзины') }
+    }, [dispatch])
     const [inputHref, setInputHref] = useState("");
 
     const handleExit = () => {
@@ -58,9 +61,8 @@ const Header = ({ inputText, setInputText }) => {
     } else if (role === "client") {
         pathToProfile = "client/orders"
     }
-  
     const foodsCount = useSelector(state=>state.cart.foods)
-
+    const foodsCount = useSelector(state => state.cart.foods)
     return (
       <div>
         <div className={style.header}>
@@ -128,11 +130,8 @@ const Header = ({ inputText, setInputText }) => {
                         </Link>
                     </div>
                 )}
-            </div>         
-        </div>
-     
-       
-       
+            </div>
+       </div>         
       </div>
   );
 

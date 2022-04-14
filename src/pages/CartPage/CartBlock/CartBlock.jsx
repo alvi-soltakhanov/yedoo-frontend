@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getCurrentCart } from '../../../redux/features/cart';
 
-const CartBlock = () => {
+const CartBlock = ({ total, setTotal }) => {
 
     // const dispatch = useDispatch();
 
@@ -23,7 +23,13 @@ const CartBlock = () => {
         <div className={styles.CartBlock}>
             <div className={styles.CartBlockHeader}>
                 <Link to={'/'} className={styles.returnBlock}> - к выбору блюда</Link>
-                <div className={styles.Title}><img src={LineHeight} alt="" />КОРЗИНА <span>(в корзине {foods.length} товара)</span></div>
+                <div className={styles.Title}><img src={LineHeight} alt="" />КОРЗИНА <span>
+                    {foods.length === 0 ? '(корзина пуста)' :
+                        `(в корзине ${foods.length} ${foods.length === 1 ? 'товар' : 
+                        `${foods.length % 10 > 1 && foods.length % 10 < 5 ? 'товара' : 'товаров'}`
+                    })`
+                    }
+                </span></div>
             </div>
 
             {/* Map карточек корзины  */}
@@ -31,14 +37,14 @@ const CartBlock = () => {
                 {!food || !foods ? '' :
                     foods.map((cartItem) => {
                         return (
-                        food.map(item => {
-                            if (cartItem.foodId === item._id) {
-                                // console.log(item)
-                                return (
-                                    <Cart id={cartItem.foodId} image={item.image} title={item.name} composition={item.info} count={cartItem.count} price={item.price} />
-                                )
-                            }
-                        })
+                            food.map(item => {
+                                if (cartItem.foodId === item._id) {
+                                    // console.log(item)
+                                    return (
+                                        <Cart id={cartItem.foodId} image={item.image} title={item.name} composition={item.info} count={cartItem.count} price={item.price} />
+                                    )
+                                }
+                            })
                         )
                     })
                 }

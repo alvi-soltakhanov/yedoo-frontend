@@ -19,11 +19,10 @@ import CourierOrders from "../pages/ProfilePage/Courier/Orders/CourierOrders";
 import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/CompleteOrders";
 import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
+import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage"
 import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import MainPage from "../pages/MainPage/MainPage";
-import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
-import CafePage from "../pages/CafePage/CafePage";
 
 const App = () => {
 
@@ -74,6 +73,7 @@ const App = () => {
                         </Route>
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
+                        <Route path="/ProfilePage" element={<ProfilePage />} />
                         <Route path="/home" element={<HomePage />} />
                     </Routes>
                 </BrowserRouter>
@@ -84,7 +84,7 @@ const App = () => {
             <div className="App">
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<MainPage />}  />
+                        <Route path="/" element={<HomePage />}  />
                         <Route path="/cart" element={<CartPage />}  />
                         <Route path="/FullCard/:id" element={<FullCardPage />}  />
                         <Route path="/TermsPage" element={<TermsPage />}  />

@@ -243,4 +243,3 @@ export const signin = (mail, password) => {
     }
   };
 };
-

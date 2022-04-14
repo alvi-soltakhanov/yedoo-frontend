@@ -1,11 +1,3 @@
-*{
-    box-sizing: border-box;
-} 
-
-body {
-  /* background: linear-gradient(270deg, #211f20 0%, #44403f 100%); */
-}
-
 .orderRegistPage {
   width: 800px;
   margin: 50px auto;
@@ -49,7 +41,7 @@ body {
   margin-bottom: 20px;
 }
 
-.contactInfo > p {
+.contactInfo p {
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -92,6 +84,7 @@ body {
   width: 360px;
   margin-right: 20px;
   overflow: hidden;
+  position: relative;
 }
 
 .delieveryItem {
@@ -103,11 +96,22 @@ body {
   text-align: center;
   padding: 20px 55px;
   width: 100%;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .activeBtn {
   background-color: #72a479;
+  position:absolute;
+  width: 50.5%;
+  height: 100%;
+  z-index: 0;
 }
+
+.noActiveBtn {
+  transition: 1s;
+}
+
 
 .verticalLine {
   width: 1px;
@@ -153,6 +157,7 @@ body {
   overflow: hidden;
   margin: 30px 0 15px 0;
   font-style: normal;
+  position: relative;
 }
 
 .payItem {
@@ -164,6 +169,16 @@ body {
   text-align: center;
   padding: 20px 0;
   width: 100%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.payActive {
+  background-color: #72a479;
+  position:absolute;
+  width: 33.5%;
+  height: 100%;
+  z-index: 0;
 }
 
 .payAdress input {
@@ -194,6 +209,7 @@ body {
   overflow: hidden;
   font-style: normal;
   margin-right: 15px;
+  position: relative;
 }
 
 .payTime input {
@@ -255,7 +271,8 @@ body {
 .radioLine {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 21px;
+  cursor: pointer;
 }
 
 .radioLine div {
@@ -269,18 +286,17 @@ body {
 
 .radioBtn {
   margin-right: 10px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #e7eef1;
+  width: 21px;
+  height: 21px;
   border-radius: 50%;
 }
 
 .radioActive {
   background: #72a479;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  margin: auto;
+  margin:auto;
 }
 
 .contractLine {
@@ -320,6 +336,7 @@ body {
   background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%);
   border-radius: 10px;
   padding: 17px 50px;
+  cursor: pointer;
 
   font-family: "Gilroy";
   font-style: normal;
@@ -327,4 +344,34 @@ body {
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
+}
+
+.orderBtn:disabled {
+  background: gray;
+  cursor: default
+}
+
+.showTop {
+  transform: translateY(0);
+  height: 260px;
+  transition: 1s;
+  overflow: hidden;
+}
+
+.showBlock {
+  transform: translateY(0);
+  transition: 1s;
+  overflow: hidden;
+}
+
+.hideTop {
+  transition: 1s;
+  height: 0;
+  overflow: hidden;
+}
+
+.hideBlock {
+  transition: 1s;
+  height: 0%;
+  overflow: hidden;
 }
