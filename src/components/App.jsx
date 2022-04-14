@@ -22,7 +22,9 @@ import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
 import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage"
 import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
+
 import MainPage from "../pages/MainPage/MainPage";
+import Map from "../pages/YandexMap/Map";
 
 const App = () => {
 
@@ -35,7 +37,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/map" element={<YMap />} />
+            <Route path="/map" element={<Map />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/FullCard/:id" element={<FullCardPage />} />
             <Route path="/TermsPage" element={<TermsPage />} />
