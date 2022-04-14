@@ -1,67 +1,63 @@
-import {
-  Map,
-  Placemark,
-  RoutePanel,
-  SearchControl,
-  YMaps
-} from "react-yandex-maps";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { FullscreenControl, Map, YMaps, ZoomControl } from "react-yandex-maps";
+import Placemarker from "./Placemarker";
 import styles from "./YMap.module.css";
 
 const key = "2a670aaa-e106-4bf0-88e0-cb885604beab";
 
-const id = 1;
-const cl = (e) => {
-  console.log(e.target.id);
-};
-
 const YMap = () => {
+  const [coords, setCoords] = useState([]);
+  const cafes = useSelector((state) => state.cafe.cafe);
+
+  if (coords.coordinates) {
+    console.log(coords.coordinates);
+  }
+
+  const showClick = (e) => {
+    console.log(e.target.id);
+  };
+
+  const geocode = (ymaps) => {
+    cafes?.forEach((cafe) => {
+      ymaps.geocode(`Грозный, ${cafe.address}`).then((result) =>
+        setCoords((IBRA) => [
+          ...IBRA,
+          {
+            coordinates: result.geoObjects.get(0).geometry.getCoordinates(),
+            id: cafe._id,
+            name: cafe.name
+          }
+        ])
+      );
+    });
+  };
+  console.log(coords);
+
   return (
-    <div className={styles.mapContainer} onClick={(e) => cl(e)}>
+    <div className={styles.mapContainer} onClick={(e) => showClick(e)}>
       <YMaps query={{ apikey: key }}>
         <Map
+          onLoad={(ymaps) => geocode(ymaps)}
+          modules={["geocode"]}
           className={styles.map}
           defaultState={{
             center: [43.31777101437515, 45.693908688732876],
-            zoom: 13
+            zoom: 12
           }}
         >
-          {0 && <RoutePanel options={{ float: "right" }} />}
-
-          {1 && (
-            <Placemark
-              geometry={{
-                type: "Point",
-                coordinates: [43.32035397704716, 45.682864192964416]
-              }}
-              properties={{
-                iconContent: "3"
-              }}
-            />
-          )}
-          <Placemark
-            geometry={[43.32320526150809, 45.69475174331842]}
-            properties={{
-              hintContent: "Собственный значок метки",
-              balloonContentLayout: 77
-            }}
-          />
-          <Placemark
-            geometry={[43.335353977, 45.68286419]}
-            properties={{
-              balloonContent: `${id}<button id="ид заказа">выбрать заказ</button><br>${
-                id + 1
-              }<button id="ид заказа2">выбрать 2 заказ</button>`
-            }}
-            // options={{
-            //   iconLayout: "default#image",
-            //   iconImageHref: "images/myIcon.gif",
-            //   iconImageSize: [30, 42],
-            //   iconImageOffset: [-3, -42]
-            // }}
-          />
-
-          <SearchControl options={{ provider: "yandex#map" }} />
+          {coords?.map((coord) => {
+            return (
+              <Placemarker
+                coord={coord}
+                key={coord.coordinates}
+                id={coord.id}
+                name={coord.name}
+              />
+            );
+          })}
+          <FullscreenControl />
+          <ZoomControl options={{ float: "right" }} />
         </Map>
       </YMaps>
     </div>

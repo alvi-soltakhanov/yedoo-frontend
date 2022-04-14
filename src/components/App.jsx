@@ -20,8 +20,9 @@ import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/Complete
 import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
 
-import YMap from "../pages/YandexMap/YMap";
+// import YMap from "../pages/YandexMap/YMap";
 import MainPage from "../pages/MainPage/MainPage";
+import Map from "../pages/YandexMap/Map";
 
 const App = () => {
   // const token = localStorage.getItem("token");
@@ -36,7 +37,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/map" element={<YMap />} />
+            <Route path="/map" element={<Map />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/FullCard/:id" element={<FullCardPage />} />
             <Route path="/TermsPage" element={<TermsPage />} />
