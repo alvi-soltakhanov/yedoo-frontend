@@ -242,6 +242,3 @@ export const signin = (mail, password) => {
         }
     };
 };
-
-
-export default application;

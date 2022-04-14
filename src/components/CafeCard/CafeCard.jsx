@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './CafeCard.module.css'
 
-const CafeCard = () => {
+const CafeCard = ({name, image}) => {
     return (
         <div className={styles.border}>
             <div className={styles.wrap}>
                 <div className={styles.productWrap}>
-                    <a href=""><img src="https://i.pinimg.com/originals/68/80/b8/6880b8a23068f38ed86a3ba9575a9c7a.jpg" /></a>
+                    <a href=""><img src={`http://localhost:4000/${image}`} /></a>
                 </div>
                 <div className={styles.loopAction}>
                     <a href="" className={styles.addToCart}>Быстрый просмотр</a>

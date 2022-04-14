@@ -9,8 +9,6 @@ const CafeCards = () => {
     const cafe = useSelector(state => state.cafe.cafe)
     const loading = useSelector(state => state.cafe.loading)
 
-    const cafe1 = [1, 2, 3, 4, 5, 6, 7]
-
     return (
         <>
             <div className={styles.pageTitles}>
@@ -19,8 +17,8 @@ const CafeCards = () => {
             <div className={styles.cafeOverflow}>
                 <div className={`${styles.cafeContainer} ${cafe ? styles.showCafe : styles.hideCafe}`}>
                     {!cafe ? '' :
-                        cafe1.map(item => {
-                            return ( <CafeCard />)
+                        cafe.map(item => {
+                            return ( <CafeCard name={item.name} image={item.image} />)
                         })
                     }
                 </div>

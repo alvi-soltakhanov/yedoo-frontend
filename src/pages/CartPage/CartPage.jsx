@@ -7,13 +7,12 @@ import Header from '../../components/Header/Header'
 import CartBlock from './CartBlock/CartBlock';
 
 const CartPage = () => {
-
     return (
         <div className={styles.CartPage}>
             <Header />
             <OneStoreFilter/>
-            <CartBlock  />
-            <Total  />
+            <CartBlock />
+            <Total />
             <Footer />         
         </div>
     );
