@@ -4,10 +4,7 @@ import { fetchCafeById } from "../../../../redux/features/cafe";
 import styles from "./OrderItemCafe.module.css";
 
 const OrderItemCafe = ({order}) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchCafeById(order.cafeId))
-    }, [dispatch, order])
+    
     return (
         <div className={styles.orderCard}>
             <div className={styles.card}>

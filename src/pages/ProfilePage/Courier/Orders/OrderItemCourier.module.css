@@ -38,15 +38,6 @@ td {
     text-align: center;
 }
 
-table button {
-    width: 100px;
-    height: 38.14px;
-    border-radius: 10px;
-    border: none;
-    background-color: #72A479;
-    color: white;
-    font-size: 18px;
-}
 
 th {
     padding-top: 10px;
@@ -54,7 +45,7 @@ th {
 }
 
 .time {
-    width: 90px
+    width: 85px
 }
 
 .orderNumber {
@@ -63,4 +54,14 @@ th {
 
 .from {
     width: 200px;
+}
+
+.btnAccept {
+    width: 90px;
+    font-size: 18px;
+    color: white;
+    height: 38.14px;
+    border-radius: 10px;
+    border: none;
+    background-color: #72A479;
 }
