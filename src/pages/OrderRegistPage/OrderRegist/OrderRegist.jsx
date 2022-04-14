@@ -94,7 +94,7 @@ const OrderRegist = () => {
     //Создание заказа
     const handleOrder = () => {
         const to = `ул. ${street}, ${house}${building ? `, кв. ${building}, п. ${area}, эт. ${level}` : `.`}`
-        const from = allCafe.find(item => item._id === currentCafeId).address
+        const from = allCafe?.find(item => item._id === currentCafeId).address
         console.log(from)
         console.log(to)
         dispatch(createOrder(foods, currentCafeId, total, from, to))
