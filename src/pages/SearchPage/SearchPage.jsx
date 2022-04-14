@@ -11,26 +11,23 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCafe());
-    // dispatch(fetchFood());
-    console.log("123");
   }, [dispatch]);
   // const food = useSelector((state) => state.food.food);
   const cafe = useSelector((state) => state.cafe.cafe);
   const food = useSelector((state) => state.food.food);
-  console.log(food);
 
-  const textFromMainInput = window.location.href.split("?");
-  const textHref = decodeURI(textFromMainInput[textFromMainInput.length - 1]);
+  // const textFromMainInput = window.location.href.split("?");
+  // const textHref = decodeURI(textFromMainInput[textFromMainInput.length - 1]);
 
-  const textToFind = () => {
-    if (textHref === textFromMainInput[0]) {
-      return clearAdress;
-    }
-    return textHref;
-  };
+  // const textToFind = () => {
+  //   if (textHref === textFromMainInput[0]) {
+  //     return clearAdress;
+  //   }
+  //   return textHref;
+  // };
 
-  const [clearAdress, setClearAdress] = useState("");
-  const [inputText, setInputText] = useState(textToFind());
+  // const [clearAdress, setClearAdress] = useState("");
+  const [inputText, setInputText] = useState("");
 
   const filteredCafe = cafe?.filter((cafe) => {
     if (

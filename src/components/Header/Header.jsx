@@ -43,7 +43,7 @@ const Header = ({ inputText, setInputText }) => {
   }, [dispatch]);
     
      const clearInput = () => {
-    setInputHref("");
+    setInputText("");
   };
 
   const handleInput = (e) => {
@@ -66,7 +66,7 @@ const Header = ({ inputText, setInputText }) => {
             value={inputText}
             onChange={(e) => handleInput(e)}
           />
-          <Link to={`/search?${inputHref}`}>
+          <Link to={`/search`}>
             <img
               src={search}
               onClick={clearInput}

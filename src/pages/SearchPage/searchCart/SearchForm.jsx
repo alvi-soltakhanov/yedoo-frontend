@@ -16,7 +16,7 @@ const SearchForm = ({cafe, food}) => {
         
         <Link to={`/cafe/${cafe._id}`} onClick={() => hundleCafe(cafe._id)}><div className={styles.cafe_card}>
             <div className={styles.image}>
-                <img src={cafe.image} alt="" />
+                <img src={`http://localhost:4000/${cafe.image}`} alt="" />
             </div>
             <div className={styles.name}>
                <h4>{cafe.name}</h4>
