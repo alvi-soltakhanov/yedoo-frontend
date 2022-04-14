@@ -16,7 +16,7 @@ const Footer = () => {
                 </div>
                 <div className={styles.FooterMenu}>
                     <button>О ресторане</button>
-                    <Link to={'/TermsPage'}><button>Условаия доставки</button></Link> 
+                    <Link to={'/TermsPage'}><button>Условия доставки</button></Link> 
                     <button>Возврат товара</button>
                     <button>Акции</button>
                 </div>

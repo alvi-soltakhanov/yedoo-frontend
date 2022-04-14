@@ -16,7 +16,7 @@ const FoodByCategory = ({categoryId}) => {
             {!food ? '' :
             food.map(item => {
                 if(item.categoryId === categoryId) {
-                return <div className={styles.CardItem}><Card id={item._id} name={item.name} description={item.info} price={item.price} image={item.image} /></div>
+                return <div className={styles.CardItem}><Card id={item._id} name={item.name} description={item.info} price={item.price} image={item.image} cafeId={item.cafeId} /></div>
             }
             })
         }
