@@ -29,11 +29,11 @@ const ClientContent = () => {
 
             {/* Блок карточек заказов */}
 
-            <div className={styles.CardsBlock}>
+            {/* <div className={styles.CardsBlock}>
                 {fakedateBase.map((base) => {
                     return <OrderCard base={base} fakedateBase={fakedateBase}/>
                 })}
-            </div>
+            </div> */}
 
         </div>
     );

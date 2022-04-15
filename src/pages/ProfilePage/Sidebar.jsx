@@ -3,6 +3,7 @@ import styles from "./Sidebar.module.css";
 import avatarCourier from "../../assets/Profile/courier-avatar.jpg";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Messenger from "../Messenger/Messenger";
 
 const Sidebar = ({ candidates, role }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -78,12 +79,6 @@ const Sidebar = ({ candidates, role }) => {
             className={({ isActive }) => (isActive ? styles.active : undefined)}
           >
             <div className={styles.menuElement}>Мои данные</div>
-          </NavLink>
-          <NavLink
-            to="/profile/courier/addresses"
-            className={({ isActive }) => (isActive ? styles.active : undefined)}
-          >
-            <div className={styles.menuElement}>Мои адреса</div>
           </NavLink>
         </div>
       )}

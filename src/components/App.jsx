@@ -23,6 +23,7 @@ import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import CafePage from "../pages/CafePage/CafePage";
 import MainPage from "../pages/MainPage/MainPage";
+import Messenger from "../pages/Messenger/Messenger";
 
 const App = () => {
   const token = useSelector((state) => state.application.token);
@@ -39,16 +40,11 @@ const App = () => {
             <Route path="/termspage" element={<TermsPage />} />
             <Route path="/actionpage" element={<ActionPage />} />
             <Route path="/orderregistpage" element={<OrderRegistPage />} />
+            <Route path="/clientPage" element={<ClientPersonalPage />} />
+
 
             <Route
-              element={
-                <ProtectedRoute
-                  token={token}
-                  allowedRoles={["cafe"]}
-                  role={role}
-                />
-              }
-            >
+              element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> } >
               <Route path="/profile/cafe/" element={<ProfilePage />}>
                 <Route path="menu" element={<CafeMenu />} />
                 <Route path="orders" element={<CafeOrders />} />
@@ -70,6 +66,7 @@ const App = () => {
                 <Route path="completed" element={<CompleteOrders />} />
                 <Route path="info" element={<CourierInfo />} />
                 <Route path="addresses" element={<Addresses />} />
+                <Route path="chat" element={<Messenger />} />
               </Route>
             </Route>
             <Route
