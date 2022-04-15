@@ -23,7 +23,6 @@ import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import MainPage from "../pages/MainPage/MainPage";
 import CafePage from "../pages/CafePage/CafePage";
-import Map from "../pages/YandexMap/Map";
 
 const App = () => {
   const token = useSelector((state) => state.application.token);
@@ -35,7 +34,6 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/map" element={<Map />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/fullcard/:id" element={<FullCardPage />} />
             <Route path="/termspage" element={<TermsPage />} />

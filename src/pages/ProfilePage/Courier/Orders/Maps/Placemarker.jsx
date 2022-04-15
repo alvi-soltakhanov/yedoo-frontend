@@ -26,11 +26,11 @@ const Placemarker = ({ coord, id, name }) => {
       id={id}
       geometry={{
         type: "Point",
-        coordinates: coord.coordinates //координаты по адресу кафе
+        coordinates: coord.coordinates 
       }}
       modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
       properties={{
-        iconContent: `${ordersCount}`, //количество заказов
+        iconContent: `${ordersCount}`, 
         hintContent: name,
         balloonContent: result
       }}

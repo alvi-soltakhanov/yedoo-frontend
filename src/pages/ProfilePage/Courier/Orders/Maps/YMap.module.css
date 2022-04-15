@@ -2,8 +2,9 @@
   display: none !important;
 }
 .map {
-  height: 400px;
-  width: 400px;
+  height: 900px;
+  max-width: 100%;
+  margin-top: 30px;
 }
 .map span {
   margin-right: 30px;

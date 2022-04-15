@@ -1,13 +1,14 @@
 .profilePage {
-    width: 100%;
-    background: linear-gradient(360deg, #211f20 0%, #44403f 100%);
-    color: white;
+  width: 100%;
+  background: linear-gradient(360deg, #211f20 0%, #44403f 100%);
+  color: white;
+  min-height: 1088px;
 }
 
 .profileContent {
-    width: 1272px;
-    display: flex;
-    margin: auto; 
+  width: 1272px;
+  display: flex;
+  margin: auto;
 }
 
 /* На всякий случай стили со старого личного кабинета */

@@ -3,7 +3,7 @@
 }
 .map {
   height: 400px;
-  width: 400px;
+  min-width: 849px;
 }
 .map span {
   margin-right: 30px;

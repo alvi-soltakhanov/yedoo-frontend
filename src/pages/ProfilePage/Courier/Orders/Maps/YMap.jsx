@@ -1,31 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FullscreenControl, Map, YMaps, ZoomControl } from "react-yandex-maps";
-import { fetchOneOrder } from "../../redux/features/order";
 import Placemarker from "./Placemarker";
 import styles from "./YMap.module.css";
 
 const key = "2a670aaa-e106-4bf0-88e0-cb885604beab";
 
-const YMap = () => {
-  const dispatch = useDispatch();
-
+const YMap = ({ showOne, setShowOne }) => {
   const cafes = useSelector((state) => state.cafe.cafe);
-  const oneOrder = useSelector((state) => state.order.oneOrder);
 
   const [coords, setCoords] = useState([]);
-  const [showOne, setShowOne] = useState(false);
-
-  const showClick = (e) => {
-    console.log(e.target.id);
-    if (e.target.closest("button")) {
-      dispatch(fetchOneOrder(e.target.id));
-      setShowOne(true);
-    }
-    if (e.target.id === "close") {
-      setShowOne(false);
-    }
-  };
 
   const geocode = (ymaps) => {
     cafes?.forEach((cafe) => {
@@ -43,7 +27,7 @@ const YMap = () => {
   };
 
   return (
-    <div className={styles.mapContainer} onClick={(e) => showClick(e)}>
+    <div className={styles.mapContainer}>
       <YMaps query={{ apikey: key }}>
         <Map
           onLoad={(ymaps) => geocode(ymaps)}
@@ -51,7 +35,7 @@ const YMap = () => {
           className={styles.map}
           defaultState={{
             center: [43.31777101437515, 45.693908688732876],
-            zoom: 12
+            zoom: 15
           }}
         >
           <div>
@@ -70,18 +54,6 @@ const YMap = () => {
           <ZoomControl options={{ float: "right" }} />
         </Map>
       </YMaps>
-      {showOne && (
-        <div className={styles.oneOrder}>
-          <div>
-            <button id="close">x</button>
-          </div>
-          <h3>Информация о заказе</h3>
-          <div>
-            <button>Подтвердить</button>
-            <button id="close">Отклонить</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
