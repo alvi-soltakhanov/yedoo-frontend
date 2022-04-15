@@ -1,16 +1,19 @@
 import React from 'react';
 import styles from './CafeCard.module.css'
+import { Link } from 'react-router-dom';
 
-const CafeCard = ({name, image}) => {
+
+const CafeCard = ({id, name, image}) => {
     return (
         <div className={styles.border}>
             <div className={styles.wrap}>
                 <div className={styles.productWrap}>
-                    <a href=""><img src={`http://localhost:4000/${image}`} /></a>
+                    <img src={`http://localhost:4000/${image}`} />
                 </div>
                 <div className={styles.loopAction}>
-                    <a href="" className={styles.addToCart}>Быстрый просмотр</a>
-                    <a href="" className={styles.loopAddToCart}>Оставить отзыв</a>
+                    <p>{name}</p>
+                    <Link to={`/cafe/${id}`}><div className={styles.addToCart}>Быстрый просмотр</div></Link>
+                    <a href="" className={styles.loopAddToCart}>Описание</a>
                     <div className={styles.stars}></div>
                 </div>
             </div>

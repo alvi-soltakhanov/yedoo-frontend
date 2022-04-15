@@ -7,6 +7,7 @@ import { fetchCategories } from '../../redux/features/categories';
 import { useDispatch } from 'react-redux';
 import { fetchCafe } from '../../redux/features/cafe';
 import { getCurrentCart } from '../../redux/features/cart';
+import styles from './HomePage.module.css'
 
 
 const HomePage = () => {
@@ -19,12 +20,14 @@ const HomePage = () => {
     }, [dispatch])
 
     return (
-    <div style={{background: 'linear-gradient(360deg, #211F20 0%, #44403F 100%)'}}>
-        <Header />
-        <CafeCards />
-        <CategoryCards />
-        <Footer />
-    </div>
+        <div style={{ background: 'linear-gradient(360deg, #211F20 0%, #44403F 100%)' }}>
+            <Header />
+            <div className={styles.homePageContent}>
+                <CafeCards />
+                <CategoryCards />
+            </div>
+            <Footer />
+        </div>
     )
 };
 

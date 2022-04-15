@@ -23,6 +23,8 @@ import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage"
 import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import MainPage from "../pages/MainPage/MainPage";
+import CafePage from "../pages/CafePage/CafePage"
+
 
 const App = () => {
 
@@ -34,13 +36,13 @@ const App = () => {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/map" element={<YMap />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/FullCard/:id" element={<FullCardPage />} />
-            <Route path="/TermsPage" element={<TermsPage />} />
-            <Route path="/ActionPage" element={<ActionPage />} />
-            <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
+            <Route path="/fullcard/:id" element={<FullCardPage />} />
+            <Route path="/termspage" element={<TermsPage />} />
+            <Route path="/actionpage" element={<ActionPage />} />
+            <Route path="/orderregistpage" element={<OrderRegistPage />} />
             <Route element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> }>
                             <Route path="/profile/cafe/" element={<ProfilePage />}>
                                 <Route path="menu" element={<CafeMenu />} />
@@ -75,6 +77,8 @@ const App = () => {
                         <Route path="/signin" element={<SignIn />} />
                         <Route path="/ProfilePage" element={<ProfilePage />} />
                         <Route path="/home" element={<HomePage />} />
+                        <Route path="/search" element={<SearchPage />} />  
+                        <Route path="/cafe/:id" element={<CafePage />} /> 
                     </Routes>
                 </BrowserRouter>
             </div>
@@ -84,18 +88,20 @@ const App = () => {
             <div className="App">
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<HomePage />}  />
+                        <Route path="/home" element={<HomePage />}  />
+                        <Route path="/" element={<Navigate to="/home" />} />
                         <Route path="/cart" element={<CartPage />}  />
-                        <Route path="/FullCard/:id" element={<FullCardPage />}  />
-                        <Route path="/TermsPage" element={<TermsPage />}  />
-                        <Route path="/ActionPage" element={<ActionPage />}  />
-                        <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
+                        <Route path="/fullcard/:id" element={<FullCardPage />}  />
+                        <Route path="/termspage" element={<TermsPage />}  />
+                        <Route path="/actionpage" element={<ActionPage />}  />
+                        <Route path="/orderregistpage" element={<OrderRegistPage />} />
                         <Route path="/cafeprofile" element={<Navigate to="/" replace />} />
                         <Route path="/profile" element={<Navigate to="/" replace />} />
                         <Route path="/profile/*" element={<Navigate to="/" replace />} />
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
                         <Route path="/search" element={<SearchPage />} />  
+                        <Route path="/cafe/:id" element={<CafePage />} />  
                         
                     </Routes>
                 </BrowserRouter>

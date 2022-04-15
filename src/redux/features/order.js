@@ -2,12 +2,12 @@ const initialState = {
     loading: false,
     error: null,
     message: null,
-   orders: [],
+    orders: [],
 }
 
-export default function order(state=initialState, action) {
+export default function order(state = initialState, action) {
     switch (action.type) {
-        
+
         case 'createOrder/fetch/pending':
             return {
                 ...state,
@@ -26,8 +26,8 @@ export default function order(state=initialState, action) {
                 loading: false,
                 message: action.payload
             };
-        
-         case "order/fetch/pending": return {
+
+        case "order/fetch/pending": return {
             ...state,
             loading: true,
             error: null
@@ -48,9 +48,9 @@ export default function order(state=initialState, action) {
     }
 }
 
-export const createOrder = (foods, currentCafeId, total, from, to ) => {
-    return async(dispatch) => {
-        dispatch({type: 'order/fetch/pending'})
+export const createOrder = (foods, currentCafeId, total, from, to) => {
+    return async (dispatch) => {
+        dispatch({ type: 'order/fetch/pending' })
         const res = await fetch('http://localhost:4000/orders', {
             method: "POST",
             headers: {
@@ -64,7 +64,7 @@ export const createOrder = (foods, currentCafeId, total, from, to ) => {
                 to: to
             })
         })
-        
+
         const json = await res.json()
 
         if (json.error) {
@@ -75,21 +75,22 @@ export const createOrder = (foods, currentCafeId, total, from, to ) => {
         } else {
             // console.log(json);
             dispatch({ type: "order/fetch/fulfilled", payload: json });
+        }
+    }
 }
-
 export const fetchOrders = () => {
     return async (dispatch) => {
-        dispatch({type: "order/fetch/pending"});
+        dispatch({ type: "order/fetch/pending" });
         try {
             const res = await fetch("http://localhost:4000/orders");
             const json = await res.json();
             if (json.error) {
-                dispatch({type: "order/fetch/rejected", error: json.error})
+                dispatch({ type: "order/fetch/rejected", error: json.error })
             } else {
-                dispatch({type: "order/fetch/fulfilled", payload: json})
+                dispatch({ type: "order/fetch/fulfilled", payload: json })
             }
         } catch (e) {
-            dispatch({type: "order/fetch/rejected", error: e.toString()})
+            dispatch({ type: "order/fetch/rejected", error: e.toString() })
         }
     }
 }

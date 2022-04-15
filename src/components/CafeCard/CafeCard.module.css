@@ -1,8 +1,9 @@
 .border {
-    width: 325px;
+    width: 280px;
+    height: 200px;
     background: white;
     border: 1px solid #555555;
-    margin: 0 10px;
+    margin: 10px 10px;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -13,12 +14,18 @@
 }
 
 .productWrap {
+    height: 100%;
     position: relative;
+}
+
+.productWrap img {
+    width: auto;
+    height: 100%;
 }
 
 .productWrap:after {
     content: '';
-    background: rgba(86, 87, 85, 0.5);
+    background: rgba(0, 0, 0, 0.532);
     border-radius: 10px;
     position: absolute;
     left: 0;
@@ -96,6 +103,13 @@
 
 .loopAction a:hover:after {
     left: 0%;
+}
+
+.loopAction p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    color: white;
 }
 
 .border:hover {

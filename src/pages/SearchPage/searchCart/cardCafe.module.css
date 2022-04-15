@@ -1,7 +1,3 @@
-*{
-    box-sizing: border-box;
-}
-
 .cafe_card{
     width: 100%;
     margin: auto;
@@ -19,21 +15,20 @@
 }
 
 .image {
-    width: 66px;
-    height: 66px;
+    width: 10%;
+    height: auto;
+    overflow: hidden;
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.615);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .image img {
-    width: 44px;
-    height: 44px;
+    width: 100%;
+    height: auto;
 }
 
 .name {
+    width: 85%;
     margin-left: 15px;
 }
 h5{

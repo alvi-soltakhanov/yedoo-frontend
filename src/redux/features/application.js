@@ -8,7 +8,7 @@ const initialState = {
   role: localStorage.getItem("role")
 };
 
-export function application(state = initialState, action) {
+export default function application(state = initialState, action) {
   switch (action.type) {
     case "application/signupClient/pending":
       return {

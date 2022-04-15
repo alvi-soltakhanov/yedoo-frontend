@@ -9,14 +9,11 @@ const FullCard = () => {
     
     const food = useSelector(state=> state.food.food)
 
-    let currentFood = food.find(item => {
+    let currentFood = food?.find(item => {
         if (item._id === id) {
             return item
         }
     })
-
-    console.log(currentFood)
-
     return (
         <>
             <div className={styles.fullCardPage}>
@@ -28,12 +25,12 @@ const FullCard = () => {
                 </div>
                 <div className={styles.fullCardBlock}>
                     <div className={styles.fullCardImg}>
-                        <img src={currentFood.image} alt="Еда" />
+                        <img src={`http://localhost:4000/${currentFood?.image}`} alt="Еда" />
                     </div>
                     <div className={styles.fullCardInfo}>
                         <div>
-                            <h3>{currentFood.name}</h3>
-                            <p>{currentFood.info}</p>
+                            <h3>{currentFood?.name}</h3>
+                            <p>{currentFood?.info}</p>
                         </div>
                         <div className={styles.cartInfo}>
                             <div className={styles.cartBtn}>
@@ -41,7 +38,7 @@ const FullCard = () => {
                                 <img src={cart} alt="Cart" />
                             </div>
                             <div className={styles.cartPrice}>
-                                <p>{currentFood.price}</p>
+                                <p>{currentFood?.price}</p>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ import { addTotal } from '../../../redux/features/cart';
 
 const Total = () => {
     const dispatch = useDispatch()
+    const cart = useSelector(state=>state.cart.cart)
 
     let total = 0;
 
@@ -32,7 +33,7 @@ const Total = () => {
                             <>{total} ₽</>
                         </div>
                     </div>
-                    <Link to={'/OrderRegistPage'}><button onClick={() => handleTotal(total)} className={styles.ChecoutOrderButton}>Оформить заказ</button></Link>
+                    <Link to={'/OrderRegistPage'}><button onClick={() => handleTotal(total)} className={styles.ChecoutOrderButton} disabled={!cart}>Оформить заказ</button></Link>
                 </div>
                 </div>
             }

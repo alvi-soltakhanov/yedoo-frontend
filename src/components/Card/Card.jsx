@@ -25,16 +25,16 @@ const Card = ({ id, name, description, price, image, cafeId }) => {
 
     return (
         <div className={styles.card}>
-            <div className={styles.cardImg}><img style={{ width: '100%' }} src={`http://localhost:4000/${image}`} alt="" /></div>
+            <div className={styles.cardImg}><img src={`http://localhost:4000/${image}`} alt="" /></div>
             <div className={styles.description}>
                 <div className={styles.nameAll}>
                     <Link to={`/FullCard/${id}`}><p className={styles.name}>{name}</p></Link>
                     <p className={styles.weighth}>Вес: 225г</p>
                 </div>
-                <p className={styles.script}>{info}</p>
+                <p className={styles.script}>{description}</p>
                 <div className={styles.price_script}>
                     <p className={styles.price}>{price}₽</p>
-                    <button onClick={() => handleCart(id)} className={styles.cart} disabled={add || (cafe && (cafe !== cafeId))}><img src={cart} alt="" />{add ? 'Уже в корзине' : 'В корзину'}</button>
+                    <button onClick={() => handleCart(id)} className={styles.cart} disabled={add || (cafe && (cafe !== cafeId))}>{add ? 'Уже в корзине' : 'В корзину'}</button>
                 </div>
             </div>
         </div>

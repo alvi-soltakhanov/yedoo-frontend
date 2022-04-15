@@ -47,7 +47,7 @@
 }
 
 .fullCardImg {
-    width: 50%;
+    width: auto;
 }
 
 .fullCardImg img {
@@ -55,16 +55,20 @@
 }
 
 .fullCardInfo {
-    margin: 38px 150px 150px 50px;
+    margin: 40px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .fullCardInfo h3 {
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 36px;
     line-height: 30px;
     color: #FFFFFF;
     margin: 0;
+    margin-bottom: 15px;
 }
 
 .fullCardInfo p {
@@ -73,6 +77,7 @@
     font-size: 14px;
     line-height: 16px;
     color: #CFCFCF;
+    margin: 0%;
 }
 
 .cartInfo {
@@ -87,6 +92,7 @@
     background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
     border-radius: 10px;
     margin-right: 25px;
+    padding: 10px 0;
 }
 
 .cartBtn p {

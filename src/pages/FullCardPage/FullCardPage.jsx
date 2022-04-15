@@ -6,12 +6,12 @@ import SameCategory from './SameCategory/SameCategory';
 
 const FullCardPage = () => {
     return (
-        <div style={{background: 'linear-gradient(360deg, #211F20 0%, #44403F 100%)'}}>
+        <>
             <Header />
             <FullCard />
             <SameCategory />
             <Footer />
-        </div>
+        </>
     );
 };
 

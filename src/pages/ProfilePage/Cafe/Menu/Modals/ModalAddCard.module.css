@@ -11,6 +11,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.5s;
+    z-index: 5;
 }
 
 .modalActive {
@@ -26,6 +27,7 @@
     width: 55vw;
     transform: scale(0.7);
     transition: 0.4s;
+
 }
 
 .modalContentActive {
