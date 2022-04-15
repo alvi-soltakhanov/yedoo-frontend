@@ -1,0 +1,123 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.modalActive {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalContent {
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 24px;
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    width: 35vw;
+    transform: scale(0.7);
+    transition: 0.4s;
+}
+
+.modalContentActive {
+    transform: scale(1);
+}
+
+.title {
+    text-align: center;
+    position: relative;
+    margin-top: 5px;
+}
+
+.title span {
+    position: absolute;
+    top: -25px;
+    right: -165px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.acceptOrder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+
+
+.btns {
+    text-align: center;
+}
+
+.btns button {
+    color: white;
+    width: 200px;
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.btnAccept {
+    background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%);
+}
+
+.btnCancel {
+    margin-left: 10px;
+    background-color: red;
+}
+
+.errorMessage {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Анимация прелоадера */
+
+.ldsHourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.ldsHourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: ldsHourglass 1.2s infinite;
+}
+@keyframes ldsHourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}

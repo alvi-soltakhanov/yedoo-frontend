@@ -11,19 +11,24 @@ import RouteMap from "./Maps/RouteMap";
 
 const CourierOrders = () => {
   const dispatch = useDispatch();
-
+  
+  const orders = useSelector((state) => state.order.orders);
+  const cafe = useSelector((state) => state.cafe.cafe);
+  const oneOrder = useSelector((state) => state.order.oneOrder);
   const [selected, setSelected] = useState("list");
   const [returnBack, setReturnBack] = useState(selected);
   const [showOne, setShowOne] = useState(false);
-
+  const loading = useSelector( state => state.order.loading);
+  const [open, setOpen] = useState(true);
+  const handleOpen =() => setOpen(true)
+  const handleClose =() => setOpen(false)
+  
   useEffect(() => {
     dispatch(fetchOrders());
     dispatch(fetchCafe());
   }, [dispatch]);
 
-  const orders = useSelector((state) => state.order.orders);
-  const cafe = useSelector((state) => state.cafe.cafe);
-  const oneOrder = useSelector((state) => state.order.oneOrder);
+  
 
   const selectView = () => {
     selected === "list" ? setSelected("map") : setSelected("list");
@@ -50,14 +55,8 @@ const CourierOrders = () => {
           <div className={styles.ordersHeader}>
             <div className={styles.titleHead}>
               <div className={styles.title}>
-                {showOne ? (
-                  <div>
-                    <img src={stick} alt="" />
-                    Информация о заказе
-                  </div>
-                ) : (
-                  <div>
-                    <img src={stick} alt="" />
+                {showOne ? (<div><img src={stick} alt="" />
+                    Информация о заказе </div>) : (<div><img src={stick} alt="" />
                     Список заказов
                     <span>(доступно {orders?.length} заказа)</span>
                   </div>
@@ -69,18 +68,13 @@ const CourierOrders = () => {
             </div>
           </div>
           {selected === "list" && (
+          
+            
             <div className={styles.ordersList} onClick={(e) => showClick(e)}>
-              {orders?.map((order) => {
-                return (
-                  <OrderItemCourier
-                    key={order._id}
-                    order={order}
-                    cafe={cafe}
-                    showOne={showOne}
-                    setShowOne={setShowOne}
-                  />
-                );
-              })}
+             {loading ? <div className={styles.ldsHourglass}></div> : orders?.map(order => { if (order.status === "atCafe" || (order.courierId === localStorage.getItem("Id") && order.status !== "atClient" )) {
+                            return <OrderItemCourier key={order._id} order={order} cafe={cafe} showOne={showOne} setShowOne={setShowOne}/>
+                        }})}
+             
             </div>
           )}
           {selected === "map" && (

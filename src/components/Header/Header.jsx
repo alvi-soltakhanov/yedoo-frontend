@@ -59,20 +59,27 @@ const Header = ({ inputText, setInputText }) => {
     setInputText(e.target.value);
   };
 
-  return (
-    <div>
-      <div className={style.header}>
-        <div className={style.content}>
-          <Link to={"/"}>
-            <div className={style.name}>YEDOO</div>
-          </Link>
-          <div className={style.inp}>
-            <img src={location} className={style.location} alt="" />
-            <input
-              type="text"
-              placeholder="  Поиск ресторана.."
-              value={inputText}
-              onChange={(e) => handleInput(e)}
+    return (
+      <div>
+        <div className={style.header}>
+            <div className={style.content}>
+                <Link to={"/"}>
+                    <div className={style.name}>YEDOO</div>
+                </Link>
+                <div className={style.inp}>
+                    <img src={location} className={style.location} alt="" />
+                  <input
+            type="text"
+            placeholder="  Поиск ресторана.."
+            value={inputText}
+            onChange={(e) => handleInput(e)}
+          />
+          <Link to={`/search?${inputHref}`}>
+            <img
+              src={search}
+              onClick={clearInput}
+              className={style.search}
+              alt=""
             />
             <Link to={`/search?${inputHref}`}>
               <img
@@ -127,8 +134,7 @@ const Header = ({ inputText, setInputText }) => {
       </div>
     </div>
   );
-
-  // рабочий Header от Сайд-Мохьмада (конец)
+    // рабочий Header от Сайд-Мохьмада (конец)
 };
 
 export default Header;
