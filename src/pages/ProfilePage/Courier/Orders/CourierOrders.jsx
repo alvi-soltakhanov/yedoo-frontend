@@ -3,7 +3,7 @@ import noFood from "../../../../assets/Profile/noFood.png";
 import stick from "../../../../assets/heigthLine.png";
 import OrderItemCourier from "./OrderItemCourier";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchOrders } from "../../../../redux/features/order";
 import { fetchCafe } from "../../../../redux/features/cafe";
 
@@ -16,9 +16,12 @@ const CourierOrders = () => {
     }, [dispatch]);
 
     const orders = useSelector(state => state.order.orders);
-    const cafe = useSelector(state => state.cafe.cafe)
-    console.log(orders, cafe)
-
+    const cafe = useSelector(state => state.cafe.cafe);
+    const loading = useSelector( state => state.order.loading);
+    const [open, setOpen] = useState(true);
+    const handleOpen =() => setOpen(true)
+    const handleClose =() => setOpen(false)
+   
     return (
         <div className={styles.ordersContainer}>
             {orders ? (
@@ -26,14 +29,14 @@ const CourierOrders = () => {
                     <div className={styles.ordersHeader}>
                         <div className={styles.title}>
                             <img src={stick} alt="" />
-                            Список заказов <span>(доступно {orders?.length} заказа)</span>
+                            Список заказов <span>(количество доступных заказов: {orders?.length})</span>
                         </div>
                     </div>
                     <div className={styles.ordersList}>
-                        {orders?.map(order => {
+                        {loading ? <div className={styles.ldsHourglass}></div> : orders?.map(order => { if (order.status === "atCafe" || (order.courierId === localStorage.getItem("Id") && order.status !== "atClient" )) {
                             return <OrderItemCourier key={order._id} order={order} cafe={cafe} />
-                        })}
-                       
+                        }})}
+                     
                     </div>
                 </div>
             ) : (

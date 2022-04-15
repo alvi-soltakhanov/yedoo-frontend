@@ -22,7 +22,7 @@ import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
 import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage"
 import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
-
+import CafePage from "../pages/CafePage/CafePage"
 import MainPage from "../pages/MainPage/MainPage";
 import Map from "../pages/YandexMap/Map";
 
@@ -36,49 +36,42 @@ const App = () => {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/map" element={<Map />} />
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/map" element={<YMap />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/FullCard/:id" element={<FullCardPage />} />
-            <Route path="/TermsPage" element={<TermsPage />} />
-            <Route path="/ActionPage" element={<ActionPage />} />
-            <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
+            <Route path="/fullcard/:id" element={<FullCardPage />} />
+            <Route path="/termspage" element={<TermsPage />} />
+            <Route path="/actionpage" element={<ActionPage />} />
+            <Route path="/orderregistpage" element={<OrderRegistPage />} />
             <Route element={<ProtectedRoute token={token} allowedRoles={["cafe"]} role={role} /> }>
-                            <Route path="/profile/cafe/" element={<ProfilePage />}>
-                                <Route path="menu" element={<CafeMenu />} />
-                                <Route path="orders" element={<CafeOrders />} />
-                                <Route path="promotions" element={<Promotions />} />
-                                <Route path="info" element={<CafeInfo />} />
-                            </Route>
-                        </Route>
-            <Route
-              element={
-                <ProtectedRoute
-                  token={token}
-                  allowedRoles={["courier"]}
-                  role={role}
-                />
-              }
-            >
+                 <Route path="/profile/cafe/" element={<ProfilePage />}>
+                     <Route path="menu" element={<CafeMenu />} />
+                     <Route path="orders" element={<CafeOrders />} />
+                     <Route path="promotions" element={<Promotions />} />
+                     <Route path="info" element={<CafeInfo />} />
+                 </Route>
+            </Route>
+            <Route element={ <ProtectedRoute token={token} allowedRoles={["courier"]}  role={role}  /> }>
               <Route path="/profile/courier/" element={<ProfilePage />}>
-                <Route path="orders" element={<CourierOrders />} />
-                <Route path="completed" element={<CompleteOrders />} />
-                <Route path="info" element={<CourierInfo />} />
-                <Route path="addresses" element={<Addresses />} />
+                  <Route path="orders" element={<CourierOrders />} />
+                  <Route path="completed" element={<CompleteOrders />} />
+                  <Route path="info" element={<CourierInfo />} />
+                  <Route path="addresses" element={<Addresses />} />
               </Route>
             </Route>
-                        <Route element={<ProtectedRoute token={token} allowedRoles={["client"]} role={role} /> }>
-                            <Route path="/profile/client/" element={<ProfilePage />}>
-                                <Route path="orders" element={<CafeOrders />} />
-
-                            </Route> 
-                        </Route>
-                        <Route path="/signup" element={<SignUpPage />} />
-                        <Route path="/signin" element={<SignIn />} />
-                        <Route path="/ProfilePage" element={<ProfilePage />} />
-                        <Route path="/home" element={<HomePage />} />
-                    </Routes>
-                </BrowserRouter>
+                  <Route element={<ProtectedRoute token={token} allowedRoles={["client"]} role={role} /> }>
+                    <Route path="/profile/client/" element={<ProfilePage />}>
+                        <Route path="orders" element={<CafeOrders />} />
+                    </Route> 
+                  </Route>
+                  <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/signin" element={<SignIn />} />
+                  <Route path="/ProfilePage" element={<ProfilePage />} />
+                  <Route path="/home" element={<HomePage />} />
+                  <Route path="/search" element={<SearchPage />} />  
+              <Route path="/cafe/:id" element={<CafePage />} /> 
+          </Routes>
+        </BrowserRouter>
             </div>
         );
     } else {
@@ -86,18 +79,20 @@ const App = () => {
             <div className="App">
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<HomePage />}  />
+                        <Route path="/home" element={<HomePage />}  />
+                        <Route path="/" element={<Navigate to="/home" />} />
                         <Route path="/cart" element={<CartPage />}  />
-                        <Route path="/FullCard/:id" element={<FullCardPage />}  />
-                        <Route path="/TermsPage" element={<TermsPage />}  />
-                        <Route path="/ActionPage" element={<ActionPage />}  />
-                        <Route path="/OrderRegistPage" element={<OrderRegistPage />} />
+                        <Route path="/fullcard/:id" element={<FullCardPage />}  />
+                        <Route path="/termspage" element={<TermsPage />}  />
+                        <Route path="/actionpage" element={<ActionPage />}  />
+                        <Route path="/orderregistpage" element={<OrderRegistPage />} />
                         <Route path="/cafeprofile" element={<Navigate to="/" replace />} />
                         <Route path="/profile" element={<Navigate to="/" replace />} />
                         <Route path="/profile/*" element={<Navigate to="/" replace />} />
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/signin" element={<SignIn />} />
                         <Route path="/search" element={<SearchPage />} />  
+                        <Route path="/cafe/:id" element={<CafePage />} />  
                         
                     </Routes>
                 </BrowserRouter>

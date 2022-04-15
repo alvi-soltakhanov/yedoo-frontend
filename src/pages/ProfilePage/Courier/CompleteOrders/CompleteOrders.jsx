@@ -18,16 +18,16 @@ const CompleteOrders = () => {
     console.log(orders.length)
     return (
         <div className={styles.ordersContainer}>
-            {orders.filter(order => order.declined === true).length ? (
+            {orders.filter(order => order.courierId === localStorage.getItem("Id") && (order.status === "atClient")).length ? (
                 <div className={styles.ordersMain}>
                     <div className={styles.ordersHeader}>
                         <div className={styles.title}>
                             <img src={stick} alt="" />
-                            Выполненные заказы <span>(3 заказа)</span>
+                            Выполненные заказы 
                         </div>
                     </div>
                     <div className={styles.ordersList}>
-                        {orders.filter(order => order.declined === true).map(order => {
+                        {orders.filter(order => (order.courierId === localStorage.getItem("Id") && (order.status === "atClient"))).map(order => {
                             return <CompleteOrderItem order={order} />
                         })}
                       
