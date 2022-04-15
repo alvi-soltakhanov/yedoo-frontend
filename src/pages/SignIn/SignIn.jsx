@@ -30,27 +30,29 @@ const SignIn = () => {
   }, [token, navigate]);
 
   return (
-    <div className={styles.signinContainer}>
-      <div className={styles.signinBox}>
-        <h2>Войти</h2>
-        <p>Электронная почта</p>
-        <input type="text" value={mail} onChange={(e) => handleMail(e)} />
-        <p>Пароль</p>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => handlePassword(e)}
-        />{" "}
-        <button className={styles.signInBtn} onClick={() => submit()}>
-          Войти
-        </button>
-      </div>
+    <div className={styles.genSin}>
+      <div className={styles.signinContainer}>
+        <div className={styles.signinBox}>
+          <h2>Войти</h2>
+          <p>Электронная почта</p>
+          <input type="text" value={mail} onChange={(e) => handleMail(e)} />
+          <p>Пароль</p>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => handlePassword(e)}
+          />{" "}
+          <button className={styles.signInBtn} onClick={() => submit()}>
+            Войти
+          </button>
+        </div>
 
-      <div className={styles.link}>
-        <span>Нет аккаунта?</span>
-        <Link to={"/signup"}>
-          <p>Зарегистрироваться</p>{" "}
-        </Link>
+        <div className={styles.link}>
+          <span>Нет аккаунта?</span>
+          <Link to={"/signup"}>
+            <p>Зарегистрироваться</p>{" "}
+          </Link>
+        </div>
       </div>
     </div>
   );
