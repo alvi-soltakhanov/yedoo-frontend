@@ -45,6 +45,72 @@ export default function order(state = initialState, action) {
                 error: null,
                 orders: action.payload,
             };
+        case "order/accept/pending":
+            return {
+                ...state,
+                loading: true,
+                error: null,
+            };
+        case "order/accept/rejected":
+            return {
+                ...state,
+                loading: false,
+                error: action.error,
+            };
+        case "order/accept/fulfilled":
+            console.log(action.payload);
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                orders: state.orders.map((order) => {
+                    if (order._id === action.payload._id) {
+                        order.courierId = action.payload.courierId;
+                    }
+                    return order;
+                }),
+            };
+            case "order/delivered/pending":
+            return {
+                ...state,
+                loading: true,
+                error: null,
+            };
+        case "order/delivered/rejected":
+            return {
+                ...state,
+                loading: false,
+                error: action.error,
+            };
+        case "order/delivered/fulfilled":
+            console.log(action.payload);
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                orders: state.orders.map((order) => {
+                    if (order._id === action.payload._id) {
+                        delete order.courierId
+                    }
+                    return order;
+                }),
+            };
+        case "order/disavailable":
+            return {
+                ...state,
+                orders: state.orders.map((order) => {
+                    order.disavailable = true;
+                    return order;
+                }),
+            };
+        case "order/available":
+            return {
+                ...state,
+                orders: state.orders.map((order) => {
+                    order.disavailable = false;
+                    return order;
+                }),
+            };
         default:
             return state;
     }
@@ -94,6 +160,52 @@ export const fetchOrders = () => {
             }
         } catch (e) {
             dispatch({ type: "order/fetch/rejected", error: e.toString() });
+        }
+    };
+};
+
+export const acceptOrder = (orderId) => {
+    return async (dispatch) => {
+        dispatch({ type: "order/accept/pending" });
+        try {
+            const res = await fetch(`http://localhost:4000/orders/${orderId}`, {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            });
+            const json = await res.json();
+            console.log(json);
+            if (json.error) {
+                dispatch({ type: "order/accept/rejected", error: json.error });
+            } else {
+                dispatch({ type: "order/accept/fulfilled", payload: json });
+            }
+        } catch (e) {
+            dispatch({ type: "order/accept/rejected", error: e.toString() });
+        }
+    };
+};
+
+export const deliverOrder = (orderId) => {
+    return async (dispatch) => {
+        dispatch({ type: "order/delivered/pending" });
+        try {
+            const res = await fetch(`http://localhost:4000/orders/${orderId}/delivered`, {
+                method: "PATCH",
+            });
+            const json = await res.json();
+            console.log(json);
+            if (json.error) {
+                dispatch({
+                    type: "order/delivered/rejected",
+                    error: json.error,
+                });
+            } else {
+                dispatch({ type: "order/delivered/fulfilled", payload: json });
+            }
+        } catch (e) {
+            dispatch({ type: "order/delivered/rejected", error: e.toString() });
         }
     };
 };
