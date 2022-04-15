@@ -58,8 +58,8 @@ const CafePage = () => {
     );
   });
 
-  const hundleCafeId = (id) => {
-    dispatch(fetchCafeById(id));
+  const handleImg = () => {
+    setInput("")
   };
 
   //   console.log(food?.categoryId);
@@ -99,7 +99,7 @@ const CafePage = () => {
               onChange={(e) => hundleInp(e)}
               value={input}
             />
-            <img src={burga} className={style.burger} alt="" />
+            <img src={burga} onClick={() => handleImg()} className={style.burger} alt="" />
           </div>
           <div className={style.menu}>
             {filterfood?.map((food) => {

@@ -1,4 +1,4 @@
-import exit from "../../assets/Profile/logout.png"
+import exit from "../../assets/Profile/logout.png";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useRef, useState } from 'react';
 import style from "./header.module.css"
@@ -11,48 +11,44 @@ import search from '../../assets/Header/Search.png'
 import CartLine from '../../assets/Header/CartLine.png'
 
 const Header = ({ inputText, setInputText }) => {
-    // рабочий Header от Сайд-Мохьмада (начало)
-    const token = useSelector((state) => state.application.token);
-    const role = useSelector((state) => state.application.role);
-    const dispatch = useDispatch();
+  // рабочий Header от Сайд-Мохьмада (начало)
+  const token = useSelector((state) => state.application.token);
+  const role = useSelector((state) => state.application.role);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchFood())
-        // { localStorage.getItem('cartId') ? dispatch(getCurrentCart(localStorage.getItem('cartId'))) : console.log('Нет id корзины') }
-        if(localStorage.getItem('cartId')) {
+  const handleExit = () => {
+    dispatch({ type: "logout" });
+    localStorage.clear();
+  };
+
+  let pathToProfile;
+  if (role === "cafe") {
+    pathToProfile = "cafe/orders";
+  } else if (role === "courier") {
+    pathToProfile = "courier/orders";
+  } else if (role === "client") {
+    pathToProfile = "client/orders";
+  }
+
+  const foodsCount = useSelector((state) => state.cart.foods);
+
+  useEffect(() => {
+    dispatch(fetchFood());
+    {
+      if(localStorage.getItem('cartId')) {
             dispatch(getCurrentCart(localStorage.getItem('cartId')))
         }
-    }, [dispatch])
-    const [inputHref, setInputHref] = useState("");
-
-    const handleExit = () => {
-        dispatch({ type: "logout" });
-        localStorage.clear();
-    };
-
-    let pathToProfile;
-    if (role === "cafe") {
-        pathToProfile = "cafe/orders";
-    } else if (role === "courier") {
-        pathToProfile = "courier/orders";
-    } else if (role === "client") {
-        pathToProfile = "client/orders";
     }
+  }, [dispatch]);
 
-    const foodsCount = useSelector((state) => state.cart.foods);
-
-    useEffect(() => {
-        dispatch(fetchFood());
-        {
-            localStorage.getItem("cartId")
-                ? dispatch(getCurrentCart(localStorage.getItem("cartId")))
-                : console.log("Нет id корзины");
-        }
-    }, [dispatch]);
+  const clearInput = () => {
+    setInputHref("");
+  };
 
     const clearInput = () => {
         setInputHref("");
     };
+
 
     const handleInput = (e) => {
         setInputText(e.target.value);

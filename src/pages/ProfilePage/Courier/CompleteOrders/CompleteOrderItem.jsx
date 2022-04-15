@@ -1,7 +1,7 @@
 import styles from "./CompleteOrderItem.module.css";
 import image from "../../../../assets/Profile/bgFoodNoOrder.jpg"
 
-const CompleteOrderItem = () => {
+const CompleteOrderItem = ({order}) => {
     return (
         <div className={styles.orderCard}>
             <table>
@@ -15,9 +15,9 @@ const CompleteOrderItem = () => {
                 </tr>
                 <tr>
                     <td> <div className={styles.image}><img src={image} alt="" /></div></td>
-                    <td>Заказ №12399939</td>
-                    <td>пр. Путина 17</td>
-                    <td>ул. Грибоедова 104</td>
+                    <td>Заказ №  {order?._id.slice(16)}</td>
+                    <td> {order?.from}</td>
+                    <td>{order?.to}</td>
                     <td>14:50</td>
                     <td><span className={styles.status}>Выполнен ✅</span></td>
                 </tr>

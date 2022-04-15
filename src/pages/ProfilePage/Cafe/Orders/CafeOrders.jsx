@@ -22,7 +22,7 @@ const CafeOrders = () => {
                     <div className={styles.ordersHeader}>
                         <div className={styles.title}>
                             <img src={stick} alt="" />
-                            Список заказов <span>(активно {orders ? orders?.length : 0} заказов)</span>
+                            Список заказов <span>(количество активных заказов: {orders ? orders?.length : 0})</span>
                         </div>
                     </div>
                     <div className={styles.ordersList}>

@@ -1,62 +1,112 @@
 .noOrdersContainer {
-    background: url("../../../../assets/Profile/bgFoodNoOrder2-1.jpg") no-repeat;
-    background-size: 100%;
-    width: 900px;
-    height: 500px;
-    border-radius: 15px;
-    opacity: 0.1;
-    z-index: 1;
+  background: url("../../../../assets/Profile/bgFoodNoOrder2-1.jpg") no-repeat;
+  background-size: 100%;
+  width: 900px;
+  height: 500px;
+  border-radius: 15px;
+  opacity: 0.1;
+  z-index: 1;
 }
 
 .noOrder {
-    font-size: 48px;
-    text-align: center;
-    line-height: 500px;
-    color: #fff;
-    z-index: 2;
-    width: 900px;
-    height: 500px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+  font-size: 48px;
+  text-align: center;
+  line-height: 500px;
+  color: #fff;
+  z-index: 2;
+  width: 900px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .noOrder img {
-    border-radius: 15px;
+  border-radius: 15px;
 }
 
 .wrapper {
-    position: relative;
+  position: relative;
 }
 
 .ordersMain {
-    width: 900px;
-    color: #fff;
-    padding: 50px;
-    min-height: 400px;
+  width: 900px;
+  color: #fff;
+  padding: 50px;
+  min-height: 400px;
 }
 
 .ordersHeader {
-    width: 750px;
-    margin: auto;
-    padding: 0 10px 10px 10px;
+  width: 750px;
+  margin: auto;
+  padding: 0 10px 10px 10px;
+}
+.titleHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.titleHead button {
+  background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%);
+  color: white;
+  width: 160px;
+  /* padding: 15px 15px; */
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .title {
-    font-size: 32px;
-    font-weight: 700;
-    padding-left: 30px;
-    position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  padding-left: 30px;
+  position: relative;
 }
 
 .title span {
-    font-weight: 500;
-    font-size: 15px;
-    color: #72A479;
+  font-weight: 500;
+  font-size: 15px;
+  color: #72a479;
 }
 
 .title img {
+
     position: absolute;
     top: 10px;
     left: 10px;
 }
+
+.ldsHourglass {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .ldsHourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 32px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: ldsHourglass 1.2s infinite;
+  }
+  @keyframes ldsHourglass {
+    0% {
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }
+

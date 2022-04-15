@@ -1,27 +1,26 @@
-import React, { useEffect } from 'react';
-import styles from "./card.module.css"
-import food from "../../assets/food.png"
-import cart from "../../assets/OneCard/Buy.png"
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFoodToCart, createCart } from '../../redux/features/cart';
-import { useState } from 'react';
+import React, { useEffect } from "react";
+import styles from "./card.module.css";
+import food from "../../assets/food.png";
+import cart from "../../assets/OneCard/Buy.png";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addFoodToCart, createCart } from "../../redux/features/cart";
+import { useState } from "react";
 
-const Card = ({ id, name, description, price, image, cafeId }) => {
-    const foods = useSelector(state => state.cart.foods)
+const Card = ({ id, name, info, price, image, cafeId }) => {
+  const foods = useSelector((state) => state.cart.foods);
+  const add = foods.find((item) => item.foodId === id);
+  const cafe = useSelector((state) => state.cart.cafeId);
 
-    const add = foods.find(item => item.foodId === id)
-    const cafe = useSelector(state => state.cart.cafeId)
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
-
-    const handleCart = (id) => {
-        if (localStorage.getItem('cartId')) {
-            dispatch(addFoodToCart(localStorage.getItem('cartId'), id))
-        } else {
-            dispatch(createCart(id, cafeId))
-        }
+  const handleCart = (id) => {
+    if (localStorage.getItem("cartId")) {
+      dispatch(addFoodToCart(localStorage.getItem("cartId"), id));
+    } else {
+      dispatch(createCart(id, cafeId));
     }
+  };
 
     return (
         <div className={styles.card}>
@@ -38,7 +37,9 @@ const Card = ({ id, name, description, price, image, cafeId }) => {
                 </div>
             </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Card;
