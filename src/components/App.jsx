@@ -23,7 +23,8 @@ import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage"
 import YMap from "../pages/YandexMap/YMap";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import CafePage from "../pages/CafePage/CafePage"
-
+import MainPage from "../pages/MainPage/MainPage";
+import Map from "../pages/YandexMap/Map";
 
 const App = () => {
 
