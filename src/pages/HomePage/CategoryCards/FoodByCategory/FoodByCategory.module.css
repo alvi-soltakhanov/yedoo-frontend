@@ -1,9 +1,6 @@
-.foodByCategory {
-    display: flex;
-}
-
 .CardItem {
-    margin-right:20px;
+    width: 24%;
+    margin-right: 10px;
 }
 .hideFood {
     transform: translate(100%, 0);
@@ -13,4 +10,54 @@
 .showFood {
     transform: translate(0, 0);
     transition: 1.5s;
+}
+
+.pageTitles {
+    border-left: 5px solid #618967;
+    padding-left: 20px;
+    margin: 30px 0;
+
+}
+
+.pageTitles p {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.gradientLine {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #7d7c7c 0%, #44403F 50%);
+}
+
+.foodItem {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.moreBlock {
+    display: flex;
+}
+
+.moreBtn {
+    width: 60%;
+    color: white;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    border-radius: 10px;
+
+    
+    margin: 15px auto;
+    padding: 10px;
+}
+
+.hide {
+    display: none;
 }

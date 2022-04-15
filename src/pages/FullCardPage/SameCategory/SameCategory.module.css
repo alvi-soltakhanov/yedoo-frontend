@@ -1,5 +1,5 @@
 .sameCategoryBlock {
-    width: 1372px;
+    width: 1270px;
     margin: auto;
 }
 
@@ -18,19 +18,13 @@
     color: #FFFFFF;
 }
 
-.sameCategoryItem {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    margin-bottom: 50px;
-}
-
 .foodByCategory {
     display: flex;
 }
 
 .CardItem {
     margin-right:20px;
+    width: 100%;
 }
 .hideFood {
     transform: translate(100%, 0);

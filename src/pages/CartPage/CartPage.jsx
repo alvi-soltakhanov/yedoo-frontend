@@ -10,7 +10,7 @@ const CartPage = () => {
     return (
         <div className={styles.CartPage}>
             <Header />
-            <OneStoreFilter/>
+            {/* <OneStoreFilter/> */}
             <CartBlock />
             <Total />
             <Footer />         

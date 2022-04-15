@@ -109,9 +109,9 @@ const CafePage = () => {
                   name={food?.name}
                   id={food?._id}
                   image={food?.image}
-                  img={food?.image}
-                  info={food?.info}
+                  description={food?.description}
                   key={food._id}
+                  cafeId={food.cafeId}
                 />
               );
             })}

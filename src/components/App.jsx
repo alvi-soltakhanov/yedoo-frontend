@@ -23,6 +23,8 @@ import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import CafePage from "../pages/CafePage/CafePage";
 import MainPage from "../pages/MainPage/MainPage";
+import CafePage from "../pages/CafePage/CafePage"
+
 
 const App = () => {
   const token = useSelector((state) => state.application.token);
@@ -39,6 +41,7 @@ const App = () => {
             <Route path="/termspage" element={<TermsPage />} />
             <Route path="/actionpage" element={<ActionPage />} />
             <Route path="/orderregistpage" element={<OrderRegistPage />} />
+
             <Route
               element={
                 <ProtectedRoute

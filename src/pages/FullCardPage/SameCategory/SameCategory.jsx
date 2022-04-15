@@ -9,7 +9,7 @@ const SameCategory = () => {
 
     const { id } = useParams()
 
-    let currentFood = food.find(item => {
+    let currentFood = food?.find(item => {
         if (item._id === id) {
             return item
         }
@@ -22,7 +22,7 @@ const SameCategory = () => {
             </div>
             <div className={styles.sameCategoryItem}>
                 <div className={`${styles.foodByCategory} ${food ? styles.showFood : styles.hideFood}`}>
-                        {food.map(item => {
+                        {food?.map(item => {
                             if (item.categoryId === currentFood.categoryId) {
                                 return <div className={styles.CardItem}><Card id={item._id} name={item.name} description={item.info} price={item.price} image={item.image} /></div>
                             }
@@ -33,4 +33,4 @@ const SameCategory = () => {
             );
 };
 
-            export default SameCategory;
+export default SameCategory;

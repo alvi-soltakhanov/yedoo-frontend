@@ -2,7 +2,7 @@ const initialState = {
     loading: false,
     error: null,
     food: [],
-    foodByCafe: [],
+    foodByCafe: []
 };
 
 export default function food(state = initialState, action) {
