@@ -3,6 +3,7 @@ const initialState = {
     error: null,
     message: null,
     orders: [],
+    oneOrder: {}
 };
 
 export default function order(state = initialState, action) {
@@ -111,6 +112,25 @@ export default function order(state = initialState, action) {
                     return order;
                 }),
             };
+         case "order/fetchOne/pending":
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    case "order/fetchOne/rejected":
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case "order/fetchOne/fulfilled":
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        oneOrder: action.payload
+      };
         default:
             return state;
     }
@@ -145,6 +165,37 @@ export const createOrder = (foods, currentCafeId, total, from, to) => {
             dispatch({ type: "createOrder/fetch/fulfilled", payload: json });
         }
     };
+};
+
+export const createOrder = (foods, currentCafeId, total, from, to) => {
+  return async (dispatch) => {
+    dispatch({ type: "order/fetch/pending" });
+    const res = await fetch("http://localhost:4000/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        foods: foods,
+        cafeId: currentCafeId,
+        total: total,
+        from: from,
+        to: to
+      })
+    });
+
+    const json = await res.json();
+
+    if (json.error) {
+      dispatch({
+        type: "order/fetch/rejected",
+        error: json.error
+      });
+    } else {
+      // console.log(json);
+      dispatch({ type: "order/fetch/fulfilled", payload: json });
+    }
+  };
 };
 
 export const fetchOrders = () => {
@@ -208,4 +259,20 @@ export const deliverOrder = (orderId) => {
             dispatch({ type: "order/delivered/rejected", error: e.toString() });
         }
     };
+  export const fetchOneOrder = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: "order/fetchOne/pending" });
+    try {
+      const res = await fetch(`http://localhost:4000/orders/${id}`);
+      const json = await res.json();
+      if (json.error) {
+        dispatch({ type: "order/fetchOne/rejected", error: json.error });
+      } else {
+        dispatch({ type: "order/fetchOne/fulfilled", payload: json });
+      }
+    } catch (e) {
+      dispatch({ type: "order/fetchOne/rejected", error: e.toString() });
+    }
+  };
+};
 };

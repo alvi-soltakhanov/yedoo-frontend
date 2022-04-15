@@ -8,7 +8,7 @@ const initialState = {
   role: localStorage.getItem("role")
 };
 
-export function application(state = initialState, action) {
+export default function application(state = initialState, action) {
   switch (action.type) {
     case "application/signupClient/pending":
       return {
@@ -25,7 +25,6 @@ export function application(state = initialState, action) {
         singingIn: false,
         error: action.error,
         done: false
-
       };
     case "application/signupClient/fulfilled":
       return {
@@ -90,7 +89,7 @@ export function application(state = initialState, action) {
         singingIn: true,
         error: null,
         done: false,
-        role: null,
+        role: null
       };
     case "application/signin/rejected":
       return {
@@ -99,7 +98,7 @@ export function application(state = initialState, action) {
         singingIn: false,
         error: action.error,
         done: false,
-        role: null,
+        role: null
       };
     case "application/signin/fulfilled":
       return {
@@ -110,7 +109,7 @@ export function application(state = initialState, action) {
         done: true,
         token: action.payload.token,
         Id: action.payload.id,
-        role: action.payload.role,
+        role: action.payload.role
       };
     case "logout":
       return {
@@ -120,7 +119,7 @@ export function application(state = initialState, action) {
         error: null,
         token: null,
         Id: null,
-        role: null,
+        role: null
       };
     default:
       return state;
@@ -138,22 +137,22 @@ export const createClient = (name, phone, city, address, mail, password) => {
         city,
         address,
         mail,
-        password,
+        password
       }),
       headers: {
-        "Content-type": "application/json",
-      },
+        "Content-type": "application/json"
+      }
     });
     const json = await res.json();
     if (json.error) {
       dispatch({
         type: "application/signupClient/rejected",
-        error: json.error,
+        error: json.error
       });
     } else {
       dispatch({
         type: "application/signupClient/fulfilled",
-        payload: json,
+        payload: json
       });
     }
   };
@@ -170,22 +169,22 @@ export const createCafe = (name, phone, city, address, mail, password) => {
         city,
         address,
         mail,
-        password,
+        password
       }),
       headers: {
-        "Content-type": "application/json",
-      },
+        "Content-type": "application/json"
+      }
     });
     const json = await res.json();
     if (json.error) {
       dispatch({
         type: "application/signupCafe/rejected",
-        error: json.error,
+        error: json.error
       });
     } else {
       dispatch({
         type: "application/signupCafe/fulfilled",
-        payload: json,
+        payload: json
       });
     }
   };
@@ -197,19 +196,19 @@ export const createCourier = (name, phone, city, mail, password) => {
       method: "POST",
       body: JSON.stringify({ name, phone, city, mail, password }),
       headers: {
-        "Content-type": "application/json",
-      },
+        "Content-type": "application/json"
+      }
     });
     const json = await res.json();
     if (json.error) {
       dispatch({
         type: "application/signupCourier/rejected",
-        error: json.error,
+        error: json.error
       });
     } else {
       dispatch({
         type: "application/signupCourier/fulfilled",
-        payload: json,
+        payload: json
       });
     }
   };
@@ -222,20 +221,20 @@ export const signin = (mail, password) => {
       method: "POST",
       body: JSON.stringify({ mail, password }),
       headers: {
-        "Content-type": "application/json",
-      },
+        "Content-type": "application/json"
+      }
     });
     const json = await res.json();
     console.log(json.token);
     if (json.error) {
       dispatch({
         type: "application/signin/rejected",
-        error: json.error,
+        error: json.error
       });
     } else {
       dispatch({
         type: "application/signin/fulfilled",
-        payload: json,
+        payload: json
       });
       localStorage.setItem("token", json.token);
       localStorage.setItem("Id", json.id);

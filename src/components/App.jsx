@@ -19,15 +19,13 @@ import CourierOrders from "../pages/ProfilePage/Courier/Orders/CourierOrders";
 import CompleteOrders from "../pages/ProfilePage/Courier/CompleteOrders/CompleteOrders";
 import CourierInfo from "../pages/ProfilePage/Courier/CourierInfo/CourierInfo";
 import Addresses from "../pages/ProfilePage/Courier/Adresses/Adresses";
-import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage"
-import YMap from "../pages/YandexMap/YMap";
+import ClientPersonalPage from "../pages/clientPersonalPage/ClientPersonalPage";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import CafePage from "../pages/CafePage/CafePage"
 import MainPage from "../pages/MainPage/MainPage";
-import Map from "../pages/YandexMap/Map";
+import CafePage from "../pages/CafePage/CafePage";
 
 const App = () => {
-
   const token = useSelector((state) => state.application.token);
   const role = useSelector((state) => state.application.role);
 
@@ -37,7 +35,6 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/map" element={<YMap />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/fullcard/:id" element={<FullCardPage />} />
             <Route path="/termspage" element={<TermsPage />} />

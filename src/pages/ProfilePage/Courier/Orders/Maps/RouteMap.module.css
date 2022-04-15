@@ -1,0 +1,16 @@
+.routeMapContainer [class*="copyrights-pane"] {
+  display: none !important;
+}
+.map {
+  height: 400px;
+  min-width: 849px;
+}
+.map span {
+  margin-right: 30px;
+}
+
+.map button {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}

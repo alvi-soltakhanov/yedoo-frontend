@@ -1,21 +1,20 @@
+
 .orderCardInActive {
     opacity: 0.3
 }
-
 /* Стили изображения карточки  */
 
 .image {
-    width: 120px;
-    height: 100%;
-    text-align: left;
-    padding: 20px;
+  width: 120px;
+  height: 100%;
+  text-align: left;
+  padding: 20px;
 }
 
 .image img {
-    width: 90px;
-    border-radius: 10px;
+  width: 90px;
+  border-radius: 10px;
 }
-
 
 /* Стили для цены */
 
@@ -28,42 +27,51 @@
 } */
 
 table {
-    width: 850px;
-    text-align: center;
-    background-color: #4D4847;
-    border-bottom: 2px solid #6B6867;
-    margin-top: 25px;
+  width: 850px;
+  text-align: center;
+  background-color: #4d4847;
+  border-bottom: 2px solid #6b6867;
+  margin-top: 25px;
 }
 
 td {
-    font-size: 18px;
-    text-align: center;
+  font-size: 18px;
+  text-align: center;
 }
 
-
 th {
-    padding-top: 10px;
-    text-align: center;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .time {
-    width: 85px
+  width: 85px;
 }
 
 .orderNumber {
-    width: 120px;
+  width: 120px;
 }
 
 .from {
-    width: 200px;
+  width: 200px;
 }
 
 .btnAccept {
-    width: 90px;
-    font-size: 18px;
-    color: white;
-    height: 38.14px;
-    border-radius: 10px;
-    border: none;
-    background-color: #72A479;
+  width: 90px;
+  font-size: 18px;
+  color: white;
+  height: 38.14px;
+  border-radius: 10px;
+  border: none;
+  background-color: #72a479;
+}
+.btnDecline {
+  width: 90px;
+  font-size: 18px;
+  color: white;
+  height: 38.14px;
+  border-radius: 10px;
+  border: none;
+  margin-left: 5px;
+  background-color: #ac6a6a;
 }

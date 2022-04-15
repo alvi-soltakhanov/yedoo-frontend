@@ -6,17 +6,10 @@ import styles from "./YMap.module.css";
 
 const key = "2a670aaa-e106-4bf0-88e0-cb885604beab";
 
-const YMap = () => {
-  const [coords, setCoords] = useState([]);
+const YMap = ({ showOne, setShowOne }) => {
   const cafes = useSelector((state) => state.cafe.cafe);
 
-  if (coords.coordinates) {
-    console.log(coords.coordinates);
-  }
-
-  const showClick = (e) => {
-    console.log(e.target.id);
-  };
+  const [coords, setCoords] = useState([]);
 
   const geocode = (ymaps) => {
     cafes?.forEach((cafe) => {
@@ -32,10 +25,9 @@ const YMap = () => {
       );
     });
   };
-  console.log(coords);
 
   return (
-    <div className={styles.mapContainer} onClick={(e) => showClick(e)}>
+    <div className={styles.mapContainer}>
       <YMaps query={{ apikey: key }}>
         <Map
           onLoad={(ymaps) => geocode(ymaps)}
@@ -43,19 +35,21 @@ const YMap = () => {
           className={styles.map}
           defaultState={{
             center: [43.31777101437515, 45.693908688732876],
-            zoom: 12
+            zoom: 15
           }}
         >
-          {coords?.map((coord) => {
-            return (
-              <Placemarker
-                coord={coord}
-                key={coord.coordinates}
-                id={coord.id}
-                name={coord.name}
-              />
-            );
-          })}
+          <div>
+            {coords?.map((coord) => {
+              return (
+                <Placemarker
+                  coord={coord}
+                  key={coord.coordinates}
+                  id={coord.id}
+                  name={coord.name}
+                />
+              );
+            })}
+          </div>
           <FullscreenControl />
           <ZoomControl options={{ float: "right" }} />
         </Map>
