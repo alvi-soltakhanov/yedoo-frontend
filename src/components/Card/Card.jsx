@@ -8,8 +8,7 @@ import { addFoodToCart, createCart } from "../../redux/features/cart";
 import { useState } from "react";
 
 const Card = ({ id, name, info, price, image, cafeId }) => {
-  
-  const foods = useSelector(state => state.cart.foods)
+  const foods = useSelector((state) => state.cart.foods);
   const add = foods.find((item) => item.foodId === id);
   const cafe = useSelector((state) => state.cart.cafeId);
 
@@ -39,7 +38,7 @@ const Card = ({ id, name, info, price, image, cafeId }) => {
           </Link>
           <p className={styles.weighth}>Вес: 225г</p>
         </div>
-        <p className={styles.script}>{description}</p>
+        <p className={styles.script}>{info}</p>
         <div className={styles.price_script}>
           <p className={styles.price}>{price}₽</p>
           <button
