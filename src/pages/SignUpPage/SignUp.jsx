@@ -138,6 +138,8 @@ const SignUp = () => {
       !passwordErr
     ) {
       dispatch(createCafe(name, phone, city, address, mail, password));
+      checkError();
+      setAllClear();
     } else {
       console.log("Не удалось зарегистрироваться как партнер");
     }
@@ -145,6 +147,8 @@ const SignUp = () => {
   const signUpCourier = () => {
     if (!nameErr && !phoneErr && !cityErr && !mailErr && !passwordErr) {
       dispatch(createCourier(name, phone, city, mail, password));
+      checkError();
+      setAllClear();
     } else {
       console.log("Не удалось зарегистрироваться как курьер");
     }

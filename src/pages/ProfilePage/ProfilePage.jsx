@@ -7,8 +7,10 @@ import { fetchClientByToken } from "../../redux/features/client";
 import { fetchCourierByToken } from "../../redux/features/courier";
 import styles from "./ProfilePage.module.css";
 import Sidebar from "./Sidebar";
+import Messanger from '../Messenger/Messenger'
 
 const ProfilePage = () => {
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
