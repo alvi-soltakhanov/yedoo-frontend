@@ -3,8 +3,11 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer';
 import Content from './ClientContent/ClientContent'
 import Messanger from '../Messenger/Messenger'
+import { useState } from 'react';
 
-const ClientPersonalPage = ({ chatWindow, setChatWindow }) => {
+const ClientPersonalPage = () => {
+
+    const [chatWindow, setChatWindow ] = useState()
 
     const handleCloseChatWindow = () => {
         setChatWindow(!chatWindow)

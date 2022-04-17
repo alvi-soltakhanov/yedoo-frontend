@@ -12,6 +12,7 @@ const Conversation = ({conversation, currentUser}) => {
       try {
         const res = await axios(`http://localhost:4000/clients/${friendId}`)
         setUser(res.data)
+        console.log(res);
       } catch (err) {
         console.log(err)
       }
@@ -19,10 +20,11 @@ const Conversation = ({conversation, currentUser}) => {
     getUser()
   }, [currentUser, conversation])
 
+  console.log(user);
 
   return (
     <div className="conversation">
-      <span className="conversationName">{user?.name}</span>
+      <span className="conversationName">{user?.name === undefined ? 'курьер' : user?.name}</span>
     </div>
   );
 };
