@@ -29,14 +29,11 @@ const ProfilePage = () => {
     const client = useSelector((state) => state.client.client);
     const courier = useSelector((state) => state.courier.courier);
    
-    // const obj = useOutletContext();
-    // console.log( useOutletContext());
-    // console.log(!!obj.allowedRoles.includes(obj.role));
     return (
         <div className={styles.profilePage}>
             <Header />
             <div className={styles.profileContent}>
-                {/* {role==='cafe' && <CafeMenu />} */}
+
                 <Outlet />
                 <Sidebar role={role} candidates={[cafe, client, courier]} />
             </div>
