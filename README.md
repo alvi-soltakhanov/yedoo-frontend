@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# Сервис доставки еды
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>Это групповой проект, выполненный студентами школы программирования <a href="https://intocode.ru/" target="_blank">Intocode</a>.</p>
 
-## Available Scripts
+<p><a href="https://blooming-castle-56069.herokuapp.com/" target="_blank">🌎 сайт проекта</a></p>
 
-In the project directory, you can run:
+## Функционал сайта
 
-### `npm start`
+- Авторизация
+- Просмотр категорий еды
+- Поиск еды по названию
+- Добавление еды в корзину, а также удаление оттуда
+- Лайк на понравившийся рецепт
+- Комментирование рецепта
+- Просмотр раздела "Избранное"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![gif](https://github.com/Kharsaeva/project-recipes/blob/Aisha/IMG_1338.gif)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- При авторизации есть возможность добавлять новые рецепты, а также удалять их.
 
-### `npm test`
+![gif](https://github.com/Kharsaeva/project-recipes/blob/Aisha/IMG_1337.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Запуск проекта
 
-### `npm run build`
+Для запуска проекта вам необходимо набрать команду в терминале:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+npm i
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+После набрать команду:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+npm start
+```
 
-### `npm run eject`
+## Технологии проекта
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- JavaScript
+- React
+- GitHub
+- Bootstrap
+- React-redux
+- Redux
+- React-router-dom
+- Redux-thunk
+- Prettier
+- Git
+- Node JS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Команда проекта
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h3>
+  <a href="https://github.com/AbuYas7">
+        🌐Абубакар Гайтукаев
+  </a>
+</h3>
 
-## Learn More
+<h3>
+  <a href="https://github.com/said-mohmad">
+        🌐Сайд-Магомед Джабраилов
+  </a>
+</h3>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h3>
+  <a href="https://github.com/zhelezobeton">
+        🌐Мусхаб Исраилов
+  </a>
+</h3>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<h3>
+  <a href="https://github.com/alvi-soltakhanov">
+        🌐Альви Солтаханов
+  </a>
+</h3>
 
-### Code Splitting
+<h3>
+  <a href="https://github.com/Sadulaev">
+        🌐Исмаил Садулаев
+  </a>
+</h3>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### В этом проекте реализованы следующие задачи:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [x] Пользователь может смотреть категории еды
+- [x] Организовать роутинг-маршрутизация внутри проекта
+- [x] Администратор может войти в панель управления
+- [x] Клиент может сделать поиск еды
+- [x] Создание и контроль веток git
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Создал реакт-приложение project-recipes.</br>
+Из проекта удалил лишние файлы и создал нужные для начало работы компоненты и репозитории.<br>
+Установил следующие библиотеки в зависимости:
 
-### Advanced Configuration
+- bootstrap
+- react-redux
+- redux
+- react-router-dom
+- redux-thunk
+- prettier
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+А также для каждого разработчика проекта, создал ветки и выгрузил их, после этого запушил проект на github.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Для выполнения поставленных задач я использовал следующие библиотеки:
 
-### `npm run build` fails to minify
+- redux, redux-thunk - чтобы создавать асинхронные экшены
+- react-router-dom - для роутинга
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
