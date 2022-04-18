@@ -14,11 +14,11 @@
 - Комментирование рецепта
 - Просмотр раздела "Избранное"
 
-![gif](https://github.com/Kharsaeva/project-recipes/blob/Aisha/IMG_1338.gif)
+![gif](https://github.com/AbuYas7/yedoo-frontend-1/blob/cafe/filter.gif)
 
-- При авторизации есть возможность добавлять новые рецепты, а также удалять их.
+<!-- - При авторизации есть возможность добавлять новые рецепты, а также удалять их. -->
 
-![gif](https://github.com/Kharsaeva/project-recipes/blob/Aisha/IMG_1337.gif)
+<!-- ![gif](https://github.com/AbuYas7/yedoo-frontend-1/blob/cafe/IMG_1337.gif) -->
 
 ## Запуск проекта
 
