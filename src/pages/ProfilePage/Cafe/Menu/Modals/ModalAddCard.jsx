@@ -8,7 +8,7 @@ const ModalAddCard = ({ active, setActive }) => {
     const [food, setFoodName] = useState("");
     const [composition, setComposition] = useState("");
     const [price, setPrice] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("6245592ae4c6c33d7537e3b0");
     const [image, setImage] = useState(null);
     const dispatch = useDispatch();
 

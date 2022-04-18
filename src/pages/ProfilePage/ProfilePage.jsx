@@ -11,11 +11,13 @@ import Messanger from '../Messenger/Messenger'
 
 const ProfilePage = () => {
 
+
     const [chatWindow, setChatWindow ] = useState(false)
 
     const handleCloseChatWindow = () => {
         setChatWindow(!chatWindow)
       }
+
     const dispatch = useDispatch();
 
     useEffect(() => {
