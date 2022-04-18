@@ -33,7 +33,7 @@ const Total = () => {
                             <>{total} ₽</>
                         </div>
                     </div>
-                    <Link to={'/OrderRegistPage'}><button onClick={() => handleTotal(total)} className={styles.ChecoutOrderButton} disabled={!cart}>Оформить заказ</button></Link>
+                    <Link to={'/OrderRegistPage'}><button onClick={() => handleTotal(total)} className={styles.ChecoutOrderButton}>Оформить заказ</button></Link>
                 </div>
                 </div>
             }
