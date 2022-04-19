@@ -56,28 +56,28 @@ npm start
 ## Использованный стек технологий 🛠
 
 <p>
--React
--Node.js
--Express
--MongoDB
+- React
+- Node.js
+- Express
+- MongoDB
 </p>
 
 ## Использованные библиотеки 📚
 
 <p>
--Redux
--Redux Thunk
--React Router
--Mongoose
--Socket.IO
--Yandex Maps API
--Multer
--bcrypt
--jsonwebtoken
--Moment.js
--dotenv
--Axios
--React Scroll
+- Redux
+- Redux Thunk
+- React Router
+- Mongoose
+- Socket.IO
+- Yandex Maps API
+- Multer
+- bcrypt
+- jsonwebtoken
+- Moment.js
+- dotenv
+- Axios
+- React Scroll
 
 </p>
 
@@ -86,21 +86,21 @@ npm start
 
 
 <h3>
-  -Садулаев Исмаил
+  - Садулаев Исмаил
 </h3>
 
 <h3>
- -Мусхаб
+ - Мусхаб
 </h3>
 
 <h3>
-  -Солтаханов Альви
+  - Солтаханов Альви
 </h3>
 
 <h3>
-  -Ясин
+  - Ясин
 </h3>
 
 <h3>
-  -Джабраилов Саид-Магомед
+  - Джабраилов Саид-Магомед
 </h3>
