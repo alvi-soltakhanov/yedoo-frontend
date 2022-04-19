@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# Сервис по доставке еды
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>Сайт, предназначенный для заказа еды, где могут регистрироваться рестораны, курьеры и клиенты. Для каждой роли 
+реализован свой функционал</p>
 
-## Available Scripts
+## Функционал сайта
 
-In the project directory, you can run:
+- Поиск еды по категориям, по ресторанам
 
-### `npm start`
+![gif](https://github.com/said-mohmad/yedoo-frontend/blob/final6/filter-category.gif)
+![gif](https://github.com/said-mohmad/yedoo-frontend/blob/final6/find-cafe-food.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Клиент может заказывать еду, добавляя в корзину, будучи даже незарегистрированным
+- После оформления заказа, он поступает выбранному ресторану
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![gif](https://github.com/said-mohmad/yedoo-frontend/blob/final6/cart.gif)
 
-### `npm test`
+- Регистрация с возможностью выбора одной из 3 ролей - кафе, курьер, клиент
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![gif](https://github.com/said-mohmad/yedoo-frontend/blob/final6/registration.gif)
 
-### `npm run build`
+- С ролью ресторана есть возможность добавлять блюда, а также редактировать карточки еды
+- Есть возможность изменять информацию о ресторане
+- Ресторан может видеть активные заказы
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![gif](https://github.com/said-mohmad/yedoo-frontend/blob/final6/profile-cafe.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Курьер может просматривать активные заказы в личном кабинете и принять один из низ
+- Курьер имеет возможноть выбрать режим отображения заказов на карте и принять его прямо щелчком на плэйсмаркере выбранного кафе
+- Он видит в отдельном меню свои выполненные заказы
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![gif](https://github.com/said-mohmad/yedoo-frontend/blob/final6/profile-courier.gif)
 
-### `npm run eject`
+- В сервисе реализован чат курьера с клиентом, где происходит обмен сообщений и можно уточнить детали доставки
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Запуск проекта
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Для запуска проекта вам необходимо набрать команду в терминале:
 
-### Code Splitting
+```javascript
+cd yedoo-frontend
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+npm i
+```
 
-### Analyzing the Bundle Size
+После набрать команду:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+npm start
+```
 
-### Making a Progressive Web App
+## Использованный стек технологий 🛠
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- React
+- Node.js
+- Express
+- MongoDB
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Использованные библиотеки 📚
 
-### Deployment
+ - Redux
+ - Redux Thunk
+ - React Router
+ - Mongoose
+ - Socket.IO
+ - Yandex Maps API
+ - Multer
+ - bcrypt
+ - jsonwebtoken
+ - Moment.js
+ - dotenv
+ - Axios
+ - React Scroll
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Команда проекта
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<h3>
+  <a href="https://github.com/AbuYas7">
+        🌐Абубакар Гайтукаев
+  </a>
+</h3>
+
+<h3>
+  <a href="https://github.com/said-mohmad">
+        🌐Саид-Магомед Джабраилов
+  </a>
+</h3>
+
+<h3>
+  <a href="https://github.com/zhelezobeton">
+        🌐Мусхаб Исраилов
+  </a>
+</h3>
+
+<h3>
+  <a href="https://github.com/alvi-soltakhanov">
+        🌐Альви Солтаханов
+  </a>
+</h3>
+
+<h3>
+  <a href="https://github.com/Sadulaev">
+        🌐Исмаил Садулаев
+  </a>
+</h3>
